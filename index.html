@@ -219,6 +219,11 @@ body[data-theme=brand] .dots button{background:#fff}
 .fab:hover{transform:translateY(-2px)}
 .scrollhint{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:40;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--soft);mix-blend-mode:difference;animation:bob 2.4s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
+.qhint{position:absolute;left:50%;bottom:4.5vh;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#fff;text-decoration:none;animation:qblink 1.7s ease-in-out infinite}
+.qhint:hover{opacity:1}
+.qhint .qarr{font-size:21px;line-height:1;animation:qbob 1.3s ease-in-out infinite}
+@keyframes qblink{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes qbob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 
 /* Block-A · neue Komponenten */
 .promise{margin-top:24px;font-size:clamp(20px,2.3vw,32px);font-weight:600;letter-spacing:-.6px;line-height:1.18;max-width:26ch}
@@ -238,14 +243,20 @@ body[data-theme=brand] .dots button{background:#fff}
   .card .kpi{border-top-color:rgba(128,124,116,.2)}
 }
 @media(max-width:860px){
-  .scroller{scroll-snap-type:y proximity}
+  /* Mobil: starres Vollbild-Snapping aus, dynamische Viewport-Höhe, Folien wachsen mit dem Inhalt */
+  .scroller{height:100dvh;scroll-snap-type:none;overflow-x:hidden}
+  .panel{min-height:100dvh;scroll-snap-stop:normal;padding:80px 7vw 64px}
+  .tool-panel{padding-top:80px}
   .cards,.about-grid,.tm-grid,.path{grid-template-columns:1fr;display:grid;gap:20px}
   .k1-row{grid-template-columns:64px 1fr;gap:22px}.k1-meta{display:none}
   .path::before{display:none}
-  .huge br{display:none}.dots{display:none}
-  .about-photo{height:46vh;min-height:300px}.about{min-height:auto}
+  .huge br{display:none}.dots{display:none}.idx{display:none}
+  .about{min-height:auto;padding:0}.about-grid{min-height:auto}
+  .about-text{padding:44px 7vw}.about-photo{height:42vh;min-height:280px}
+  .qhint{position:static;transform:none;margin:34px auto 4px;bottom:auto}
+  .site-footer{position:static;left:auto;bottom:auto;margin-top:30px;text-align:center}
 }
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.scrollhint,.roll ul{animation:none}*{transition-duration:.001ms!important}}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.scrollhint,.roll ul,.qhint,.qhint .qarr{animation:none}*{transition-duration:.001ms!important}}
 </style>
 </head>
 <body>
@@ -358,7 +369,43 @@ body[data-theme=brand] .dots button{background:#fff}
     <div class="idx">05 / 09</div>
   </section>
 
-  <!-- 08 Q&A — Akkordeon -->
+  <!-- 07 THESE + WEG (verdichtet) -->
+  <section class="panel" id="ch5" data-label="Der Weg">
+    <div class="eyebrow reveal">Die These · der Weg</div>
+    <h2 class="mhead reveal">Über den Erfolg entscheidet die Einführung.</h2>
+    <p class="p reveal" style="margin-top:20px;max-width:72ch">In jedem Büro ziehen die Haltungen in verschiedene Richtungen. Entscheidend ist ein gemeinsames Ziel, hinter dem alle stehen. Dieses Ziel ist <span class="acw">Zukunftssicherheit</span>. Aus diesem Grund ist KI im Kern Organisationsentwicklung. Ich führe sie so ein, dass Ihr Büro sie am Ende selbst trägt.</p>
+    <div class="path" id="wegpath">
+      <div class="pnode"><div class="pdot">1</div><h4>Verstehen</h4><p>Wir sehen uns Ihre Abläufe genau an.</p></div>
+      <div class="pnode"><div class="pdot">2</div><h4>Analysieren</h4><p>Wir analysieren, an welchen Stellen KI bei Ihnen wirklich etwas bewegt.</p></div>
+      <div class="pnode"><div class="pdot">3</div><h4>Implementieren</h4><p>Schritt für Schritt, im Tempo des Tagesgeschäfts, mit dem Team.</p></div>
+      <div class="pnode goal"><div class="pdot">4</div><h4>Autarkie</h4><p>Am Ende laufen die Abläufe auch ohne mich. Das Können bleibt im Büro.</p></div>
+    </div>
+    <div class="idx">06 / 09</div>
+  </section>
+
+  <!-- 07 ANGEBOT — Editorial-Index -->
+  <section class="panel dark" id="ch9" data-label="Das Angebot">
+    <div class="eyebrow reveal">Das Angebot</div>
+    <h2 class="mhead reveal">Drei Module. Sie bestimmen, wie weit.</h2>
+    <div class="k1-list reveal">
+      <div class="k1-row"><div class="k1-num">01</div><div class="k1-c"><h4>Erstgespräch</h4><div class="k1-tag">kostenlos · unverbindlich</div><p>Wir klären offen, wo sich KI bei Ihnen lohnt, und rechnen die Größenordnung an Ihren Zahlen durch.</p></div><div class="k1-meta">eigenständig nutzbar</div></div>
+      <div class="k1-row"><div class="k1-num">02</div><div class="k1-c"><h4>Orientierungspaket</h4><div class="k1-tag">Workshop · Fahrplan</div><p>Ihr Team bekommt ein gemeinsames Bild. Danach haben Sie einen schriftlichen Fahrplan mit den ersten Anwendungsfällen, Werkzeugen und Datenschutz.</p></div><div class="k1-meta">baut auf 01 auf</div></div>
+      <div class="k1-row goal"><div class="k1-num">03</div><div class="k1-c"><h4>Begleitung</h4><div class="k1-tag">individuell · über Monate</div><p>Wir setzen den Fahrplan gemeinsam um, zugeschnitten auf Ihr Büro. Am Ende bedient und entwickelt Ihr Büro die Werkzeuge selbst.</p></div><div class="k1-meta">nach Ihrem Büro</div></div>
+    </div>
+    <div class="stair-foot reveal">Jedes Modul ist für sich abgeschlossen. Nach jedem Modul entscheiden Sie neu. Genau dafür steht der Name MODULR.</div>
+    <div class="idx">07 / 09</div>
+  </section>
+
+  <!-- 10 CTA -->
+  <section class="panel brand" id="ch10" data-label="Loslegen">
+    <h2 class="huge reveal">Beginnen Sie<br>mit einem <span class="ac">Gespräch</span>.</h2>
+    <div class="cta-final reveal"><a class="go" href="mailto:lukas.richter@hellomodulr.de?subject=Erstgespr%C3%A4ch%20MODULR">Erstgespräch vereinbaren</a><span class="gonote"><a href="mailto:lukas.richter@hellomodulr.de?subject=Erstgespr%C3%A4ch%20MODULR">lukas.richter@hellomodulr.de</a> · <a href="tel:+491737985473">+49 173 7985473</a></span></div>
+    <a class="qhint" href="#ch8" aria-label="Noch Fragen? Zu den häufigen Fragen">noch Fragen?<span class="qarr">↓</span></a>
+    <div class="site-footer reveal">© 2026 Lukas Richter · MODULR · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+    <div class="idx">08 / 09</div>
+  </section>
+
+  <!-- 09 Q&A — Akkordeon (Anhang, über „noch Fragen?"-Pfeil erreichbar) -->
   <section class="panel" id="ch8" data-label="Q&amp;A">
     <div class="eyebrow reveal">Q&amp;A</div>
     <h2 class="mhead reveal">Fragen, die oft kommen.</h2>
@@ -372,41 +419,6 @@ body[data-theme=brand] .dots button{background:#fff}
       <div class="acc-item"><button class="acc-head"><span>Brauchen wir eigene IT oder Programmierer?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Nein. Die Werkzeuge sind für Ihr Team gemacht. Wo es nötig ist, kümmere ich mich um die Einrichtung.</p></div></div></div>
       <div class="acc-item"><button class="acc-head"><span>Was, wenn das Team nicht mitzieht?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Genau das ist der Kern meiner Arbeit. Ich nehme die Menschen mit, statt ein Werkzeug über sie zu stülpen. Ein gemeinsames Ziel trägt die Veränderung.</p></div></div></div>
     </div>
-    <div class="idx">06 / 09</div>
-  </section>
-
-  <!-- 07 THESE + WEG (verdichtet) -->
-  <section class="panel" id="ch5" data-label="Der Weg">
-    <div class="eyebrow reveal">Die These · der Weg</div>
-    <h2 class="mhead reveal">Über den Erfolg entscheidet die Einführung.</h2>
-    <p class="p reveal" style="margin-top:20px;max-width:72ch">In jedem Büro ziehen die Haltungen in verschiedene Richtungen. Entscheidend ist ein gemeinsames Ziel, hinter dem alle stehen. Dieses Ziel ist <span class="acw">Zukunftssicherheit</span>. Aus diesem Grund ist KI im Kern Organisationsentwicklung. Ich führe sie so ein, dass Ihr Büro sie am Ende selbst trägt.</p>
-    <div class="path" id="wegpath">
-      <div class="pnode"><div class="pdot">1</div><h4>Verstehen</h4><p>Wir sehen uns Ihre Abläufe genau an.</p></div>
-      <div class="pnode"><div class="pdot">2</div><h4>Analysieren</h4><p>Wir analysieren, an welchen Stellen KI bei Ihnen wirklich etwas bewegt.</p></div>
-      <div class="pnode"><div class="pdot">3</div><h4>Implementieren</h4><p>Schritt für Schritt, im Tempo des Tagesgeschäfts, mit dem Team.</p></div>
-      <div class="pnode goal"><div class="pdot">4</div><h4>Autarkie</h4><p>Am Ende laufen die Abläufe auch ohne mich. Das Können bleibt im Büro.</p></div>
-    </div>
-    <div class="idx">07 / 09</div>
-  </section>
-
-  <!-- 08 ANGEBOT — Editorial-Index -->
-  <section class="panel dark" id="ch9" data-label="Das Angebot">
-    <div class="eyebrow reveal">Das Angebot</div>
-    <h2 class="mhead reveal">Drei Module. Sie bestimmen, wie weit.</h2>
-    <div class="k1-list reveal">
-      <div class="k1-row"><div class="k1-num">01</div><div class="k1-c"><h4>Erstgespräch</h4><div class="k1-tag">kostenlos · unverbindlich</div><p>Wir klären offen, wo sich KI bei Ihnen lohnt, und rechnen die Größenordnung an Ihren Zahlen durch.</p></div><div class="k1-meta">eigenständig nutzbar</div></div>
-      <div class="k1-row"><div class="k1-num">02</div><div class="k1-c"><h4>Orientierungspaket</h4><div class="k1-tag">Workshop · Fahrplan</div><p>Ihr Team bekommt ein gemeinsames Bild. Danach haben Sie einen schriftlichen Fahrplan mit den ersten Anwendungsfällen, Werkzeugen und Datenschutz.</p></div><div class="k1-meta">baut auf 01 auf</div></div>
-      <div class="k1-row goal"><div class="k1-num">03</div><div class="k1-c"><h4>Begleitung</h4><div class="k1-tag">individuell · über Monate</div><p>Wir setzen den Fahrplan gemeinsam um, zugeschnitten auf Ihr Büro. Am Ende bedient und entwickelt Ihr Büro die Werkzeuge selbst.</p></div><div class="k1-meta">nach Ihrem Büro</div></div>
-    </div>
-    <div class="stair-foot reveal">Jedes Modul ist für sich abgeschlossen. Nach jedem Modul entscheiden Sie neu. Genau dafür steht der Name MODULR.</div>
-    <div class="idx">08 / 09</div>
-  </section>
-
-  <!-- 10 CTA -->
-  <section class="panel brand" id="ch10" data-label="Loslegen">
-    <h2 class="huge reveal">Beginnen Sie<br>mit einem <span class="ac">Gespräch</span>.</h2>
-    <div class="cta-final reveal"><a class="go" href="mailto:lukas.richter@hellomodulr.de?subject=Erstgespr%C3%A4ch%20MODULR">Erstgespräch vereinbaren</a><span class="gonote"><a href="mailto:lukas.richter@hellomodulr.de?subject=Erstgespr%C3%A4ch%20MODULR">lukas.richter@hellomodulr.de</a> · <a href="tel:+491737985473">+49 173 7985473</a></span></div>
-    <div class="site-footer reveal">© 2026 Lukas Richter · MODULR · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
     <div class="idx">09 / 09</div>
   </section>
 
@@ -447,7 +459,7 @@ var aio=new IntersectionObserver(function(es){es.forEach(function(e){
   if(e.isIntersecting){var i=panels.indexOf(e.target);dotBtns.forEach(function(d,j){d.classList.toggle('active',j===i);});
     document.getElementById('hint').style.opacity=(i===0?'1':'0');
     var p=e.target;document.body.dataset.theme=p.classList.contains('brand')?'brand':(p.classList.contains('dark')?'dark':'light');
-    tcta.classList.toggle('low',i===0||i===panels.length-1);}
+    tcta.classList.toggle('low',i===0||p.classList.contains('brand'));}
 });},{threshold:.5,root:sc});
 panels.forEach(function(p){aio.observe(p);});
 
