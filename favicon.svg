@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="MODULR">
+  <rect width="256" height="256" rx="54" fill="#1a1813"/>
+  <g transform="translate(70,42) scale(0.5)" fill="none" stroke="#f5f3ee" stroke-linejoin="round">
+    <g stroke-width="9">
+      <path d="M20 112 V20 L70 70 L120 20 V112"/>
+      <circle cx="166" cy="66" r="44"/>
+      <path d="M20 216 V124 H62 C126 124 126 216 62 216 Z"/>
+      <path d="M120 112 V172 A46 42 0 0 0 212 172 V124"/>
+      <path d="M20 230 V320 H110"/>
+    </g>
+    <g stroke-width="11">
+      <path d="M120 322 V228 H184 C218 228 218 278 184 278 H120"/>
+      <path d="M158 278 L212 322"/>
+    </g>
+  </g>
+</svg>

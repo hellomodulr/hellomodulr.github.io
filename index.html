@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MODULR — KI-Beratung für Architektur- und Planungsbüros</title>
+<meta name="description" content="KI-Beratung für Architektur- und Planungsbüros: mehr Kapazität, ohne die Kontrolle abzugeben. KI als Organisationsentwicklung, geführt und maßstabsgerecht. Erstgespräch mit Lukas Richter, Architekt & KI-Berater.">
+<meta name="author" content="Lukas Richter">
+<meta name="theme-color" content="#f1efe8">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://hellomodulr.de/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="MODULR">
+<meta property="og:url" content="https://hellomodulr.de/">
+<meta property="og:title" content="MODULR — KI-Beratung für Architektur- und Planungsbüros">
+<meta property="og:description" content="Mehr Kapazität, ohne die Kontrolle abzugeben. KI als Organisationsentwicklung — geführt, maßstabsgerecht, mit der Verantwortung beim Menschen.">
+<meta property="og:image" content="https://hellomodulr.de/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MODULR — KI-Beratung für Architektur- und Planungsbüros">
+<meta name="twitter:description" content="Mehr Kapazität, ohne die Kontrolle abzugeben. KI als Organisationsentwicklung.">
+<meta name="twitter:image" content="https://hellomodulr.de/og.png">
+<link rel="stylesheet" href="fonts/fonts.css">
+<!-- Privacy-friendly analytics by Plausible (cookieless, DSGVO-freundlich, kein Consent-Banner nötig) -->
+<script async src="https://plausible.io/js/pa-l5oFteO_IKQQXxBPdHPkB.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+<!-- Optional später für Heatmaps/Session-Recordings: Microsoft Clarity. Würde Cookies setzen und einen Consent-Banner erfordern, daher bewusst auskommentiert.
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;l.head.appendChild(t)})(window,document,"clarity","script","CLARITY_ID");</script>
+-->
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.detail,.acc-body{grid-template-rows:1fr!important}.scrollhint{display:none}</style></noscript>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"MODULR","description":"KI-Beratung für Architektur- und Planungsbüros. KI-Einführung als Organisationsentwicklung, geführt und maßstabsgerecht.","url":"https://hellomodulr.de/","areaServed":"DE","serviceType":"KI-Beratung, Organisationsentwicklung, Change Management","knowsAbout":["Künstliche Intelligenz","Organisationsentwicklung","Change Management","Architektur","Planungsbüro","EU AI Act","Datenschutz"],"founder":{"@type":"Person","name":"Lukas Richter","jobTitle":"Architekt, KI-Berater"},"email":"lukas.richter@hellomodulr.de"}
+</script>
+<style>
+:root{--paper:#f1efe8;--ink:#15130e;--accent:#c2553a;--soft:#9a948a;--line:#e2dccd}
+*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%}
+body{font-family:'Geist',sans-serif;-webkit-font-smoothing:antialiased;background:var(--paper);color:var(--ink)}
+.scroller{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.scroller.reading{scroll-snap-type:none}
+
+.panel{min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;justify-content:center;padding:14vh 7vw;position:relative;transition:background .5s,color .5s}
+.panel.dark{background:var(--ink);color:var(--paper)}
+.panel.brand{background:var(--accent);color:#fff}
+.panel.open{justify-content:flex-start}
+
+.eyebrow{font-family:'Geist Mono',monospace;font-size:13px;letter-spacing:3px;text-transform:uppercase;opacity:.55;margin-bottom:28px}
+.huge{font-weight:700;font-size:clamp(38px,7.2vw,116px);line-height:1;letter-spacing:-.035em}
+.huge .ac{color:var(--accent)}
+.brand .huge .ac{color:#fff;text-decoration:underline;text-decoration-thickness:.06em;text-underline-offset:.08em}
+.sub{margin-top:30px;font-size:clamp(17px,1.7vw,22px);line-height:1.5;max-width:44ch;opacity:.72}
+.mhead{font-weight:600;font-size:clamp(28px,3.6vw,48px);letter-spacing:-1.4px;line-height:1.06;max-width:20ch}
+
+.roll{display:inline-flex;flex-direction:column;height:1em;overflow:hidden;vertical-align:bottom;color:var(--accent)}
+.roll ul{list-style:none;animation:roll 13s cubic-bezier(.8,0,.2,1) infinite}
+.roll li{height:1em;line-height:1}
+@keyframes roll{0%,18%{transform:translateY(0)}25%,43%{transform:translateY(-1em)}50%,68%{transform:translateY(-2em)}75%,93%{transform:translateY(-3em)}100%{transform:translateY(-4em)}}
+
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.16,.8,.3,1),transform .9s cubic-bezier(.16,.8,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+.more{margin-top:38px;display:inline-flex;align-items:center;gap:12px;background:none;border:none;cursor:pointer;color:inherit;font-family:'Geist Mono',monospace;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:0}
+.more .ic{width:30px;height:30px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:16px;transition:transform .4s,background .3s,color .3s}
+.panel.open .more .ic{transform:rotate(45deg)}
+.more:hover .ic{background:var(--accent);border-color:var(--accent);color:#fff}
+.detail{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s cubic-bezier(.16,.8,.3,1)}
+.panel.open .detail{grid-template-rows:1fr}
+.detail .di{overflow:hidden;min-height:0}
+.dinner{padding-top:40px;max-width:1000px}
+.p{font-size:clamp(16px,1.25vw,18.5px);line-height:1.62;opacity:.82;max-width:62ch}
+.p+.p{margin-top:16px}
+.acw{color:var(--accent);font-weight:500}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.card{background:color-mix(in srgb,currentColor 6%,transparent);border:1px solid color-mix(in srgb,currentColor 15%,transparent);border-radius:12px;padding:24px}
+.card .t{font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.card .vh{font-size:14.5px;line-height:1.5;opacity:.72}
+.card .ar{margin-top:10px;font-size:14.5px;line-height:1.5;font-weight:500;display:flex;gap:8px}
+.card .ar::before{content:"↓";color:var(--accent)}
+.card .kpi{margin-top:14px;padding-top:12px;border-top:1px solid color-mix(in srgb,currentColor 15%,transparent);font-family:'Geist Mono',monospace}
+.card .kpi .k{font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;opacity:.55}
+.card .kpi .v{font-size:16px;font-weight:600;margin-top:4px}
+.note{margin-top:16px;font-family:'Geist Mono',monospace;font-size:12px;opacity:.55;letter-spacing:.3px}
+
+/* Über mich */
+.about{padding:0}
+.about-grid{display:grid;grid-template-columns:44% 56%;width:100%;min-height:100vh}
+.about-photo{position:relative;overflow:hidden;background:#e7e3da}
+.about-photo img{width:100%;height:100%;object-fit:cover;object-position:34% center}
+.about-photo .frame{position:absolute;left:24px;bottom:22px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#fff;mix-blend-mode:difference}
+.about-text{display:flex;flex-direction:column;justify-content:center;padding:14vh 6vw}
+.about-name{font-weight:700;font-size:clamp(40px,5.4vw,82px);letter-spacing:-.03em;line-height:.98}
+.about-role{font-family:'Geist Mono',monospace;font-size:13.5px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-top:16px}
+.about-text .p{margin-top:28px}
+
+/* 05 These — Konvergenz */
+.conv{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:980px;margin:0 auto}
+.conv .mhead{max-width:18ch}
+.conv-chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:46px;max-width:780px}
+.chip2{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:9px 17px;font-size:13.5px;opacity:.82}
+.conv-down{margin:24px 0 18px;color:var(--accent);font-size:26px;line-height:1}
+.conv-goal{font-family:'Geist Mono',monospace;font-weight:600;font-size:clamp(20px,2.4vw,32px);color:var(--accent);border:2px solid var(--accent);border-radius:14px;padding:14px 30px;letter-spacing:-.5px}
+.conv .ctext{margin-top:30px;font-size:17px;line-height:1.6;opacity:.78;max-width:60ch}
+
+/* 06 Weg — Pfad */
+.path{display:grid;grid-template-columns:repeat(4,1fr);margin-top:56px;position:relative;max-width:1100px}
+.path::before{content:"";position:absolute;left:19px;right:40px;top:19px;height:2px;background:var(--line);transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.16,.8,.3,1) .1s}
+.path.built::before{transform:scaleX(1)}
+.pnode{position:relative;padding-right:26px}
+.pdot{position:relative;z-index:1;width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);background:var(--paper);display:grid;place-items:center;font-family:'Geist Mono',monospace;font-weight:600;font-size:15px}
+.pnode.goal .pdot{background:var(--accent);border-color:var(--accent);color:#fff}
+.pnode h4{margin-top:20px;font-size:19px;font-weight:600;letter-spacing:-.3px}
+.pnode.goal h4{color:var(--accent)}
+.pnode p{margin-top:0;font-size:14.5px;line-height:1.5;opacity:0;max-height:0;overflow:hidden;max-width:24ch;transition:opacity .3s,max-height .35s,margin-top .3s}
+.pnode:hover p,.pnode:focus-within p{opacity:.72;max-height:110px;margin-top:8px}
+.path .pnode{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.16,.8,.3,1),transform .6s cubic-bezier(.16,.8,.3,1)}
+.path.built .pnode{opacity:1;transform:none}
+.path.built .pnode:nth-child(2){transition-delay:.14s}.path.built .pnode:nth-child(3){transition-delay:.28s}.path.built .pnode:nth-child(4){transition-delay:.42s}
+.pnode h4{transition:color .25s}.pnode:hover h4{color:var(--accent)}
+.pnode h4::after{content:" ›";color:var(--accent);opacity:.55;font-weight:400}.pnode:hover h4::after{opacity:0}
+@media(hover:none){.pnode p{opacity:.72;max-height:110px;margin-top:8px}.pnode h4::after{display:none}}
+
+/* 07 Standort-Werkzeug */
+.tool-panel{padding-top:11vh}
+.tm-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:46px;align-items:center;max-width:1160px;margin-top:28px}
+.tctrl{margin-bottom:20px}
+.tlab{font-size:14px;margin-bottom:10px;opacity:.85;display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+.tlab b{color:var(--accent);font-family:'Geist Mono',monospace;font-size:13px;font-weight:600;white-space:nowrap}
+.tool-panel input[type=range]{width:100%;accent-color:var(--accent);height:6px;cursor:pointer}
+.tool-cta{margin-top:24px;display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:13px 24px;font-weight:600;font-size:14.5px;text-decoration:none}
+/* Donut */
+.tm-hint{margin-top:8px;font-size:12.5px;line-height:1.5;opacity:.62}
+.tm-hint b{color:var(--accent);font-weight:600}
+.tm-donutrow{display:flex;align-items:center;gap:20px;margin-top:22px;flex-wrap:wrap}
+.tm-donut{position:relative;width:150px;height:150px;flex:none}
+.tm-donut svg{transform:rotate(-90deg);width:150px;height:150px}
+.tm-donut circle{fill:none;stroke-width:24}
+.tm-c-human{stroke:rgba(255,255,255,.12)}
+.tm-c-info{stroke:rgba(194,85,47,.35)}
+.tm-c-hebel{stroke:var(--accent);transition:stroke-dasharray .5s cubic-bezier(.5,0,.1,1)}
+.tm-ctr{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.tm-n{font-family:'Geist Mono',monospace;font-weight:600;font-size:27px;letter-spacing:-1px;color:var(--accent)}
+.tm-t{font-size:10px;opacity:.6;font-family:'Geist Mono',monospace;text-transform:uppercase;letter-spacing:1px}
+.tm-leg{display:flex;flex-direction:column;gap:7px;font-size:12px;opacity:.82}
+.tm-leg span i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:7px;vertical-align:-1px}
+/* Matrix */
+.tm-mxwrap{position:relative}
+.tm-matrix{position:relative;aspect-ratio:1.3/1;margin:0 0 26px 22px;border:1px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.02);overflow:hidden}
+.tm-tlzone{position:absolute;left:0;top:0;width:50%;height:50%;background:rgba(194,85,47,.1)}
+.tm-lnv{position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,.1)}
+.tm-lnh{position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.1)}
+.tm-refline{position:absolute;top:0;bottom:0;border-left:2px dashed rgba(255,255,255,.3)}
+.tm-reflab{position:absolute;top:8px;transform:translateX(-50%);font-family:'Geist Mono',monospace;font-size:10px;opacity:.6;white-space:nowrap}
+.tm-qlab{position:absolute;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.4px;text-transform:uppercase;opacity:.5;padding:13px 15px;max-width:50%;line-height:1.35}
+.tm-qlab.tl{left:0;top:0;color:var(--accent);opacity:.95}
+.tm-qlab.tr{right:0;top:0;text-align:right}
+.tm-qlab.bl{left:0;bottom:0}
+.tm-qlab.br{right:0;bottom:0;text-align:right}
+.tm-mark{position:absolute;width:24px;height:24px;background:var(--accent);border:3px solid var(--ink);border-radius:50%;box-shadow:0 0 0 2px var(--accent),0 0 22px rgba(194,85,47,.55);transform:translate(-50%,50%);transition:left .45s cubic-bezier(.5,0,.1,1),bottom .45s cubic-bezier(.5,0,.1,1)}
+.tm-axc{position:absolute;font-family:'Geist Mono',monospace;font-size:10px;opacity:.55;letter-spacing:1px;text-transform:uppercase}
+.tm-axc.x{left:22px;right:0;bottom:2px;text-align:center}
+.tm-axc.y{left:0;top:0;bottom:26px;width:18px;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;justify-content:center}
+.tm-chip{margin-top:8px;display:block;max-width:560px;border:1px solid rgba(194,85,47,.4);background:rgba(194,85,47,.07);border-radius:14px;padding:15px 22px;font-size:15.5px;line-height:1.5}
+.tm-chip b{color:var(--accent)}
+.rsources{margin-top:26px;font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.3px;opacity:.5;line-height:1.6;max-width:90ch}
+
+/* 08 Einwände — Akkordeon */
+.acc{max-width:880px;margin-top:48px}
+.acc-item{border-top:1px solid rgba(0,0,0,.13)}
+.acc-item:last-child{border-bottom:1px solid rgba(0,0,0,.13)}
+.acc-head{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:26px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:clamp(20px,2.2vw,30px);font-weight:600;letter-spacing:-.5px;color:inherit;font-family:inherit}
+.acc-head .ai{width:36px;height:36px;border-radius:50%;border:1px solid var(--ink);display:grid;place-items:center;font-size:19px;flex:none;transition:transform .4s,background .3s,color .3s}
+.acc-item.open .acc-head .ai{transform:rotate(45deg);background:var(--accent);border-color:var(--accent);color:#fff}
+.acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.16,.8,.3,1)}
+.acc-item.open .acc-body{grid-template-rows:1fr}
+.acc-body>div{overflow:hidden;min-height:0}
+.acc-body p{font-size:17px;line-height:1.6;opacity:.8;max-width:64ch;padding-bottom:26px}
+
+/* 09 Angebot — Editorial-Index */
+.k1-list{margin-top:44px;max-width:1100px}
+.k1-row{display:grid;grid-template-columns:140px 1fr 180px;gap:36px;align-items:start;padding:26px 0;border-top:1px solid rgba(255,255,255,.15)}
+.k1-row:last-child{border-bottom:1px solid rgba(255,255,255,.15)}
+.k1-num{font-weight:700;font-size:clamp(46px,6vw,86px);line-height:.78;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.45)}
+.k1-row.goal .k1-num{color:var(--accent);-webkit-text-stroke:0}
+.k1-c h4{font-size:clamp(21px,2.4vw,29px);font-weight:600;letter-spacing:-.5px}
+.k1-row.goal .k1-c h4{color:var(--accent)}
+.k1-tag{font-family:'Geist Mono',monospace;font-size:12px;opacity:.6;margin-top:8px;letter-spacing:.4px}
+.k1-c p{margin-top:12px;font-size:14.5px;line-height:1.55;opacity:.86;max-width:54ch}
+.k1-meta{font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.6px;text-transform:uppercase;opacity:.5;text-align:right;white-space:nowrap;padding-top:11px}
+.k1-row.goal .k1-meta{color:var(--accent);opacity:.9}
+.stair-foot{margin-top:28px;font-family:'Geist Mono',monospace;font-size:13px;opacity:.55;letter-spacing:.4px}
+
+.cta-final{margin-top:42px;display:inline-flex;align-items:center;gap:22px;flex-wrap:wrap}
+.go{background:#fff;color:var(--accent);border-radius:999px;padding:18px 38px;font-weight:600;font-size:17px;text-decoration:none}
+.gonote{font-family:'Geist Mono',monospace;font-size:13px;opacity:.8}
+
+.idx{position:absolute;right:7vw;bottom:5vh;font-family:'Geist Mono',monospace;font-size:13px;letter-spacing:2px;opacity:.45}
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:24px 7vw;mix-blend-mode:difference;color:#fff}
+.nav svg{height:30px}.nav .wm{font-family:'Geist Mono',monospace;font-weight:500;font-size:16px;letter-spacing:4px}
+.nav .brandbox{display:flex;align-items:center;gap:12px}
+#tcta{position:fixed;top:24px;right:7vw;z-index:62;border:1px solid #fff;border-radius:999px;padding:9px 18px;font-size:13px;font-weight:500;color:#fff;text-decoration:none;mix-blend-mode:difference;transition:top .75s cubic-bezier(.6,0,.2,1),opacity .55s ease}
+#tcta.low{top:calc(100vh - 96px);opacity:0;pointer-events:none}
+body[data-theme=brand] #tcta{mix-blend-mode:normal;border-color:#fff;color:#fff;background:rgba(255,255,255,.08)}
+.dots{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:55;display:flex;flex-direction:column;gap:13px;mix-blend-mode:difference}
+.dots button{position:relative;width:9px;height:9px;border-radius:50%;border:none;background:#fff;opacity:.4;cursor:pointer;padding:0;transition:opacity .3s,transform .3s}
+.dots button.active{opacity:1;transform:scale(1.5)}
+.dots button .dl{position:absolute;right:20px;top:50%;transform:translateY(-50%);white-space:nowrap;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#fff;opacity:0;pointer-events:none;transition:opacity .3s}
+.dots button:hover .dl{opacity:1}
+body[data-theme=brand] .nav{mix-blend-mode:normal;color:#fff}
+body[data-theme=brand] .dots{mix-blend-mode:normal}
+body[data-theme=brand] .dots button{background:#fff}
+.fab{position:fixed;right:26px;bottom:26px;z-index:54;background:var(--accent);color:#fff;border-radius:999px;padding:14px 24px;font-weight:600;font-size:14.5px;text-decoration:none;box-shadow:0 14px 34px -10px rgba(194,85,47,.6);opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .4s,transform .4s}
+.fab.show{opacity:1;transform:none;pointer-events:auto}
+.fab:hover{transform:translateY(-2px)}
+.scrollhint{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:40;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--soft);mix-blend-mode:difference;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
+
+/* Block-A · neue Komponenten */
+.promise{margin-top:24px;font-size:clamp(20px,2.3vw,32px);font-weight:600;letter-spacing:-.6px;line-height:1.18;max-width:26ch}
+.promise b{color:var(--accent)}
+.hero-cta-row{margin-top:38px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.hero-cta{display:inline-block;background:var(--ink);color:var(--paper);border-radius:999px;padding:15px 30px;font-weight:600;font-size:16px;text-decoration:none;transition:transform .3s,box-shadow .3s}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(0,0,0,.4)}
+.hero-note{font-family:'Geist Mono',monospace;font-size:13px;color:var(--soft)}
+.gonote a{color:inherit}
+.site-footer{position:absolute;left:7vw;bottom:4.5vh;font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.3px;opacity:.85}
+.site-footer a{color:#fff;text-decoration:underline;text-underline-offset:2px}
+/* #16 Kontrast kleiner Texte (gleiche Spezifität, später = gewinnt) */
+.rsources{opacity:.72}.stair-foot{opacity:.75}.conv .ctext{opacity:.85}.chip2{opacity:.9}.k1-c p{opacity:.9}.p{opacity:.88}
+/* #19 color-mix-Fallback für ältere Browser */
+@supports not (background:color-mix(in srgb,#000,#fff)){
+  .card,.step{background:rgba(128,124,116,.08);border-color:rgba(128,124,116,.2)}
+  .card .kpi{border-top-color:rgba(128,124,116,.2)}
+}
+@media(max-width:860px){
+  .scroller{scroll-snap-type:y proximity}
+  .cards,.about-grid,.tm-grid,.path{grid-template-columns:1fr;display:grid;gap:20px}
+  .k1-row{grid-template-columns:64px 1fr;gap:22px}.k1-meta{display:none}
+  .path::before{display:none}
+  .huge br{display:none}.dots{display:none}
+  .about-photo{height:46vh;min-height:300px}.about{min-height:auto}
+}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.scrollhint,.roll ul{animation:none}*{transition-duration:.001ms!important}}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="brandbox"><svg viewBox="14 14 204 318" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round"><path d="M20 112 V20 L70 70 L120 20 V112"/><circle cx="166" cy="66" r="44"/><path d="M20 216 V124 H62 C126 124 126 216 62 216 Z"/><path d="M120 112 V172 A46 42 0 0 0 212 172 V124"/><path d="M20 230 V320 H110"/></g><g fill="none" stroke="#fff" stroke-width="7" stroke-linejoin="round"><path d="M120 322 V228 H184 C218 228 218 278 184 278 H120"/><path d="M158 278 L212 322"/></g></svg><span class="wm">MODULR</span></div>
+</div>
+<nav class="dots" id="dots" aria-label="Kapitel"></nav>
+<a id="tcta" class="low" href="#ch10">Erstgespräch</a>
+
+<div class="scroller" id="sc">
+
+  <!-- 01 INTRO -->
+  <section class="panel" id="ch1" data-label="Start">
+    <div class="eyebrow reveal">KI-Beratung für Architektur- und Planungsbüros</div>
+    <h1 class="huge reveal">KI verändert,<br>wie Sie <span class="roll"><ul><li class="ac">planen.</li><li class="ac">ausschreiben.</li><li class="ac">protokollieren.</li><li class="ac">kalkulieren.</li><li class="ac">planen.</li></ul></span></h1>
+    <p class="promise reveal">Verschaffen Sie Ihrem Büro <b>Kapazität</b>, ohne die Kontrolle abzugeben.</p>
+    <p class="sub reveal">Die Informationsarbeit lässt sich verlagern. Das Urteil, die Freigabe und die Verantwortung bleiben bei Ihnen.</p>
+    <div class="hero-cta-row reveal"><a class="hero-cta" href="#ch10">Erstgespräch vereinbaren →</a><span class="hero-note">unverbindlich</span></div>
+    <div class="idx">01 / 09</div>
+  </section>
+
+  <!-- 02 DIAGNOSE -->
+  <section class="panel dark" id="ch2" data-label="Ausgangslage">
+    <h2 class="huge reveal">Über das Ergebnis<br>entscheiden wenige <span class="roll"><ul><li class="ac">Köpfe.</li><li class="ac">Spezialisten.</li><li class="ac">Entscheider.</li><li class="ac">Wissensträger.</li><li class="ac">Köpfe.</li></ul></span></h2>
+    <button class="more" aria-expanded="false"><span class="ic">+</span><span class="lbl">mehr erfahren</span></button>
+    <div class="detail"><div class="di"><div class="dinner">
+      <p class="p">Ein großer Teil der Bürozeit fließt in <b>Informationsarbeit</b>. Normenrecherche, das Leistungsverzeichnis, der Bericht, das Protokoll nach der Besprechung, die Koordination zwischen den Beteiligten. Diese Arbeit muss getan werden, sie ist aber nicht das, wofür sich jemand zu dem Beruf des Architekten entschieden hat.</p>
+      <p class="p">Die Auftragslage ist angespannt, und gleichzeitig verändert KI die Art, wie geplant wird. In vielen Büros bleibt das <b>Wissen in einzelnen Köpfen</b>. Diese Struktur <b>stößt an ihre Grenzen</b>, sobald KI verfügbar ist.</p>
+    </div></div></div>
+    <div class="idx">02 / 09</div>
+  </section>
+
+  <!-- 03 ZIELBILD -->
+  <section class="panel" id="ch3" data-label="Zielbild">
+    <h2 class="huge reveal">Aus <span class="roll"><ul><li class="ac">Bearbeitern</li><li class="ac">Zeichnern</li><li class="ac">Sachbearbeitern</li><li class="ac">Konstrukteuren</li><li class="ac">Bearbeitern</li></ul></span><br>werden Manager von<br>Information und KI.</h2>
+    <button class="more" aria-expanded="false"><span class="ic">+</span><span class="lbl">mehr erfahren</span></button>
+    <div class="detail"><div class="di"><div class="dinner">
+      <p class="p">KI greift an den Stellen, an denen sie <b>spürbar Zeit freisetzt</b>. Wer heute zwei oder drei Projekte bearbeitet, kann mit der freigewordenen Kapazität <b>deutlich mehr Projekte tragen</b>. Das Urteil und die Verantwortung bleiben dabei beim Menschen. Bei angespannter Auftragslage ist genau diese Kapazität ein <b>Wettbewerbsfaktor</b>.</p>
+      <div class="cards">
+        <div class="card"><div class="t">Ausschreibung</div><div class="vh">Heute entsteht das Leistungsverzeichnis in Handarbeit aus alten Vorlagen, über Tage.</div><div class="ar">KI erarbeitet einen Entwurf, der Mensch prüft und gibt frei.</div><div class="kpi"><div class="k">Durchlaufzeit</div><div class="v">Tage → ein Tag*</div></div></div>
+        <div class="card"><div class="t">Protokoll</div><div class="vh">Heute nach jeder Besprechung neu getippt und mit der Vorgeschichte abgeglichen.</div><div class="ar">KI schreibt aus Notizen einen Entwurf fort, der Mensch gibt ihn frei.</div><div class="kpi"><div class="k">Zeit je Protokoll</div><div class="v">Stunde → Minuten*</div></div></div>
+        <div class="card"><div class="t">Je Projektleitung</div><div class="vh">Heute zwei bis drei Projekte parallel.</div><div class="ar">Mit umgebauten Abläufen werden es mehr.</div><div class="kpi"><div class="k">Projekte</div><div class="v">Zielbild über Jahre</div></div></div>
+      </div>
+      <div class="note">* Beispielwerte, konservativ. Die echten Zahlen entstehen im Erstgespräch.</div>
+    </div></div></div>
+    <div class="idx">03 / 09</div>
+  </section>
+
+  <!-- 04 ÜBER MICH -->
+  <section class="panel about" id="ch4" data-label="Über mich">
+    <div class="about-grid">
+      <div class="about-photo"><img src="lukas-web.jpg" alt="Lukas Richter, Architekt und KI-Berater" width="900" height="818" loading="lazy"><span class="frame">Lukas Richter</span></div>
+      <div class="about-text">
+        <div class="eyebrow reveal">Über mich</div>
+        <div class="about-name reveal">Lukas Richter</div>
+        <div class="about-role reveal">M. Sc. Architekt · KI-Berater</div>
+        <p class="p reveal">Als Architekt kenne ich die Abläufe eines Planungsbüros von innen, von den Leistungsphasen bis zum Wettbewerbsdruck. Dazu beschäftige ich mich mit KI und damit, wie Veränderung in Organisationen gelingt. Aus dieser Verbindung entsteht der Blick dafür, wo ein Büro im Alltag Zeit verliert und welche Abläufe nicht mehr tragen, sobald KI verfügbar ist.</p>
+        <p class="p reveal">Genau diese Verbindung unterscheidet die Arbeit von reiner Tool-Beratung und von branchenfremden KI-Angeboten. In einem großen, deutschlandweit tätigen Planungsbüro habe ich KI von Grund auf eingeführt und baue sie auch bei Ihnen so ein, dass Ihr Büro die Werkzeuge am Ende selbst trägt.</p>
+      </div>
+    </div>
+    <div class="idx">04 / 09</div>
+  </section>
+
+  <!-- 07 STANDORT-WERKZEUG (interaktiv) -->
+  <section class="panel dark tool-panel" id="ch7" data-label="Standort">
+    <div class="eyebrow reveal">Interaktiv · belegt</div>
+    <h2 class="mhead reveal">Wie groß ist Ihr Hebel, und wo stehen Sie damit?</h2>
+    <div class="tm-grid reveal">
+      <div class="tm-left">
+        <div class="tctrl">
+          <div class="tlab">Anteil Informationsarbeit an Ihrer Woche <b><span id="t-infoval">60</span> %</b></div>
+          <input type="range" id="t-info" min="35" max="75" value="60">
+          <div class="tm-hint"><b>Informationsarbeit</b> = Normenrecherche, Leistungsverzeichnis, Protokolle, Berichte, Koordination. Alles, was nicht Entwurf und Urteil ist.</div>
+        </div>
+        <div class="tctrl">
+          <div class="tlab">Wie weit sind Sie mit KI heute? <b id="t-matlabel">Erste Abläufe</b></div>
+          <input type="range" id="t-mat" min="0" max="4" value="1">
+        </div>
+        <div class="tm-donutrow">
+          <div class="tm-donut">
+            <svg viewBox="0 0 120 120"><circle class="tm-c-human" cx="60" cy="60" r="46"/><circle class="tm-c-info" id="t-d-info" cx="60" cy="60" r="46"/><circle class="tm-c-hebel" id="t-d-hebel" cx="60" cy="60" r="46"/></svg>
+            <div class="tm-ctr"><div><div class="tm-n" id="t-d-n">39%</div><div class="tm-t">hebelbar</div></div></div>
+          </div>
+          <div class="tm-leg">
+            <span><i style="background:var(--accent)"></i>mit KI hebelbar</span>
+            <span><i style="background:rgba(194,85,47,.45)"></i>Informationsarbeit (Rest)</span>
+            <span><i style="background:rgba(255,255,255,.18)"></i>Urteil, Entwurf, Freigabe</span>
+          </div>
+        </div>
+        <a class="tool-cta" href="#ch10">Diesen Schritt gehen → Erstgespräch</a>
+      </div>
+      <div class="tm-right">
+        <div class="tm-mxwrap">
+          <div class="tm-matrix">
+            <div class="tm-tlzone"></div><div class="tm-lnv"></div><div class="tm-lnh"></div>
+            <div class="tm-refline" style="left:42%"></div>
+            <div class="tm-reflab" style="left:42%">Feld-Schnitt</div>
+            <div class="tm-qlab tl">Großes Potenzial,<br>kaum genutzt</div>
+            <div class="tm-qlab tr">Hebel wird<br>genutzt</div>
+            <div class="tm-qlab bl">Begrenzter Hebel,<br>abwartend</div>
+            <div class="tm-qlab br">Kleiner Hebel,<br>schon dran</div>
+            <div class="tm-mark" id="t-mark"></div>
+          </div>
+          <div class="tm-axc x">Stand mit KI →</div><div class="tm-axc y">Ihr Hebel →</div>
+        </div>
+        <div class="tm-chip" id="t-chip">…</div>
+      </div>
+    </div>
+    <div class="rsources reveal">Y-Achse: hebelbarer Anteil nach McKinsey „The economic potential of generative AI" (2023, ~60–70 % der Informationsarbeit). X-Achse und Feld: Stanford HAI · AI Index 2025 (71 % der Organisationen nutzen gen-KI, 2023 erst 33 %). Beispielhafte Eigeneinschätzung, vor Veröffentlichung an der Originalquelle verifizieren.</div>
+    <div class="idx">05 / 09</div>
+  </section>
+
+  <!-- 08 Q&A — Akkordeon -->
+  <section class="panel" id="ch8" data-label="Q&amp;A">
+    <div class="eyebrow reveal">Q&amp;A</div>
+    <h2 class="mhead reveal">Fragen, die oft kommen.</h2>
+    <div class="acc reveal">
+      <div class="acc-item"><button class="acc-head"><span>Recht & Datenschutz</span><span class="ai">+</span></button><div class="acc-body"><div><p>Datenschutz und der EU AI Act gehören für mich von Anfang an dazu, gerade bei Projekt- und Personendaten. Wir arbeiten mit Lösungen, die in der EU gehostet sind, und mit klaren Spielregeln, was wohin darf.</p></div></div></div>
+      <div class="acc-item"><button class="acc-head"><span>„Wir haben es schon versucht."</span><span class="ai">+</span></button><div class="acc-body"><div><p>Ein erster Anlauf, der versandet ist, hat meist denselben Grund. Ein Werkzeug allein verändert die Arbeitsweise nicht. Genau dort setze ich an, an der Einführung und an den Menschen, die damit arbeiten.</p></div></div></div>
+      <div class="acc-item"><button class="acc-head"><span>Kontrolle &amp; Verantwortung</span><span class="ai">+</span></button><div class="acc-body"><div><p>Sie behalten die Steuerung. Die KI erarbeitet Vorschläge, die Entscheidung und die Verantwortung bleiben bei Ihnen. Unter dem Ergebnis steht Ihr Name, und die Entscheidung dahinter bleibt erklärbar.</p></div></div></div>
+      <div class="acc-item"><button class="acc-head"><span>Was kostet das?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Das Erstgespräch ist kostenlos. Danach entscheiden Sie nach jeder Stufe neu. Den Rahmen besprechen wir offen, bevor etwas beauftragt wird.</p></div></div></div>
+      <div class="acc-item"><button class="acc-head"><span>Wie lange dauert eine Einführung?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Das hängt von Büro und Umfang ab. Wir beginnen klein und in Schritten, die das Tagesgeschäft verkraftet. Erste Entlastung ist meist früh spürbar, die Verankerung im Team braucht Monate.</p></div></div></div>
+      <div class="acc-item"><button class="acc-head"><span>Welche Werkzeuge setzen Sie ein?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Ich bin an kein Produkt gebunden. Wir wählen die Werkzeuge, die zu Ihren Abläufen und Ihrem Datenschutz passen, nicht umgekehrt.</p></div></div></div>
+      <div class="acc-item"><button class="acc-head"><span>Brauchen wir eigene IT oder Programmierer?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Nein. Die Werkzeuge sind für Ihr Team gemacht. Wo es nötig ist, kümmere ich mich um die Einrichtung.</p></div></div></div>
+      <div class="acc-item"><button class="acc-head"><span>Was, wenn das Team nicht mitzieht?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Genau das ist der Kern meiner Arbeit. Ich nehme die Menschen mit, statt ein Werkzeug über sie zu stülpen. Ein gemeinsames Ziel trägt die Veränderung.</p></div></div></div>
+    </div>
+    <div class="idx">06 / 09</div>
+  </section>
+
+  <!-- 07 THESE + WEG (verdichtet) -->
+  <section class="panel" id="ch5" data-label="Der Weg">
+    <div class="eyebrow reveal">Die These · der Weg</div>
+    <h2 class="mhead reveal">Über den Erfolg entscheidet die Einführung.</h2>
+    <p class="p reveal" style="margin-top:20px;max-width:72ch">In jedem Büro ziehen die Haltungen in verschiedene Richtungen. Entscheidend ist ein gemeinsames Ziel, hinter dem alle stehen. Dieses Ziel ist <span class="acw">Zukunftssicherheit</span>. Aus diesem Grund ist KI im Kern Organisationsentwicklung. Ich führe sie so ein, dass Ihr Büro sie am Ende selbst trägt.</p>
+    <div class="path" id="wegpath">
+      <div class="pnode"><div class="pdot">1</div><h4>Verstehen</h4><p>Wir sehen uns Ihre Abläufe genau an.</p></div>
+      <div class="pnode"><div class="pdot">2</div><h4>Analysieren</h4><p>Wir analysieren, an welchen Stellen KI bei Ihnen wirklich etwas bewegt.</p></div>
+      <div class="pnode"><div class="pdot">3</div><h4>Implementieren</h4><p>Schritt für Schritt, im Tempo des Tagesgeschäfts, mit dem Team.</p></div>
+      <div class="pnode goal"><div class="pdot">4</div><h4>Autarkie</h4><p>Am Ende laufen die Abläufe auch ohne mich. Das Können bleibt im Büro.</p></div>
+    </div>
+    <div class="idx">07 / 09</div>
+  </section>
+
+  <!-- 08 ANGEBOT — Editorial-Index -->
+  <section class="panel dark" id="ch9" data-label="Das Angebot">
+    <div class="eyebrow reveal">Das Angebot</div>
+    <h2 class="mhead reveal">Drei Module. Sie bestimmen, wie weit.</h2>
+    <div class="k1-list reveal">
+      <div class="k1-row"><div class="k1-num">01</div><div class="k1-c"><h4>Erstgespräch</h4><div class="k1-tag">kostenlos · unverbindlich</div><p>Wir klären offen, wo sich KI bei Ihnen lohnt, und rechnen die Größenordnung an Ihren Zahlen durch.</p></div><div class="k1-meta">eigenständig nutzbar</div></div>
+      <div class="k1-row"><div class="k1-num">02</div><div class="k1-c"><h4>Orientierungspaket</h4><div class="k1-tag">Workshop · Fahrplan</div><p>Ihr Team bekommt ein gemeinsames Bild. Danach haben Sie einen schriftlichen Fahrplan mit den ersten Anwendungsfällen, Werkzeugen und Datenschutz.</p></div><div class="k1-meta">baut auf 01 auf</div></div>
+      <div class="k1-row goal"><div class="k1-num">03</div><div class="k1-c"><h4>Begleitung</h4><div class="k1-tag">individuell · über Monate</div><p>Wir setzen den Fahrplan gemeinsam um, zugeschnitten auf Ihr Büro. Am Ende bedient und entwickelt Ihr Büro die Werkzeuge selbst.</p></div><div class="k1-meta">nach Ihrem Büro</div></div>
+    </div>
+    <div class="stair-foot reveal">Jedes Modul ist für sich abgeschlossen. Nach jedem Modul entscheiden Sie neu. Genau dafür steht der Name MODULR.</div>
+    <div class="idx">08 / 09</div>
+  </section>
+
+  <!-- 10 CTA -->
+  <section class="panel brand" id="ch10" data-label="Loslegen">
+    <h2 class="huge reveal">Beginnen Sie<br>mit einem <span class="ac">Gespräch</span>.</h2>
+    <div class="cta-final reveal"><a class="go" href="mailto:lukas.richter@hellomodulr.de?subject=Erstgespr%C3%A4ch%20MODULR">Erstgespräch vereinbaren</a><span class="gonote"><a href="mailto:lukas.richter@hellomodulr.de?subject=Erstgespr%C3%A4ch%20MODULR">lukas.richter@hellomodulr.de</a> · <a href="tel:+491737985473">+49 173 7985473</a></span></div>
+    <div class="site-footer reveal">© 2026 Lukas Richter · MODULR · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+    <div class="idx">09 / 09</div>
+  </section>
+
+</div>
+<div class="scrollhint" id="hint">scrollen ↓</div>
+
+<script>
+var sc=document.getElementById('sc');
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.32,root:sc});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+function updateSnap(){var any=document.querySelector('.panel.open, .acc-item.open');sc.classList.toggle('reading',!!any);}
+document.querySelectorAll('.more').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var panel=btn.closest('.panel');var open=panel.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);btn.querySelector('.lbl').textContent=open?'schließen':'mehr erfahren';
+    updateSnap();if(open){setTimeout(function(){panel.scrollIntoView({behavior:'smooth',block:'start'});},80);}
+  });
+});
+
+/* Akkordeon */
+document.querySelectorAll('.acc-head').forEach(function(h){
+  h.addEventListener('click',function(){h.closest('.acc-item').classList.toggle('open');h.querySelector('.ai').textContent=h.closest('.acc-item').classList.contains('open')?'+':'+';updateSnap();});
+});
+
+var dots=document.getElementById('dots');
+panels.forEach(function(p){
+  var b=document.createElement('button');b.setAttribute('aria-label',p.dataset.label);
+  b.innerHTML='<span class="dl">'+p.dataset.label+'</span>';
+  b.addEventListener('click',function(){p.scrollIntoView({behavior:'smooth',block:'start'});});
+  dots.appendChild(b);
+});
+var dotBtns=[].slice.call(dots.children);
+var tcta=document.getElementById('tcta');
+var aio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting){var i=panels.indexOf(e.target);dotBtns.forEach(function(d,j){d.classList.toggle('active',j===i);});
+    document.getElementById('hint').style.opacity=(i===0?'1':'0');
+    var p=e.target;document.body.dataset.theme=p.classList.contains('brand')?'brand':(p.classList.contains('dark')?'dark':'light');
+    tcta.classList.toggle('low',i===0||i===panels.length-1);}
+});},{threshold:.5,root:sc});
+panels.forEach(function(p){aio.observe(p);});
+
+/* Der Weg: Pfad baut sich auf, wenn die Folie erscheint */
+var wp=document.getElementById('wegpath');
+if(wp){var wio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('built');wio.disconnect();}});},{threshold:.35,root:sc});wio.observe(wp);}
+
+
+/* Standort-Werkzeug: Donut (Hebel) + Matrix (Stand im Feld) */
+(function(){
+  var info=document.getElementById('t-info');if(!info)return;
+  var mat=document.getElementById('t-mat'),iv=document.getElementById('t-infoval');
+  var dInfo=document.getElementById('t-d-info'),dHebel=document.getElementById('t-d-hebel'),dN=document.getElementById('t-d-n');
+  var mark=document.getElementById('t-mark'),ml=document.getElementById('t-matlabel'),chip=document.getElementById('t-chip');
+  var C=2*Math.PI*46;
+  var labels=['Noch gar nicht','Einzelne probieren','Erste Abläufe','In der Breite','Systematisch'];
+  var matX=[12,31,50,69,88];
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  function upd(){
+    var iVal=+info.value,m=+mat.value,hebel=Math.round(iVal*0.65);
+    iv.textContent=iVal;ml.textContent=labels[m];
+    dInfo.setAttribute('stroke-dasharray',(C*iVal/100)+' '+C);
+    dHebel.setAttribute('stroke-dasharray',(C*hebel/100)+' '+C);
+    dN.textContent=hebel+'%';
+    var X=matX[m],Y=clamp(Math.round((hebel-15)/35*100),7,93);
+    mark.style.left=X+'%';mark.style.bottom=Y+'%';
+    var xHigh=X>=50,yHigh=Y>=50,t;
+    if(yHigh&&!xHigh)t='<b>Großes Potenzial, kaum genutzt.</b> Hier lohnt der erste Schritt am meisten.';
+    else if(yHigh&&xHigh)t='<b>Großer Hebel, den Sie schon nutzen.</b> Jetzt geht es ums Verankern.';
+    else if(!yHigh&&!xHigh)t='<b>Begrenzter Hebel, abwartend.</b> Der erste Schritt klärt, wo er liegt.';
+    else t='<b>Kleiner Hebel, schon genutzt.</b> Eher Feinschliff als Umbau.';
+    chip.innerHTML=t;
+  }
+  info.addEventListener('input',upd);mat.addEventListener('input',upd);upd();
+})();
+
+/* #26 Tracking-Events (feuern, sobald Plausible/Clarity aktiv ist; sonst No-Op) */
+(function(){
+  function track(ev,props){try{if(window.plausible)window.plausible(ev,{props:props||{}});}catch(e){}}
+  document.querySelectorAll('#tcta,.hero-cta,.tool-cta,#ch10 .go').forEach(function(a){
+    a.addEventListener('click',function(){track('Erstgespraech',{quelle:(a.id||(a.className||'').split(' ')[0]||'cta')});});
+  });
+  var tel=document.querySelector('a[href^="tel:"]');if(tel)tel.addEventListener('click',function(){track('Anruf');});
+  var tdone=false;document.querySelectorAll('#t-mat,#t-info').forEach(function(s){s.addEventListener('input',function(){if(!tdone){tdone=true;track('Tool-genutzt');}});});
+})();
+</script>
+</body>
+</html>
