@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MODULR — KI-Beratung für Architektur- und Planungsbüros</title>
-<meta name="description" content="KI-Beratung für Architektur- und Planungsbüros: mehr Kapazität, ohne die Kontrolle abzugeben. KI als Organisationsentwicklung, geführt und maßstabsgerecht. Erstgespräch mit Lukas Richter, Architekt & KI-Berater.">
+<meta name="description" content="KI-Beratung für Architektur- und Planungsbüros: mehr Kapazität, ohne die Kontrolle abzugeben. KI-Einführung als Change Management, geführt und maßstabsgerecht. Erstgespräch mit Lukas Richter, Architekt & KI-Berater.">
 <meta name="author" content="Lukas Richter">
 <meta name="theme-color" content="#f1efe8">
 <meta name="robots" content="index,follow">
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="MODULR">
 <meta property="og:url" content="https://hellomodulr.de/">
 <meta property="og:title" content="MODULR — KI-Beratung für Architektur- und Planungsbüros">
-<meta property="og:description" content="Mehr Kapazität, ohne die Kontrolle abzugeben. KI als Organisationsentwicklung — geführt, maßstabsgerecht, mit der Verantwortung beim Menschen.">
+<meta property="og:description" content="Mehr Kapazität, ohne die Kontrolle abzugeben. KI-Einführung als Change Management, geführt und maßstabsgerecht, mit der Verantwortung beim Menschen.">
 <meta property="og:image" content="https://hellomodulr.de/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -41,7 +41,9 @@
 <style>
 :root{--paper:#f1efe8;--ink:#15130e;--accent:#c2553a;--soft:#9a948a;--line:#e2dccd}
 *{margin:0;padding:0;box-sizing:border-box}html,body{height:100%}
-body{font-family:'Geist',sans-serif;-webkit-font-smoothing:antialiased;background:var(--paper);color:var(--ink)}
+body{font-family:'Geist',sans-serif;-webkit-font-smoothing:antialiased;background:var(--paper);color:var(--ink);--navbg:#f1efe8;--navfg:#15130e}
+body[data-theme=dark]{--navbg:#15130e;--navfg:#f1efe8}
+body[data-theme=brand]{--navbg:#c2553a;--navfg:#fff}
 .scroller{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
 .scroller.reading{scroll-snap-type:none}
 
@@ -97,6 +99,8 @@ body{font-family:'Geist',sans-serif;-webkit-font-smoothing:antialiased;backgroun
 .about-name{font-weight:700;font-size:clamp(40px,5.4vw,82px);letter-spacing:-.03em;line-height:.98}
 .about-role{font-family:'Geist Mono',monospace;font-size:13.5px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-top:16px}
 .about-text .p{margin-top:28px}
+.about-quote{margin-top:26px;border-left:2px solid var(--accent);padding:2px 0 2px 18px;max-width:52ch;font-size:15.5px;line-height:1.55}
+.about-quote cite{display:block;margin-top:10px;font-family:'Geist Mono',monospace;font-size:12px;font-style:normal;letter-spacing:.4px;color:var(--soft)}
 
 /* 05 These — Konvergenz */
 .conv{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:980px;margin:0 auto}
@@ -116,14 +120,14 @@ body{font-family:'Geist',sans-serif;-webkit-font-smoothing:antialiased;backgroun
 .pnode.goal .pdot{background:var(--accent);border-color:var(--accent);color:#fff}
 .pnode h4{margin-top:20px;font-size:19px;font-weight:600;letter-spacing:-.3px}
 .pnode.goal h4{color:var(--accent)}
-.pnode p{margin-top:0;font-size:14.5px;line-height:1.5;opacity:0;max-height:0;overflow:hidden;max-width:24ch;transition:opacity .3s,max-height .35s,margin-top .3s}
-.pnode:hover p,.pnode:focus-within p{opacity:.72;max-height:110px;margin-top:8px}
+.pnode p{margin-top:0;font-size:14.5px;line-height:1.5;opacity:0;max-height:0;overflow:hidden;max-width:26ch;transition:opacity .3s,max-height .35s,margin-top .3s}
+.pnode:hover p,.pnode:focus-within p{opacity:.72;max-height:260px;margin-top:8px}
 .path .pnode{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.16,.8,.3,1),transform .6s cubic-bezier(.16,.8,.3,1)}
 .path.built .pnode{opacity:1;transform:none}
 .path.built .pnode:nth-child(2){transition-delay:.14s}.path.built .pnode:nth-child(3){transition-delay:.28s}.path.built .pnode:nth-child(4){transition-delay:.42s}
 .pnode h4{transition:color .25s}.pnode:hover h4{color:var(--accent)}
 .pnode h4::after{content:" ›";color:var(--accent);opacity:.55;font-weight:400}.pnode:hover h4::after{opacity:0}
-@media(hover:none){.pnode p{opacity:.72;max-height:110px;margin-top:8px}.pnode h4::after{display:none}}
+@media(hover:none){.pnode p{opacity:.72;max-height:260px;margin-top:8px}.pnode h4::after{display:none}}
 
 /* 07 Standort-Werkzeug */
 .tool-panel{padding-top:11vh}
@@ -133,6 +137,15 @@ body{font-family:'Geist',sans-serif;-webkit-font-smoothing:antialiased;backgroun
 .tlab b{color:var(--accent);font-family:'Geist Mono',monospace;font-size:13px;font-weight:600;white-space:nowrap}
 .tool-panel input[type=range]{width:100%;accent-color:var(--accent);height:6px;cursor:pointer}
 .tool-cta{margin-top:24px;display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:13px 24px;font-weight:600;font-size:14.5px;text-decoration:none}
+.tr-wrap{margin-top:30px;max-width:640px}
+.tr-row{display:flex;gap:36px;flex-wrap:wrap;align-items:flex-end;margin-top:14px}
+.tr-stat{display:flex;flex-direction:column}
+.tr-big{font-family:'Geist Mono',monospace;font-weight:600;font-size:clamp(40px,6vw,64px);color:var(--accent);letter-spacing:-2px;line-height:1}
+.tr-n{font-family:'Geist Mono',monospace;font-weight:600;font-size:28px;line-height:1}
+.tr-sub{font-size:12px;opacity:.6;font-family:'Geist Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-top:7px}
+.tr-res{margin-top:22px;border:1px solid rgba(194,85,47,.4);background:rgba(194,85,47,.08);border-radius:14px;padding:16px 20px;font-size:15.5px;line-height:1.55;max-width:600px}
+.tr-res b{color:var(--accent)}
+.tr-wrap .tool-cta{margin-top:26px}
 /* Donut */
 .tm-hint{margin-top:8px;font-size:12.5px;line-height:1.5;opacity:.62}
 .tm-hint b{color:var(--accent);font-weight:600}
@@ -243,16 +256,20 @@ body[data-theme=brand] .dots button{background:#fff}
   .card .kpi{border-top-color:rgba(128,124,116,.2)}
 }
 @media(max-width:860px){
-  /* Mobil: starres Vollbild-Snapping aus, dynamische Viewport-Höhe, Folien wachsen mit dem Inhalt */
+  /* Mobil: kein Snapping, dynamische Höhe, Inhalt fließt von oben, feste Leiste solide */
   .scroller{height:100dvh;scroll-snap-type:none;overflow-x:hidden}
-  .panel{min-height:100dvh;scroll-snap-stop:normal;padding:80px 7vw 64px}
-  .tool-panel{padding-top:80px}
+  .panel{min-height:100dvh;scroll-snap-stop:normal;justify-content:flex-start;padding:96px 7vw 64px}
+  .tool-panel{padding-top:96px}
+  .nav{mix-blend-mode:normal;background:var(--navbg);color:var(--navfg);transition:background .4s,color .4s}
+  #tcta{mix-blend-mode:normal;background:transparent;border-color:var(--navfg);color:var(--navfg)}
   .cards,.about-grid,.tm-grid,.path{grid-template-columns:1fr;display:grid;gap:20px}
-  .k1-row{grid-template-columns:64px 1fr;gap:22px}.k1-meta{display:none}
-  .path::before{display:none}
-  .huge br{display:none}.dots{display:none}.idx{display:none}
+  .k1-row{grid-template-columns:56px 1fr;gap:18px}.k1-meta{display:none}.k1-num{font-size:40px;line-height:1}
+  .path::before{display:none}.dots{display:none}.idx{display:none}
   .about{min-height:auto;padding:0}.about-grid{min-height:auto}
-  .about-text{padding:44px 7vw}.about-photo{height:42vh;min-height:280px}
+  .about-text{padding:40px 7vw}.about-photo{height:42vh;min-height:280px}
+  .tm-matrix{aspect-ratio:1/1;margin:0 0 24px 18px}
+  .tm-qlab{font-size:9px;padding:9px 9px;letter-spacing:.2px;line-height:1.3}
+  .tm-reflab{font-size:8px}.tm-axc{font-size:9px}
   .qhint{position:static;transform:none;margin:34px auto 4px;bottom:auto}
   .site-footer{position:static;left:auto;bottom:auto;margin-top:30px;text-align:center}
 }
@@ -261,7 +278,7 @@ body[data-theme=brand] .dots button{background:#fff}
 </head>
 <body>
 <div class="nav">
-  <div class="brandbox"><svg viewBox="14 14 204 318" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round"><path d="M20 112 V20 L70 70 L120 20 V112"/><circle cx="166" cy="66" r="44"/><path d="M20 216 V124 H62 C126 124 126 216 62 216 Z"/><path d="M120 112 V172 A46 42 0 0 0 212 172 V124"/><path d="M20 230 V320 H110"/></g><g fill="none" stroke="#fff" stroke-width="7" stroke-linejoin="round"><path d="M120 322 V228 H184 C218 228 218 278 184 278 H120"/><path d="M158 278 L212 322"/></g></svg><span class="wm">MODULR</span></div>
+  <div class="brandbox"><svg viewBox="14 14 204 318" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"><path d="M20 112 V20 L70 70 L120 20 V112"/><circle cx="166" cy="66" r="44"/><path d="M20 216 V124 H62 C126 124 126 216 62 216 Z"/><path d="M120 112 V172 A46 42 0 0 0 212 172 V124"/><path d="M20 230 V320 H110"/></g><g fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"><path d="M120 322 V228 H184 C218 228 218 278 184 278 H120"/><path d="M158 278 L212 322"/></g></svg><span class="wm">MODULR</span></div>
 </div>
 <nav class="dots" id="dots" aria-label="Kapitel"></nav>
 <a id="tcta" class="low" href="#ch10">Erstgespräch</a>
@@ -274,17 +291,17 @@ body[data-theme=brand] .dots button{background:#fff}
     <h1 class="huge reveal">KI verändert,<br>wie Sie <span class="roll"><ul><li class="ac">planen.</li><li class="ac">ausschreiben.</li><li class="ac">protokollieren.</li><li class="ac">kalkulieren.</li><li class="ac">planen.</li></ul></span></h1>
     <p class="promise reveal">Verschaffen Sie Ihrem Büro <b>Kapazität</b>, ohne die Kontrolle abzugeben.</p>
     <p class="sub reveal">Die Informationsarbeit lässt sich verlagern. Das Urteil, die Freigabe und die Verantwortung bleiben bei Ihnen.</p>
-    <div class="hero-cta-row reveal"><a class="hero-cta" href="#ch10">Erstgespräch vereinbaren →</a><span class="hero-note">unverbindlich</span></div>
+    <div class="hero-cta-row reveal"><a class="hero-cta" href="#ch10">Erstgespräch vereinbaren →</a><span class="hero-note">unverbindlich und kostenlos</span></div>
     <div class="idx">01 / 09</div>
   </section>
 
   <!-- 02 DIAGNOSE -->
   <section class="panel dark" id="ch2" data-label="Ausgangslage">
-    <h2 class="huge reveal">Über das Ergebnis<br>entscheiden wenige <span class="roll"><ul><li class="ac">Köpfe.</li><li class="ac">Spezialisten.</li><li class="ac">Entscheider.</li><li class="ac">Wissensträger.</li><li class="ac">Köpfe.</li></ul></span></h2>
+    <h2 class="huge reveal">Über das Ergebnis<br>entscheiden wenige <span class="roll"><ul><li class="ac">Köpfe.</li><li class="ac">Spezialisten.</li><li class="ac">Fachleute.</li><li class="ac">Wissensträger.</li><li class="ac">Köpfe.</li></ul></span></h2>
     <button class="more" aria-expanded="false"><span class="ic">+</span><span class="lbl">mehr erfahren</span></button>
     <div class="detail"><div class="di"><div class="dinner">
-      <p class="p">Ein großer Teil der Bürozeit fließt in <b>Informationsarbeit</b>. Normenrecherche, das Leistungsverzeichnis, der Bericht, das Protokoll nach der Besprechung, die Koordination zwischen den Beteiligten. Diese Arbeit muss getan werden, sie ist aber nicht das, wofür sich jemand zu dem Beruf des Architekten entschieden hat.</p>
-      <p class="p">Die Auftragslage ist angespannt, und gleichzeitig verändert KI die Art, wie geplant wird. In vielen Büros bleibt das <b>Wissen in einzelnen Köpfen</b>. Diese Struktur <b>stößt an ihre Grenzen</b>, sobald KI verfügbar ist.</p>
+      <p class="p">Ein großer Teil der Arbeitszeit fließt in <b>Informationsarbeit</b>. Normenrecherche, das Leistungsverzeichnis, der Bericht, das Protokoll nach der Besprechung, die Koordination zwischen den Beteiligten. Diese Arbeit muss getan werden, sie ist aber nicht das, wofür man diesen Beruf gewählt hat.</p>
+      <p class="p">KI verändert gerade die Art, wie geplant wird. In vielen Büros bleibt das <b>Wissen in einzelnen Köpfen</b>. Diese Struktur <b>stößt an ihre Grenzen</b>, sobald KI verfügbar ist.</p>
     </div></div></div>
     <div class="idx">02 / 09</div>
   </section>
@@ -294,13 +311,13 @@ body[data-theme=brand] .dots button{background:#fff}
     <h2 class="huge reveal">Aus <span class="roll"><ul><li class="ac">Bearbeitern</li><li class="ac">Zeichnern</li><li class="ac">Sachbearbeitern</li><li class="ac">Konstrukteuren</li><li class="ac">Bearbeitern</li></ul></span><br>werden Manager von<br>Information und KI.</h2>
     <button class="more" aria-expanded="false"><span class="ic">+</span><span class="lbl">mehr erfahren</span></button>
     <div class="detail"><div class="di"><div class="dinner">
-      <p class="p">KI greift an den Stellen, an denen sie <b>spürbar Zeit freisetzt</b>. Wer heute zwei oder drei Projekte bearbeitet, kann mit der freigewordenen Kapazität <b>deutlich mehr Projekte tragen</b>. Das Urteil und die Verantwortung bleiben dabei beim Menschen. Bei angespannter Auftragslage ist genau diese Kapazität ein <b>Wettbewerbsfaktor</b>.</p>
+      <p class="p">KI greift an den Stellen, an denen sie <b>spürbar Zeit freisetzt</b>. Wer heute zwei oder drei Projekte bearbeitet, kann mit der freigewordenen Kapazität <b>mit der Zeit mehr Projekte tragen</b>. Das Urteil und die Verantwortung bleiben dabei beim Menschen. Bei angespannter Auftragslage ist genau diese Kapazität ein <b>Wettbewerbsfaktor</b>.</p>
       <div class="cards">
-        <div class="card"><div class="t">Ausschreibung</div><div class="vh">Heute entsteht das Leistungsverzeichnis in Handarbeit aus alten Vorlagen, über Tage.</div><div class="ar">KI erarbeitet einen Entwurf, der Mensch prüft und gibt frei.</div><div class="kpi"><div class="k">Durchlaufzeit</div><div class="v">Tage → ein Tag*</div></div></div>
-        <div class="card"><div class="t">Protokoll</div><div class="vh">Heute nach jeder Besprechung neu getippt und mit der Vorgeschichte abgeglichen.</div><div class="ar">KI schreibt aus Notizen einen Entwurf fort, der Mensch gibt ihn frei.</div><div class="kpi"><div class="k">Zeit je Protokoll</div><div class="v">Stunde → Minuten*</div></div></div>
-        <div class="card"><div class="t">Je Projektleitung</div><div class="vh">Heute zwei bis drei Projekte parallel.</div><div class="ar">Mit umgebauten Abläufen werden es mehr.</div><div class="kpi"><div class="k">Projekte</div><div class="v">Zielbild über Jahre</div></div></div>
+        <div class="card"><div class="t">Ausschreibung</div><div class="vh">Heute entsteht das Leistungsverzeichnis in Handarbeit aus alten Vorlagen, über Tage.</div><div class="ar">KI erarbeitet einen Entwurf, der Mensch prüft und gibt frei.</div><div class="kpi"><div class="k">Zeitersparnis</div><div class="v">bis zu 70 %*</div></div></div>
+        <div class="card"><div class="t">Protokoll</div><div class="vh">Heute nach jeder Besprechung neu getippt und mit der Vorgeschichte abgeglichen.</div><div class="ar">KI schreibt aus Notizen einen Entwurf fort, der Mensch gibt ihn frei.</div><div class="kpi"><div class="k">Zeitersparnis</div><div class="v">bis zu 80 %*</div></div></div>
+        <div class="card"><div class="t">Entscheidungen</div><div class="vh">Heute ziehen sich Entscheidungen, oft auf unzureichender Datenlage.</div><div class="ar">KI ermöglicht validierte und verifizierte Entscheidungen auf Faktenbasis.</div><div class="kpi"><div class="k">Zeitersparnis</div><div class="v">bis zu 60 %*</div></div></div>
       </div>
-      <div class="note">* Beispielwerte, konservativ. Die echten Zahlen entstehen im Erstgespräch.</div>
+      <div class="note">* Beispielwerte zur Veranschaulichung.</div>
     </div></div></div>
     <div class="idx">03 / 09</div>
   </section>
@@ -308,13 +325,14 @@ body[data-theme=brand] .dots button{background:#fff}
   <!-- 04 ÜBER MICH -->
   <section class="panel about" id="ch4" data-label="Über mich">
     <div class="about-grid">
-      <div class="about-photo"><img src="lukas-web.jpg" alt="Lukas Richter, Architekt und KI-Berater" width="900" height="818" loading="lazy"><span class="frame">Lukas Richter</span></div>
+      <div class="about-photo"><img src="lukas-web.jpg" alt="Lukas Richter, Architekt und KI-Berater" width="900" height="818" loading="lazy"></div>
       <div class="about-text">
         <div class="eyebrow reveal">Über mich</div>
         <div class="about-name reveal">Lukas Richter</div>
         <div class="about-role reveal">M. Sc. Architekt · KI-Berater</div>
-        <p class="p reveal">Als Architekt kenne ich die Abläufe eines Planungsbüros von innen, von den Leistungsphasen bis zum Wettbewerbsdruck. Dazu beschäftige ich mich mit KI und damit, wie Veränderung in Organisationen gelingt. Aus dieser Verbindung entsteht der Blick dafür, wo ein Büro im Alltag Zeit verliert und welche Abläufe nicht mehr tragen, sobald KI verfügbar ist.</p>
+        <p class="p reveal">Als Architekt kenne ich die Abläufe eines Planungsbüros von innen, die Leistungsphasen genauso wie den wirtschaftlichen Druck, unter dem geplant wird. Dazu beschäftige ich mich mit KI und damit, wie Veränderung in Organisationen gelingt. Aus dieser Verbindung entsteht der Blick dafür, wo ein Büro im Alltag Zeit verliert und welche Abläufe nicht mehr tragen, sobald KI verfügbar ist.</p>
         <p class="p reveal">Genau diese Verbindung unterscheidet die Arbeit von reiner Tool-Beratung und von branchenfremden KI-Angeboten. In einem großen, deutschlandweit tätigen Planungsbüro habe ich KI von Grund auf eingeführt und baue sie auch bei Ihnen so ein, dass Ihr Büro die Werkzeuge am Ende selbst trägt.</p>
+        <blockquote class="about-quote reveal">„Lukas hat uns geholfen, die Anwendungsfälle für KI zu erkennen, und unterstützt uns bis heute bei der Implementierung. Durch sein Fachwissen und seinen Umgang mit Menschen hat er uns einen Wettbewerbsvorteil verschafft."<cite>[Name], Geschäftsführer eines großen Planungsbüros</cite></blockquote>
       </div>
     </div>
     <div class="idx">04 / 09</div>
@@ -323,49 +341,19 @@ body[data-theme=brand] .dots button{background:#fff}
   <!-- 07 STANDORT-WERKZEUG (interaktiv) -->
   <section class="panel dark tool-panel" id="ch7" data-label="Standort">
     <div class="eyebrow reveal">Interaktiv · belegt</div>
-    <h2 class="mhead reveal">Wie groß ist Ihr Hebel, und wo stehen Sie damit?</h2>
-    <div class="tm-grid reveal">
-      <div class="tm-left">
-        <div class="tctrl">
-          <div class="tlab">Anteil Informationsarbeit an Ihrer Woche <b><span id="t-infoval">60</span> %</b></div>
-          <input type="range" id="t-info" min="35" max="75" value="60">
-          <div class="tm-hint"><b>Informationsarbeit</b> = Normenrecherche, Leistungsverzeichnis, Protokolle, Berichte, Koordination. Alles, was nicht Entwurf und Urteil ist.</div>
-        </div>
-        <div class="tctrl">
-          <div class="tlab">Wie weit sind Sie mit KI heute? <b id="t-matlabel">Erste Abläufe</b></div>
-          <input type="range" id="t-mat" min="0" max="4" value="1">
-        </div>
-        <div class="tm-donutrow">
-          <div class="tm-donut">
-            <svg viewBox="0 0 120 120"><circle class="tm-c-human" cx="60" cy="60" r="46"/><circle class="tm-c-info" id="t-d-info" cx="60" cy="60" r="46"/><circle class="tm-c-hebel" id="t-d-hebel" cx="60" cy="60" r="46"/></svg>
-            <div class="tm-ctr"><div><div class="tm-n" id="t-d-n">39%</div><div class="tm-t">hebelbar</div></div></div>
-          </div>
-          <div class="tm-leg">
-            <span><i style="background:var(--accent)"></i>mit KI hebelbar</span>
-            <span><i style="background:rgba(194,85,47,.45)"></i>Informationsarbeit (Rest)</span>
-            <span><i style="background:rgba(255,255,255,.18)"></i>Urteil, Entwurf, Freigabe</span>
-          </div>
-        </div>
-        <a class="tool-cta" href="#ch10">Diesen Schritt gehen → Erstgespräch</a>
+    <h2 class="mhead reveal">Wie viel Zeit gibt KI Ihrem Büro zurück?</h2>
+    <div class="tr-wrap reveal">
+      <div class="tctrl"><div class="tlab"><span>Mitarbeitende mit viel Informationsarbeit</span><b id="tr-pplv">8</b></div><input type="range" id="tr-ppl" min="1" max="40" value="8"></div>
+      <div class="tctrl"><div class="tlab"><span>Stunden/Woche pro Person in Informationsarbeit</span><b><span id="tr-hrsv">18</span> h</b></div><input type="range" id="tr-hrs" min="5" max="35" value="18"></div>
+      <div class="tr-row">
+        <div class="tr-stat"><span class="tr-big" id="tr-week">72</span><span class="tr-sub">Stunden/Woche zurück</span></div>
+        <div class="tr-stat"><span class="tr-n" id="tr-year">3.240</span><span class="tr-sub">Stunden/Jahr</span></div>
+        <div class="tr-stat"><span class="tr-n" id="tr-fte">≈ 1,9</span><span class="tr-sub">Vollzeit-Äquivalente</span></div>
       </div>
-      <div class="tm-right">
-        <div class="tm-mxwrap">
-          <div class="tm-matrix">
-            <div class="tm-tlzone"></div><div class="tm-lnv"></div><div class="tm-lnh"></div>
-            <div class="tm-refline" style="left:42%"></div>
-            <div class="tm-reflab" style="left:42%">Feld-Schnitt</div>
-            <div class="tm-qlab tl">Großes Potenzial,<br>kaum genutzt</div>
-            <div class="tm-qlab tr">Hebel wird<br>genutzt</div>
-            <div class="tm-qlab bl">Begrenzter Hebel,<br>abwartend</div>
-            <div class="tm-qlab br">Kleiner Hebel,<br>schon dran</div>
-            <div class="tm-mark" id="t-mark"></div>
-          </div>
-          <div class="tm-axc x">Stand mit KI →</div><div class="tm-axc y">Ihr Hebel →</div>
-        </div>
-        <div class="tm-chip" id="t-chip">…</div>
-      </div>
+      <div class="tr-res" id="tr-res"></div>
+      <a class="tool-cta" href="#ch10">Diesen Schritt gehen → Erstgespräch</a>
     </div>
-    <div class="rsources reveal">Y-Achse: hebelbarer Anteil nach McKinsey „The economic potential of generative AI" (2023, ~60–70 % der Informationsarbeit). X-Achse und Feld: Stanford HAI · AI Index 2025 (71 % der Organisationen nutzen gen-KI, 2023 erst 33 %). Beispielhafte Eigeneinschätzung, vor Veröffentlichung an der Originalquelle verifizieren.</div>
+    <div class="rsources reveal">Annahme: rund die Hälfte der Informationsarbeit lässt sich mit KI verlagern, gestützt auf McKinsey „The economic potential of generative AI" (2023): Tätigkeiten, die 60–70 % der heutigen Arbeitszeit ausmachen, sind potenziell automatisierbar, wissensintensive Arbeit besonders. Die Werte sind Beispielwerte zur Veranschaulichung.</div>
     <div class="idx">05 / 09</div>
   </section>
 
@@ -373,12 +361,12 @@ body[data-theme=brand] .dots button{background:#fff}
   <section class="panel" id="ch5" data-label="Der Weg">
     <div class="eyebrow reveal">Die These · der Weg</div>
     <h2 class="mhead reveal">Über den Erfolg entscheidet die Einführung.</h2>
-    <p class="p reveal" style="margin-top:20px;max-width:72ch">In jedem Büro ziehen die Haltungen in verschiedene Richtungen. Entscheidend ist ein gemeinsames Ziel, hinter dem alle stehen. Dieses Ziel ist <span class="acw">Zukunftssicherheit</span>. Aus diesem Grund ist KI im Kern Organisationsentwicklung. Ich führe sie so ein, dass Ihr Büro sie am Ende selbst trägt.</p>
+    <p class="p reveal" style="margin-top:20px;max-width:72ch">In jedem Büro ziehen die Haltungen in verschiedene Richtungen. Entscheidend ist ein gemeinsames Ziel, hinter dem alle stehen. Dieses Ziel ist <span class="acw">Zukunftssicherheit</span>. Aus diesem Grund ist die Einführung von KI im Kern Change Management, ein Baustein einer Organisation, die auch auf Veränderung angemessen reagiert. Ich führe sie so ein, dass Ihr Büro sie am Ende selbst trägt.</p>
     <div class="path" id="wegpath">
-      <div class="pnode"><div class="pdot">1</div><h4>Verstehen</h4><p>Wir sehen uns Ihre Abläufe genau an.</p></div>
-      <div class="pnode"><div class="pdot">2</div><h4>Analysieren</h4><p>Wir analysieren, an welchen Stellen KI bei Ihnen wirklich etwas bewegt.</p></div>
-      <div class="pnode"><div class="pdot">3</div><h4>Implementieren</h4><p>Schritt für Schritt, im Tempo des Tagesgeschäfts, mit dem Team.</p></div>
-      <div class="pnode goal"><div class="pdot">4</div><h4>Autarkie</h4><p>Am Ende laufen die Abläufe auch ohne mich. Das Können bleibt im Büro.</p></div>
+      <div class="pnode"><div class="pdot">1</div><h4>Verstehen</h4><p>Wir sehen uns alle Ihre Abläufe genau an. Ich höre zu, wo im Alltag Zeit verloren geht und was Ihre Leute ausbremst.</p></div>
+      <div class="pnode"><div class="pdot">2</div><h4>Analysieren</h4><p>Wir finden die Stellen, an denen KI bei Ihnen wirklich etwas bewegt, und ordnen sie nach Wirkung und Aufwand. So entsteht eine klare Reihenfolge, die größten Wirkungen mit dem geringsten Aufwand zuerst.</p></div>
+      <div class="pnode"><div class="pdot">3</div><h4>Implementieren</h4><p>Wir setzen Schritt für Schritt um, im Tempo des Tagesgeschäfts und gemeinsam mit Ihrem Team. Jede Lösung wird erprobt, bevor sie zum Standard wird.</p></div>
+      <div class="pnode goal"><div class="pdot">4</div><h4>Autarkie</h4><p>Am Ende bedient und entwickelt Ihr Büro die Werkzeuge selbst. Das Können bleibt bei Ihnen im Haus.</p></div>
     </div>
     <div class="idx">06 / 09</div>
   </section>
@@ -388,18 +376,19 @@ body[data-theme=brand] .dots button{background:#fff}
     <div class="eyebrow reveal">Das Angebot</div>
     <h2 class="mhead reveal">Drei Module. Sie bestimmen, wie weit.</h2>
     <div class="k1-list reveal">
-      <div class="k1-row"><div class="k1-num">01</div><div class="k1-c"><h4>Erstgespräch</h4><div class="k1-tag">kostenlos · unverbindlich</div><p>Wir klären offen, wo sich KI bei Ihnen lohnt, und rechnen die Größenordnung an Ihren Zahlen durch.</p></div><div class="k1-meta">eigenständig nutzbar</div></div>
-      <div class="k1-row"><div class="k1-num">02</div><div class="k1-c"><h4>Orientierungspaket</h4><div class="k1-tag">Workshop · Fahrplan</div><p>Ihr Team bekommt ein gemeinsames Bild. Danach haben Sie einen schriftlichen Fahrplan mit den ersten Anwendungsfällen, Werkzeugen und Datenschutz.</p></div><div class="k1-meta">baut auf 01 auf</div></div>
-      <div class="k1-row goal"><div class="k1-num">03</div><div class="k1-c"><h4>Begleitung</h4><div class="k1-tag">individuell · über Monate</div><p>Wir setzen den Fahrplan gemeinsam um, zugeschnitten auf Ihr Büro. Am Ende bedient und entwickelt Ihr Büro die Werkzeuge selbst.</p></div><div class="k1-meta">nach Ihrem Büro</div></div>
+      <div class="k1-row"><div class="k1-num">01</div><div class="k1-c"><h4>Erstgespräch</h4><div class="k1-tag">kostenlos · unverbindlich</div><p>Wir klären offen, wo sich KI bei Ihnen lohnt und wo der Einstieg am meisten bringt.</p></div><div class="k1-meta">eigenständig nutzbar</div></div>
+      <div class="k1-row"><div class="k1-num">02</div><div class="k1-c"><h4>Orientierungspaket</h4><div class="k1-tag">Workshop · Fahrplan</div><p>Ihr Team bekommt ein gemeinsames Bild. Danach haben Sie einen schriftlichen Fahrplan mit den ersten Anwendungsfällen. Er entsteht unter Berücksichtigung Ihrer Datenschutzstandards und Ihrer internen Struktur.</p></div><div class="k1-meta">baut auf 01 auf</div></div>
+      <div class="k1-row goal"><div class="k1-num">03</div><div class="k1-c"><h4>Begleitung</h4><div class="k1-tag">individuell · nach Umfang und Inhalt</div><p>Wir setzen den Fahrplan gemeinsam um, zugeschnitten auf Ihr Büro. Am Ende bedient und entwickelt Ihr Büro die Werkzeuge selbst.</p></div><div class="k1-meta">baut auf 02 auf</div></div>
     </div>
-    <div class="stair-foot reveal">Jedes Modul ist für sich abgeschlossen. Nach jedem Modul entscheiden Sie neu. Genau dafür steht der Name MODULR.</div>
+    <div class="stair-foot reveal">Die Module bauen aufeinander auf, und nach jedem entscheiden Sie neu, wie weit Sie gehen.</div>
     <div class="idx">07 / 09</div>
   </section>
 
   <!-- 10 CTA -->
   <section class="panel brand" id="ch10" data-label="Loslegen">
     <h2 class="huge reveal">Beginnen Sie<br>mit einem <span class="ac">Gespräch</span>.</h2>
-    <div class="cta-final reveal"><a class="go" href="mailto:lukas.richter@hellomodulr.de?subject=Erstgespr%C3%A4ch%20MODULR">Erstgespräch vereinbaren</a><span class="gonote"><a href="mailto:lukas.richter@hellomodulr.de?subject=Erstgespr%C3%A4ch%20MODULR">lukas.richter@hellomodulr.de</a> · <a href="tel:+491737985473">+49 173 7985473</a></span></div>
+    <p class="reveal" style="margin-top:18px;font-family:'Geist Mono',monospace;font-size:14px;letter-spacing:1px;text-transform:uppercase;opacity:.85">kostenlos und unverbindlich</p>
+    <div class="cta-final reveal"><a class="go" href="mailto:lukas.richter@hellomodulr.de?subject=Erstgespr%C3%A4ch%20MODULR&body=Guten%20Tag%20Herr%20Richter%2C%0D%0A%0D%0Aich%20w%C3%BCrde%20gern%20ein%20unverbindliches%20Erstgespr%C3%A4ch%20vereinbaren.%20Kurz%20zu%20meinem%20B%C3%BCro%20und%20dem%2C%20was%20mich%20gerade%20besch%C3%A4ftigt%3A%0D%0A%0D%0A%0D%0AViele%20Gr%C3%BC%C3%9Fe">Erstgespräch vereinbaren</a><span class="gonote"><a href="mailto:lukas.richter@hellomodulr.de?subject=Erstgespr%C3%A4ch%20MODULR&body=Guten%20Tag%20Herr%20Richter%2C%0D%0A%0D%0Aich%20w%C3%BCrde%20gern%20ein%20unverbindliches%20Erstgespr%C3%A4ch%20vereinbaren.%20Kurz%20zu%20meinem%20B%C3%BCro%20und%20dem%2C%20was%20mich%20gerade%20besch%C3%A4ftigt%3A%0D%0A%0D%0A%0D%0AViele%20Gr%C3%BC%C3%9Fe">lukas.richter@hellomodulr.de</a> · <a href="tel:+491737985473">+49 173 7985473</a></span></div>
     <a class="qhint" href="#ch8" aria-label="Noch Fragen? Zu den häufigen Fragen">noch Fragen?<span class="qarr">↓</span></a>
     <div class="site-footer reveal">© 2026 Lukas Richter · MODULR · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
     <div class="idx">08 / 09</div>
@@ -408,16 +397,17 @@ body[data-theme=brand] .dots button{background:#fff}
   <!-- 09 Q&A — Akkordeon (Anhang, über „noch Fragen?"-Pfeil erreichbar) -->
   <section class="panel" id="ch8" data-label="Q&amp;A">
     <div class="eyebrow reveal">Q&amp;A</div>
-    <h2 class="mhead reveal">Fragen, die oft kommen.</h2>
+    <h2 class="mhead reveal">Häufige Fragen.</h2>
     <div class="acc reveal">
-      <div class="acc-item"><button class="acc-head"><span>Recht & Datenschutz</span><span class="ai">+</span></button><div class="acc-body"><div><p>Datenschutz und der EU AI Act gehören für mich von Anfang an dazu, gerade bei Projekt- und Personendaten. Wir arbeiten mit Lösungen, die in der EU gehostet sind, und mit klaren Spielregeln, was wohin darf.</p></div></div></div>
+      <div class="acc-item"><button class="acc-head"><span>Brauche ich überhaupt KI?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Ja. Wer heute nicht aktiv wird, verschläft vermutlich die größte Revolution des Arbeitsmarktes. Sie müssen nicht alles auf einmal umstellen, aber Sie sollten jetzt anfangen, sich ein eigenes Urteil zu bilden, solange Sie die Richtung noch selbst bestimmen.</p></div></div></div>
+      <div class="acc-item"><button class="acc-head"><span>Recht & Datenschutz</span><span class="ai">+</span></button><div class="acc-body"><div><p>Datenschutz und der EU AI Act gehören für mich von Anfang an dazu, gerade bei Projekt- und Personendaten. Wir richten alles an Ihren Datenschutzanforderungen aus. Mit EU-gehosteten Lösungen können wir arbeiten, müssen es aber nicht.</p></div></div></div>
       <div class="acc-item"><button class="acc-head"><span>„Wir haben es schon versucht."</span><span class="ai">+</span></button><div class="acc-body"><div><p>Ein erster Anlauf, der versandet ist, hat meist denselben Grund. Ein Werkzeug allein verändert die Arbeitsweise nicht. Genau dort setze ich an, an der Einführung und an den Menschen, die damit arbeiten.</p></div></div></div>
       <div class="acc-item"><button class="acc-head"><span>Kontrolle &amp; Verantwortung</span><span class="ai">+</span></button><div class="acc-body"><div><p>Sie behalten die Steuerung. Die KI erarbeitet Vorschläge, die Entscheidung und die Verantwortung bleiben bei Ihnen. Unter dem Ergebnis steht Ihr Name, und die Entscheidung dahinter bleibt erklärbar.</p></div></div></div>
       <div class="acc-item"><button class="acc-head"><span>Was kostet das?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Das Erstgespräch ist kostenlos. Danach entscheiden Sie nach jeder Stufe neu. Den Rahmen besprechen wir offen, bevor etwas beauftragt wird.</p></div></div></div>
-      <div class="acc-item"><button class="acc-head"><span>Wie lange dauert eine Einführung?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Das hängt von Büro und Umfang ab. Wir beginnen klein und in Schritten, die das Tagesgeschäft verkraftet. Erste Entlastung ist meist früh spürbar, die Verankerung im Team braucht Monate.</p></div></div></div>
-      <div class="acc-item"><button class="acc-head"><span>Welche Werkzeuge setzen Sie ein?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Ich bin an kein Produkt gebunden. Wir wählen die Werkzeuge, die zu Ihren Abläufen und Ihrem Datenschutz passen, nicht umgekehrt.</p></div></div></div>
-      <div class="acc-item"><button class="acc-head"><span>Brauchen wir eigene IT oder Programmierer?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Nein. Die Werkzeuge sind für Ihr Team gemacht. Wo es nötig ist, kümmere ich mich um die Einrichtung.</p></div></div></div>
-      <div class="acc-item"><button class="acc-head"><span>Was, wenn das Team nicht mitzieht?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Genau das ist der Kern meiner Arbeit. Ich nehme die Menschen mit, statt ein Werkzeug über sie zu stülpen. Ein gemeinsames Ziel trägt die Veränderung.</p></div></div></div>
+      <div class="acc-item"><button class="acc-head"><span>Wie lange dauert eine Einführung?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Das hängt von Büro und Umfang ab. Wir beginnen klein und in Schritten, die das Tagesgeschäft verkraftet. Erste Entlastung ist meist früh spürbar.</p></div></div></div>
+      <div class="acc-item"><button class="acc-head"><span>Welche Werkzeuge setzen Sie ein?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Ich verkaufe selbst keine Software und bin an kein Produkt gebunden. Software wird durch KI ohnehin immer günstiger; die eigentliche Frage ist, wie KI bei Ihnen systematisch eingeführt wird. Die Werkzeuge wählen wir passend zu Ihren Abläufen und Ihrem Datenschutz.</p></div></div></div>
+      <div class="acc-item"><button class="acc-head"><span>Brauchen wir eigene IT oder Programmierer?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Je nach Vorhaben kann es sinnvoll sein, eigene Entwickler oder einen Implementierungspartner einzubinden. So entsteht, wo es sich lohnt, auch ein maßgeschneidertes Werkzeug, individuell auf Ihr Büro zugeschnitten.</p></div></div></div>
+      <div class="acc-item"><button class="acc-head"><span>Was, wenn das Team nicht mitzieht?</span><span class="ai">+</span></button><div class="acc-body"><div><p>Genau das ist der Kern meiner Arbeit. In offenen Austauschrunden hole ich die Menschen dort ab, wo sie gerade stehen, auch in kleinen Gruppen und in einer Sprache, die zum jeweiligen Gegenüber passt. So trägt ein gemeinsames Ziel die Veränderung.</p></div></div></div>
     </div>
     <div class="idx">09 / 09</div>
   </section>
@@ -468,32 +458,14 @@ var wp=document.getElementById('wegpath');
 if(wp){var wio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('built');wio.disconnect();}});},{threshold:.35,root:sc});wio.observe(wp);}
 
 
-/* Standort-Werkzeug: Donut (Hebel) + Matrix (Stand im Feld) */
+/* Standort-Werkzeug: Stunden-Rechner */
 (function(){
-  var info=document.getElementById('t-info');if(!info)return;
-  var mat=document.getElementById('t-mat'),iv=document.getElementById('t-infoval');
-  var dInfo=document.getElementById('t-d-info'),dHebel=document.getElementById('t-d-hebel'),dN=document.getElementById('t-d-n');
-  var mark=document.getElementById('t-mark'),ml=document.getElementById('t-matlabel'),chip=document.getElementById('t-chip');
-  var C=2*Math.PI*46;
-  var labels=['Noch gar nicht','Einzelne probieren','Erste Abläufe','In der Breite','Systematisch'];
-  var matX=[12,31,50,69,88];
-  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
-  function upd(){
-    var iVal=+info.value,m=+mat.value,hebel=Math.round(iVal*0.65);
-    iv.textContent=iVal;ml.textContent=labels[m];
-    dInfo.setAttribute('stroke-dasharray',(C*iVal/100)+' '+C);
-    dHebel.setAttribute('stroke-dasharray',(C*hebel/100)+' '+C);
-    dN.textContent=hebel+'%';
-    var X=matX[m],Y=clamp(Math.round((hebel-15)/35*100),7,93);
-    mark.style.left=X+'%';mark.style.bottom=Y+'%';
-    var xHigh=X>=50,yHigh=Y>=50,t;
-    if(yHigh&&!xHigh)t='<b>Großes Potenzial, kaum genutzt.</b> Hier lohnt der erste Schritt am meisten.';
-    else if(yHigh&&xHigh)t='<b>Großer Hebel, den Sie schon nutzen.</b> Jetzt geht es ums Verankern.';
-    else if(!yHigh&&!xHigh)t='<b>Begrenzter Hebel, abwartend.</b> Der erste Schritt klärt, wo er liegt.';
-    else t='<b>Kleiner Hebel, schon genutzt.</b> Eher Feinschliff als Umbau.';
-    chip.innerHTML=t;
-  }
-  info.addEventListener('input',upd);mat.addEventListener('input',upd);upd();
+  var p=document.getElementById('tr-ppl'),h=document.getElementById('tr-hrs');if(!p)return;
+  function u(){var P=+p.value,H=+h.value;document.getElementById('tr-pplv').textContent=P;document.getElementById('tr-hrsv').textContent=H;
+    var wk=Math.round(P*H*0.5),yr=wk*45,fte=Math.round(yr/1700*10)/10;
+    document.getElementById('tr-week').textContent=wk;document.getElementById('tr-year').textContent=yr.toLocaleString('de-DE');document.getElementById('tr-fte').textContent='≈ '+fte.toLocaleString('de-DE');
+    document.getElementById('tr-res').innerHTML='Das sind <b>'+wk+' Stunden pro Woche</b>, die frei werden für Entwurf, Urteil und Akquise. Über das Jahr entspricht das gut <b>'+fte.toLocaleString('de-DE')+' Vollzeitstellen</b> an wiedergewonnener Kapazität, ohne eine einzige neue Einstellung.';}
+  p.addEventListener('input',u);h.addEventListener('input',u);u();
 })();
 
 /* #26 Tracking-Events (feuern, sobald Plausible/Clarity aktiv ist; sonst No-Op) */
@@ -503,8 +475,11 @@ if(wp){var wio=new IntersectionObserver(function(es){es.forEach(function(e){if(e
     a.addEventListener('click',function(){track('Erstgespraech',{quelle:(a.id||(a.className||'').split(' ')[0]||'cta')});});
   });
   var tel=document.querySelector('a[href^="tel:"]');if(tel)tel.addEventListener('click',function(){track('Anruf');});
-  var tdone=false;document.querySelectorAll('#t-mat,#t-info').forEach(function(s){s.addEventListener('input',function(){if(!tdone){tdone=true;track('Tool-genutzt');}});});
+  var tdone=false;document.querySelectorAll('#tr-ppl,#tr-hrs').forEach(function(s){s.addEventListener('input',function(){if(!tdone){tdone=true;track('Tool-genutzt');}});});
 })();
+
+/* Easter Egg für die Neugierigen in der Konsole */
+console.log("%cKein Softwareentwickler. Und doch ist diese Seite allein mit KI entstanden. Genau darum geht es hier.  — Lukas, MODULR","font:13px/1.6 monospace;color:#c2553a;padding:6px 0");
 </script>
 </body>
 </html>
