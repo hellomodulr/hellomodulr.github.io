@@ -1,0 +1,33 @@
+# MODULR — KI-Beratung für Architektur- und Planungsbüros
+
+> MODULR ist die KI-Beratung von Lukas Richter (M. Sc. Architekt und KI-Berater) für Architektur- und Planungsbüros in Deutschland. MODULR hilft Büros, mit Künstlicher Intelligenz Kapazität zu gewinnen, ohne die Kontrolle abzugeben: Die Informationsarbeit lässt sich verlagern, das Urteil, die Freigabe und die Verantwortung bleiben beim Menschen. Die Einführung von KI wird als Change Management verstanden und so begleitet, dass das Büro die Werkzeuge am Ende selbst trägt.
+
+## Für wen
+Architektur- und Planungsbüros in Deutschland, die mit KI Kapazität gewinnen wollen, ohne die Kontrolle abzugeben. Typische Entlastung: Leistungsverzeichnis und Ausschreibung, Protokolle und Berichte, Normenrecherche, Koordination und Entscheidungsgrundlagen.
+
+## Worin sich MODULR unterscheidet
+Lukas Richter ist Architekt und kennt die Abläufe eines Planungsbüros von innen, von den Leistungsphasen bis zum wirtschaftlichen Druck, unter dem geplant wird. Diese Verbindung aus Planungspraxis und KI-Kompetenz prägt jede Empfehlung und unterscheidet die Arbeit von reiner Tool-Beratung und von branchenfremden KI-Angeboten. Datenschutz und der EU AI Act gehören von Anfang an dazu.
+
+## Vorgehen
+1. Verstehen — alle Abläufe genau ansehen, wo im Alltag Zeit verloren geht.
+2. Analysieren — die Stellen mit der größten Wirkung bei geringstem Aufwand zuerst.
+3. Implementieren — Schritt für Schritt, im Tempo des Tagesgeschäfts, mit dem Team.
+4. Autarkie — das Büro bedient und entwickelt die Werkzeuge am Ende selbst.
+
+## Angebot (drei aufeinander aufbauende Module)
+- **Erstgespräch** — kostenlos und unverbindlich. Klärung, wo sich KI lohnt und wo der Einstieg am meisten bringt.
+- **Orientierungspaket** — Workshop und schriftlicher Fahrplan, unter Berücksichtigung der Datenschutzstandards und der internen Struktur des Büros.
+- **Begleitung** — individuelle Umsetzung über mehrere Runden, bis das Büro die Werkzeuge eigenständig bedient und weiterentwickelt.
+
+Nach jedem Modul entscheidet das Büro neu, wie weit es geht.
+
+## Grundhaltung
+KI verlagert die Informationsarbeit; Urteil, Freigabe und Verantwortung bleiben beim Menschen. Aus Bearbeiterinnen und Bearbeitern werden Managerinnen und Manager von Information und KI: Sie geben das Wozu vor, die KI übernimmt das Wie.
+
+## Anbieter und Kontakt
+- Anbieter: Lukas Richter, MODULR, Spechtweg 16, 57078 Siegen, Deutschland
+- Qualifikation: M. Sc. Architekt, Mitglied der Architektenkammer Nordrhein-Westfalen, KI-Berater
+- Website: https://hellomodulr.de
+- E-Mail: lukas.richter@hellomodulr.de
+- Telefon: +49 173 7985473
+- Einstieg: kostenloses, unverbindliches Erstgespräch per E-Mail oder Telefon
