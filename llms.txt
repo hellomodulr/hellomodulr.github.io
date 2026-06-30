@@ -1,25 +1,26 @@
-# MODULR — KI-Beratung für Architektur- und Planungsbüros
+# MODULR — KI-Workshops und Schulungen für Architektur- und Planungsbüros
 
-> MODULR ist die KI-Beratung von Lukas Richter (M. Sc. Architekt und KI-Berater) für Architektur- und Planungsbüros in Deutschland. MODULR hilft Büros, mit Künstlicher Intelligenz Kapazität zu gewinnen, ohne die Kontrolle abzugeben: Die Informationsarbeit lässt sich verlagern, das Urteil, die Freigabe und die Verantwortung bleiben beim Menschen. Die Einführung von KI wird als Change Management verstanden und so begleitet, dass das Büro die Werkzeuge am Ende selbst trägt.
+> MODULR ist das KI-Beratungs- und Qualifizierungsangebot von Lukas Richter (M. Sc. Architekt und KI-Berater) für Architektur- und Planungsbüros in Deutschland. In Vorträgen, Workshops und Schulungen befähigt MODULR Büros, Künstliche Intelligenz selbst einzuführen und so Kapazität zu gewinnen, ohne die Kontrolle abzugeben: Die Informationsarbeit lässt sich verlagern, das Urteil, die Freigabe und die Verantwortung bleiben beim Menschen. Die Werkzeuge führt das Büro selbst ein, MODULR vermittelt das Können dafür.
 
 ## Für wen
 Architektur- und Planungsbüros in Deutschland, die mit KI Kapazität gewinnen wollen, ohne die Kontrolle abzugeben. Typische Entlastung: Leistungsverzeichnis und Ausschreibung, Protokolle und Berichte, Normenrecherche, Koordination und Entscheidungsgrundlagen.
 
 ## Worin sich MODULR unterscheidet
-Lukas Richter ist Architekt und kennt die Abläufe eines Planungsbüros von innen, von den Leistungsphasen bis zum wirtschaftlichen Druck, unter dem geplant wird. Diese Verbindung aus Planungspraxis und KI-Kompetenz prägt jede Empfehlung und unterscheidet die Arbeit von reiner Tool-Beratung und von branchenfremden KI-Angeboten. Datenschutz und der EU AI Act gehören von Anfang an dazu.
+Lukas Richter ist Architekt und kennt die Abläufe eines Planungsbüros von innen, von den Leistungsphasen bis zum wirtschaftlichen Druck, unter dem geplant wird. Diese Verbindung aus Planungspraxis und KI-Kompetenz prägt jeden Workshop und unterscheidet die Arbeit von reiner Tool-Beratung und von branchenfremden KI-Angeboten. Datenschutz und der EU AI Act gehören von Anfang an dazu.
 
-## Vorgehen
-1. Verstehen — alle Abläufe genau ansehen, wo im Alltag Zeit verloren geht.
-2. Analysieren — die Stellen mit der größten Wirkung bei geringstem Aufwand zuerst.
-3. Implementieren — Schritt für Schritt, im Tempo des Tagesgeschäfts, mit dem Team.
-4. Autarkie — das Büro bedient und entwickelt die Werkzeuge am Ende selbst.
+## Vorgehen (Lernbogen, den das Büro selbst geht)
+1. Orientieren — ein gemeinsames, realistisches Bild davon, was KI heute kann.
+2. Ausprobieren — KI an echten Aufgaben aus dem Alltag erproben, bis der Nutzen greifbar wird.
+3. Vertiefen — aus ersten Versuchen wird Routine, einzelne werden zu Multiplikatorinnen und Multiplikatoren.
+4. Autarkie — das Büro führt KI selbst weiter ein und entwickelt sie eigenständig.
 
-## Angebot (drei aufeinander aufbauende Module)
-- **Erstgespräch** — kostenlos und unverbindlich. Klärung, wo sich KI lohnt und wo der Einstieg am meisten bringt.
-- **Orientierungspaket** — Workshop und schriftlicher Fahrplan, unter Berücksichtigung der Datenschutzstandards und der internen Struktur des Büros.
-- **Begleitung** — individuelle Umsetzung über mehrere Runden, bis das Büro die Werkzeuge eigenständig bedient und weiterentwickelt.
+## Angebot (vier Beratungs- und Qualifizierungsformate)
+- **Erstgespräch** — kostenlos und unverbindlich. Klärung, wo KI im Büro den größten Unterschied macht.
+- **Impuls-Vortrag** — Vortrag für das ganze Büro, was KI heute kann und was sie für die Planungsarbeit bedeutet.
+- **KI-Workshop** — das Team findet die eigenen Anwendungsfälle und probiert Werkzeuge an echten Aufgaben aus, mit einem konkreten Fahrplan am Ende.
+- **Schulungsprogramm** — vertiefende Schulungen über mehrere Termine, bis das Team KI eigenständig einsetzt.
 
-Nach jedem Modul entscheidet das Büro neu, wie weit es geht.
+MODULR bietet Beratung und Qualifizierung, keine Implementierungsleistung. Die Werkzeuge führt das Büro selbst ein; wo eigene Entwicklung sinnvoll ist, vermittelt MODULR den Kontakt zu Implementierungspartnern.
 
 ## Grundhaltung
 KI verlagert die Informationsarbeit; Urteil, Freigabe und Verantwortung bleiben beim Menschen. Aus Bearbeiterinnen und Bearbeitern werden Managerinnen und Manager von Information und KI: Sie geben das Wozu vor, die KI übernimmt das Wie.
