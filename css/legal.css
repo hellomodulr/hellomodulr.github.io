@@ -1,0 +1,20 @@
+/* Impressum and Datenschutz: quiet pages on the shared grid. They follow the colour scheme of the
+   operating system like the main page (tokens in css/farbe.css). */
+.legal {
+  --paper: var(--k-bg); --ink: var(--k-fg); --ink-2: var(--k-fg2); --ink-3: var(--k-fg3);
+  color-scheme: light dark;
+  background: var(--paper); color: var(--ink);
+}
+.legal ::selection { background: var(--k-acc-ink); color: var(--k-on-word); }
+.legal :focus-visible { outline-color: var(--k-acc); }
+.legal .wrap { max-width: calc(62ch + 2 * var(--gutter)); margin: 0 auto; padding: calc(var(--bar-h) + clamp(64px, 12vh, 128px)) var(--gutter) 128px; }
+.legal h1 { font: 700 var(--fs-h2)/var(--lh-h2) var(--sans); letter-spacing: -.04em; }
+.legal .updated { margin: 20px 0 48px; font-size: 16px; line-height: 1.4; color: var(--ink-3); }
+.legal h2 { margin: 48px 0 16px; font: 650 var(--fs-h3)/1.15 var(--sans); letter-spacing: -.025em; }
+.legal p, .legal li { font-size: var(--fs-body); line-height: var(--lh-body); color: var(--ink-2); margin: 0 0 16px; max-width: 62ch; }
+.legal strong { color: var(--ink); }
+.legal main a { color: var(--ink); text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); text-underline-offset: 3px; }
+.legal main a:hover { text-decoration-color: var(--k-acc); }
+.legal .foot { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--k-line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font: 500 var(--fs-label)/1.4 var(--mono); color: var(--ink-3); }
+.legal .foot a { color: var(--ink-2); text-decoration: none; }
+.legal .foot a:hover { color: var(--ink); text-decoration: underline; }

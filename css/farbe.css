@@ -1,0 +1,28 @@
+/* The KI world follows the colour scheme of the operating system.
+   Light: paper ground, ink points, rust accent. Dark: warm ink night, paper points, rust accent.
+   There is no switch on the page; the visitor decides in the system settings, and the page
+   (including the point field, see js/punkte.js) follows live when that setting changes. */
+:root {
+  /* light: the default */
+  --k-bg: #f1efe8; --k-bg2: #e9e6dc; --k-fg: #15130e; --k-fg2: #45413a; --k-fg3: #635d53;
+  /* rust, one tone per mode. --k-acc is the rust you see as a mark: points, lines, the seam,
+     display type (3.9 : 1, for large type and graphics), focus rings. --k-acc-ink is the same
+     rust a step deeper, only where small text sits on it (button hover, selection, 5.1 : 1). */
+  --k-acc: #c2553a; --k-acc-strong: #c2553a; --k-acc-ink: #a8452c;
+  --k-word: #a8452c; --k-on-word: #f1efe8; /* hover fill of buttons and its text */
+  --k-line: rgba(21, 19, 14, .14);
+  --k-btn-bg: #15130e; --k-btn-fg: #f1efe8;
+  --k-photo: #e2ddd2;
+  /* point colours as r, g, b for the canvas, plus the mode for the brightness table */
+  --net-b: 21, 19, 14; --net-c: 194, 85, 58; --net-mode: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --k-bg: #15130e; --k-bg2: #1c1a14; --k-fg: #f1efe8; --k-fg2: rgba(241, 239, 232, .8); --k-fg3: rgba(241, 239, 232, .64);
+    --k-acc: #de7b59; --k-acc-strong: #de7b59; --k-acc-ink: #de7b59; --k-word: #de7b59; --k-on-word: #15130e;
+    --k-line: rgba(241, 239, 232, .16);
+    --k-btn-bg: #f1efe8; --k-btn-fg: #15130e;
+    --k-photo: #e2ddd2;
+    --net-b: 241, 239, 232; --net-c: 222, 123, 89; --net-mode: dark;
+  }
+}
