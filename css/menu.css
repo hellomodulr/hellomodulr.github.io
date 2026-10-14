@@ -1,0 +1,77 @@
+/* The menu: one button at the right of the header opens a full screen of the same paper or night
+   (tokens in css/farbe.css). The stars of the page stay faintly visible through it. Ink only: the
+   menu is no frame of its own, so it carries no rust accent. Behaviour in js/menu.js. */
+.menu-btn {
+  appearance: none; display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 44px; height: 44px; margin: 0 -10px 0 6px; padding: 0; border: 0; border-radius: var(--radius);
+  background: none; color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.menu-btn svg { width: 24px; height: 24px; overflow: visible; }
+.menu-btn line { stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; transition: transform .45s var(--ease); transform-origin: 12px 12px; }
+.menu-open .menu-btn .l1 { transform: translateY(4px) rotate(45deg); }
+.menu-open .menu-btn .l2 { transform: translateY(-4px) rotate(-45deg); }
+.bar-nav { flex-wrap: nowrap; }
+
+.menu {
+  --m-bg: var(--k-bg); --m-fg: var(--k-fg); --m-fg2: var(--k-fg2); --m-fg3: var(--k-fg3); --m-line: var(--k-line);
+  position: fixed; inset: 0; z-index: 39; display: flex; flex-direction: column;
+  padding: calc(var(--bar-h) + clamp(24px, 6svh, 72px)) var(--gutter) calc(24px + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--m-bg) 97%, transparent); color: var(--m-fg);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  overflow-y: auto; overscroll-behavior: contain;
+  opacity: 0; visibility: hidden; transition: opacity .35s var(--ease), visibility 0s linear .35s;
+}
+.menu-open .menu { opacity: 1; visibility: visible; transition: opacity .35s var(--ease), visibility 0s; }
+/* the header stays above the menu, its line drawn, so the button closes where it opened */
+.menu-open .bar { border-bottom-color: color-mix(in srgb, currentColor 12%, transparent); background: var(--m-bg, var(--k-bg)); }
+
+.menu-in { width: 100%; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: clamp(28px, 5svh, 56px); align-items: start; margin: auto 0; }
+.menu-label { font: 500 var(--fs-label, 12px)/1.4 var(--mono); letter-spacing: .04em; color: var(--m-fg3); margin: 0 0 14px; }
+.menu-case { grid-column: 1 / span 5; }
+.menu-case a { display: block; color: inherit; text-decoration: none; }
+.menu-case b { display: block; font: 700 clamp(30px, 2vw + 2.4svh, 56px)/1.04 var(--sans); letter-spacing: -.04em; text-wrap: balance; }
+.menu-case span { display: block; margin-top: 14px; max-width: 34ch; font-size: 16px; line-height: 1.5; color: var(--m-fg2); }
+.menu-case .arr { display: inline-block; width: 22px; height: 22px; margin-top: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: transform .35s var(--ease); }
+.menu-case a:hover b { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.menu-case a:hover .arr { transform: translateX(4px); }
+.menu-nav { grid-column: 7 / span 6; }
+.menu-list { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--m-line); }
+.menu-list li { border-top: 1px solid var(--m-line); }
+.menu-list a { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; padding: clamp(8px, 1.5svh, 14px) 0; font: 650 clamp(20px, .9vw + 1.4svh, 30px)/1.2 var(--sans); letter-spacing: -.025em; color: inherit; text-decoration: none; }
+.menu-list a::after { content: ''; width: 8px; height: 8px; flex: none; border-top: 1.6px solid currentColor; border-right: 1.6px solid currentColor; transform: rotate(45deg); opacity: 0; transition: opacity .2s var(--ease), transform .3s var(--ease); }
+.menu-list a:hover::after, .menu-list a:focus-visible::after, .menu-list a[aria-current]::after { opacity: 1; }
+.menu-foot { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 4px 24px; padding-top: 4px; font: 500 12px/1.4 var(--mono); letter-spacing: .02em; }
+.menu-foot a { display: inline-flex; align-items: center; min-height: 44px; color: var(--m-fg2); text-decoration: none; }
+.menu-foot a:hover, .menu-foot a[aria-current] { color: var(--m-fg); text-decoration: underline; text-underline-offset: 4px; }
+.menu :focus-visible { outline: 2px solid var(--k-acc); outline-offset: 3px; }
+
+/* items arrive together with the ground, a little from below */
+.menu-in > * { transform: translateY(12px); opacity: 0; transition: transform .6s var(--ease), opacity .45s var(--ease); }
+.menu-open .menu-in > * { transform: none; opacity: 1; }
+.menu-open .menu-in > :nth-child(2) { transition-delay: .06s; }
+.menu-open .menu-in > :nth-child(3) { transition-delay: .12s; }
+
+@media (max-width: 760px) {
+  .menu-btn { margin-left: 2px; }
+  .menu { padding-top: calc(var(--bar-h) + 28px); }
+  .menu-in { display: block; margin: 0; }
+  .menu-nav { margin-top: 36px; }
+  .menu-case b { font-size: 30px; }
+  .menu-case span { font-size: 15px; }
+  .menu-case .arr { margin-top: 12px; }
+  .menu-list a { font-size: 21px; padding: 7px 0; }
+  .menu-foot { margin-top: 28px; }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  .menu { padding-top: calc(var(--bar-h) + 16px); }
+  .menu-in { row-gap: 10px; }
+  .menu-case b { font-size: 26px; }
+  .menu-case span { font-size: 13.5px; margin-top: 8px; }
+  .menu-case .arr { margin-top: 8px; }
+  .menu-list a { font-size: 16px; min-height: 34px; padding: 3px 0; }
+  .menu-label { margin-bottom: 6px; }
+  .menu-foot a { min-height: 34px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu, .menu-in > *, .menu-btn line { transition: none !important; }
+}

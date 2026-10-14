@@ -15,12 +15,12 @@ Werte aus Studien, validiert durch eigene Anwendung.
 Lukas Richter ist Architekt und kennt die Abläufe eines Planungsbüros von innen, die komplexe Kommunikation genauso wie die hohen Anforderungen an das Planen und Bauen. Dazu beschäftigt er sich mit KI und damit, wie Veränderung in Organisationen gelingt. Diese Verbindung unterscheidet die Arbeit von reiner Tool-Beratung und von branchenfremden KI-Angeboten. An der Universität Siegen lehrt er als Dozent am Lehrstuhl Architekturinformatik und Entwerfen. Datenschutz und der EU AI Act gehören von Anfang an dazu.
 
 ## Ein Praxisbeispiel
-In einem Architekturbüro mit 150 Mitarbeitenden an sieben Standorten hat Lukas Richter ab 2025 KI von Grund auf eingeführt. Geschult wurden Mitarbeitende aus unterschiedlichen Bereichen. In der Akquise analysiert KI Ausschreibungen und bereitet sie für die Entscheider:innen auf, der Prozess läuft dadurch deutlich effizienter. Ergebnis: Heute arbeiten rund 70 % der Belegschaft täglich mit KI-Werkzeugen, auch die Führungsebene möchte nicht mehr darauf verzichten.
+In einem Architekturbüro mit 150 Mitarbeitenden an sieben Standorten hat Lukas Richter von 2025 bis 2026 KI von Grund auf eingeführt. Geschult wurden Mitarbeitende aus unterschiedlichen Bereichen. Zuerst hat er den bestehenden Prozess analysiert und um unnötige Schritte bereinigt, dann mit dem Team den neuen Ablauf erarbeitet und ihn nach dem Ansatz AI First automatisiert. In der Akquise analysiert KI Ausschreibungen und bereitet sie für die Entscheidung auf, der Prozess läuft dadurch deutlich effizienter. Ergebnis: Heute arbeiten rund 70 % der Belegschaft täglich mit KI-Werkzeugen. KI ist dort Alltag, vom Team bis zur Führungsebene.
 
 ## Vorgehen (der Weg, den das Büro selbst geht)
 1. Orientieren: Das Team bekommt ein gemeinsames, realistisches Bild davon, was KI heute kann und was sie für die eigene Arbeit bedeutet.
 2. Ausprobieren: An echten Aufgaben aus dem Alltag probiert das Team KI aus, bis der Nutzen greifbar wird.
-3. Vertiefen: Aus ersten Versuchen wird Routine. Einzelne werden zu Multiplikatorinnen und Multiplikatoren, die das Wissen im Büro weitertragen.
+3. Vertiefen: Aus ersten Versuchen wird Routine. Einzelne werden zu Ansprechpersonen, die das Wissen im Büro weitertragen.
 4. Autarkie: Das Büro führt KI selbst weiter ein und entwickelt sie eigenständig. Das Können bleibt im Haus.
 
 Die Einführung von KI ist im Kern Change Management. Entscheidend ist ein gemeinsames Ziel, hinter dem alle stehen: Zukunftssicherheit.
@@ -29,12 +29,12 @@ Die Einführung von KI ist im Kern Change Management. Entscheidend ist ein gemei
 - **Erstgespräch**: unverbindlich und kostenlos. Klärung, wo KI im Büro den größten Unterschied macht und wo der Einstieg am meisten bringt.
 - **Impuls-Vortrag**: Vortrag, 60 bis 90 Minuten. Das ganze Büro bekommt ein realistisches Bild davon, was KI heute kann und was sie für die Planungsarbeit bedeutet.
 - **KI-Workshop**: halb- oder ganztägig. Das Team findet die eigenen Anwendungsfälle und probiert Werkzeuge an echten Aufgaben aus. Zum Abschluss werden gemeinsam die Anwendungsfälle bewertet und die nächsten Schritte festgelegt. Das Ergebnis ist abgestimmt auf die Datenschutzstandards und die interne Struktur des Büros.
-- **Schulungsprogramm**: mehrere Termine, individuell. Vertiefende Schulungen, bis das Team KI sicher selbst einsetzt und eigene Multiplikatorinnen und Multiplikatoren im Haus hat.
+- **Schulungsprogramm**: mehrere Termine, individuell. Vertiefende Schulungen, bis das Team KI sicher selbst einsetzt und eigene Ansprechpersonen im Haus hat.
 
 Die Formate sind einzeln oder als Reihe buchbar. MODULR bietet Beratung und Qualifizierung: Die Werkzeuge führt das Büro anschließend selbst ein, MODULR gibt dem Team das Wissen dafür und begleitet es beratend. MODULR verkauft selbst keine Software und ist an kein Produkt gebunden.
 
 ## Grundhaltung
-KI verlagert die Informationsarbeit, Urteil, Freigabe und Verantwortung bleiben beim Menschen. Aus Bearbeiter:innen werden Manager:innen von Information und KI.
+KI verlagert die Informationsarbeit, Urteil, Freigabe und Verantwortung bleiben beim Menschen. Aus Bearbeitung wird das Management von Information und KI.
 
 ## Anbieter und Kontakt
 - Anbieter: Lukas Richter, MODULR, Spechtweg 16, 57078 Siegen, Deutschland

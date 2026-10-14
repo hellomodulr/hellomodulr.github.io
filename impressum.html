@@ -20,16 +20,32 @@
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init()
 </script>
+<link rel="stylesheet" href="css/menu.css?v=2">
 </head>
 <body class="legal">
 <header class="bar scrolled">
   <a class="brandbox" href="/" aria-label="MODULR, zur Startseite"><svg viewBox="14 14 204 318" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"><path d="M20 112 V20 L70 70 L120 20 V112"/><circle cx="166" cy="66" r="44"/><path d="M20 216 V124 H62 C126 124 126 216 62 216 Z"/><path d="M120 112 V172 A46 42 0 0 0 212 172 V124"/><path d="M20 230 V320 H110"/></g><g fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"><path d="M120 322 V228 H184 C218 228 218 278 184 278 H120"/><path d="M158 278 L212 322"/></g></svg><span class="wm" aria-hidden="true">MODULR</span></a>
   <nav class="bar-nav" aria-label="Hauptnavigation">
     <a class="hide-m" href="/">KI-Beratung</a>
-    <a href="impressum.html" aria-current="page">Impressum</a>
-    <a href="datenschutz.html">Datenschutz</a>
+    <a class="hide-m" href="impressum.html" aria-current="page">Impressum</a>
+    <a class="hide-m" href="datenschutz.html">Datenschutz</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menü öffnen"><svg viewBox="0 0 24 24" aria-hidden="true"><line class="l1" x1="4" y1="8" x2="20" y2="8"/><line class="l2" x1="4" y1="16" x2="20" y2="16"/></svg></button>
   </nav>
 </header>
+<div class="menu" id="menu" aria-hidden="true" aria-label="Menü" role="dialog" aria-modal="true">
+  <div class="menu-in">
+    <div class="menu-case">
+      <p class="menu-label">Fallstudie</p>
+      <a href="fallstudie/bebauungsplan/"><b>Was darf hier gebaut werden?</b><span>Eine KI wertet einen Bebauungsplan aus und prüft ihn. Das Urteil bleibt beim Menschen.</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"/></svg></a>
+    </div>
+    <nav class="menu-nav" aria-label="KI-Beratung">
+      <p class="menu-label">KI-Beratung</p>
+      <ul class="menu-list"><li><a href="./">Start</a></li><li><a href="./#ch4">Über mich</a></li><li><a href="./#ch7">Zeitrechner</a></li><li><a href="./#ch5">Der Weg</a></li><li><a href="./#ch9">Formate</a></li><li><a href="./#ch8">Häufige Fragen</a></li><li><a href="./#ch10">Kontakt</a></li></ul>
+    </nav>
+    <p class="menu-foot"><a href="impressum.html" aria-current="page">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="https://www.linkedin.com/in/lukas-richter-6bab701a1/" rel="me noopener" target="_blank">LinkedIn</a></p>
+  </div>
+</div>
+
 <main class="wrap">
   <h1>Impressum</h1>
   <p class="updated">Angaben gemäß § 5 DDG</p>
@@ -71,5 +87,6 @@
 
   <div class="foot"><span>© 2026 Lukas Richter · MODULR</span><span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span></div>
 </main>
+<script src="js/menu.js?v=1" defer></script>
 </body>
 </html>

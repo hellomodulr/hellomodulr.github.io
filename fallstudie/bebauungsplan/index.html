@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="de" class="snap">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fallstudie: Was darf hier gebaut werden? · MODULR</title>
+<meta name="description" content="Fallstudie: Eine KI wertet den Bebauungsplan Nr. 328 der Universitätsstadt Siegen aus, erfasst 61 Festsetzungen mit Fundstelle und stellt 10 Rückfragen. Das Urteil bleibt beim Menschen.">
+<meta name="author" content="Lukas Richter">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f1efe8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15130e" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://hellomodulr.de/fallstudie/bebauungsplan/">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="MODULR">
+<meta property="og:title" content="Fallstudie: Was darf hier gebaut werden?">
+<meta property="og:description" content="Eine KI wertet einen Bebauungsplan aus und prüft ihn. Das Urteil bleibt beim Menschen.">
+<meta property="og:image" content="https://hellomodulr.de/assets/img/og.png">
+<link rel="preload" href="../../assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add('pt-on', 'fs-js')</script>
+<link rel="stylesheet" href="../../css/base.css?v=10">
+<link rel="stylesheet" href="../../css/farbe.css?v=9">
+<link rel="stylesheet" href="../../css/ki.css?v=23">
+<link rel="stylesheet" href="../../css/fallstudie.css?v=2">
+<noscript><style>.curtain-in{display:none}.huge .li{transform:none!important}</style></noscript>
+<link rel="stylesheet" href="../../css/menu.css?v=2">
+</head>
+<body class="ki fs">
+<a class="skip" href="#kontakt">Direkt zum Erstgespräch</a>
+
+<header class="bar" id="bar">
+  <a class="brandbox" href="/" aria-label="MODULR, zur Startseite"><svg viewBox="14 14 204 318" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"><path d="M20 112 V20 L70 70 L120 20 V112"/><circle cx="166" cy="66" r="44"/><path d="M20 216 V124 H62 C126 124 126 216 62 216 Z"/><path d="M120 112 V172 A46 42 0 0 0 212 172 V124"/><path d="M20 230 V320 H110"/></g><g fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"><path d="M120 322 V228 H184 C218 228 218 278 184 278 H120"/><path d="M158 278 L212 322"/></g></svg><span class="wm" aria-hidden="true">MODULR</span></a>
+  <nav class="bar-nav" aria-label="Hauptnavigation">
+    <a class="bar-cta" id="tcta" href="#kontakt">Erstgespräch</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menü öffnen"><svg viewBox="0 0 24 24" aria-hidden="true"><line class="l1" x1="4" y1="8" x2="20" y2="8"/><line class="l2" x1="4" y1="16" x2="20" y2="16"/></svg></button>
+  </nav>
+</header>
+<div class="menu" id="menu" aria-hidden="true" aria-label="Menü" role="dialog" aria-modal="true">
+  <div class="menu-in">
+    <div class="menu-case">
+      <p class="menu-label">Fallstudie</p>
+      <a href="./" aria-current="page"><b>Was darf hier gebaut werden?</b><span>Eine KI wertet einen Bebauungsplan aus und prüft ihn. Das Urteil bleibt beim Menschen.</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"/></svg></a>
+    </div>
+    <nav class="menu-nav" aria-label="KI-Beratung">
+      <p class="menu-label">KI-Beratung</p>
+      <ul class="menu-list"><li><a href="../../">Start</a></li><li><a href="../../#ch4">Über mich</a></li><li><a href="../../#ch7">Zeitrechner</a></li><li><a href="../../#ch5">Der Weg</a></li><li><a href="../../#ch9">Formate</a></li><li><a href="../../#ch8">Häufige Fragen</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
+    </nav>
+    <p class="menu-foot"><a href="../../impressum.html">Impressum</a><a href="../../datenschutz.html">Datenschutz</a><a href="https://www.linkedin.com/in/lukas-richter-6bab701a1/" rel="me noopener" target="_blank">LinkedIn</a></p>
+  </div>
+</div>
+
+
+<canvas class="field-canvas" id="field" aria-hidden="true"></canvas>
+
+<main id="main">
+
+  <!-- a) entry: title and the facts of the case -->
+  <section class="sec frame hero fs-hero" id="f1" data-form="baufenster" aria-labelledby="h-f1">
+    <div class="wrap grid">
+      <div class="col-text">
+        <a class="back" href="../../"><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M17 10H4M9 5l-5 5 5 5"/></svg><span>KI-Beratung</span></a>
+        <p class="eyebrow">Fallstudie</p>
+        <h1 class="huge kin" id="h-f1"><span class="line">Was darf hier</span> <span class="line"><span class="pt">gebaut</span> werden?</span></h1>
+        <dl class="steck">
+          <div><dt>Aufgabe</dt><dd>Festsetzungen erfassen und die Unterlagen auf Plausibilität prüfen</dd></div>
+          <div><dt>Material</dt><dd>Bebauungsplan Nr. 328 „Breslauer Straße“, Universitätsstadt Siegen, mit Planblatt, Gestaltungssatzung und Begründung</dd></div>
+          <div><dt>Werkzeug</dt><dd>Ein allgemein verfügbares KI-Modell</dd></div>
+          <div><dt>Dauer</dt><dd>12 Minuten 32 Sekunden für den gesamten Lauf</dd></div>
+          <div><dt>Ergebnis</dt><dd>61 Festsetzungen, 38 Prüfungen, davon 10 Rückfragen</dd></div>
+        </dl>
+      </div>
+      <div class="field" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- b) the task, quoted from the real prompt -->
+  <section class="sec frame fs-frage" id="f2" aria-labelledby="h-f2">
+    <div class="wrap grid">
+      <h2 class="h2" id="h-f2">Die Aufgabe an die KI.</h2>
+      <figure class="frage">
+        <blockquote>
+          <p>Sie arbeiten als sorgfältige Prüferin in einem Architekturbüro. Aufgabe: den Bebauungsplan Nr. 328 „Breslauer Straße“ der Universitätsstadt Siegen auswerten. Zwei Teile: (A) die Festsetzungen vollständig und belegt erfassen, (B) einen Plausibilitätscheck der Unterlagen durchführen.</p>
+          <p><span class="pt" data-pt-em="15">Nichts raten.</span> Nur aufnehmen, was in den Unterlagen steht oder sich daraus zwingend rechnen lässt. Ist etwas mehrdeutig, unvollständig oder nicht belegbar, wird daraus eine Rückfrage.</p>
+        </blockquote>
+        <figcaption class="fine">Auszug aus der Aufgabenstellung, ganze Sätze im Wortlaut. Die vollständige Fassung beschreibt zusätzlich das Material, die Prüffelder und das Ausgabeformat.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- c) reading: the four Nutzungsschablonen, their values move into the table -->
+  <section class="sec frame fs-lesen" id="f3" aria-labelledby="h-f3">
+    <div class="wrap grid">
+      <div class="lesen-text">
+        <h2 class="h2" id="h-f3">Die KI liest jeden Wert mit Fundstelle.</h2>
+        <p class="p">Sie liest die vier Nutzungsschablonen, die Planzeichenerklärung, die Gestaltungssatzung und die Begründung. Jeder Wert wird mit Dokument, Seite und Stelle erfasst, Bild und Textebene werden abgeglichen.</p>
+        <table class="vtab" id="vtab">
+          <caption class="visually-hidden">Werte der Nutzungsschablonen, gelesen von der KI</caption>
+          <thead><tr><th scope="col">Feld</th><th scope="col">Geschosse</th><th scope="col">GRZ</th><th scope="col">GFZ</th><th scope="col">Bauweise</th><th scope="col">Wohnungen</th><th scope="col">Dach</th></tr></thead>
+          <tbody>
+            <tr data-box="0"><th scope="row"><span class="v">WR1</span></th><td><span class="v">II</span></td><td><span class="v">0,4</span></td><td><span class="v">1,2</span></td><td><span class="v">o</span></td><td><span class="v">2Wo</span></td><td></td></tr>
+            <tr data-box="1"><th scope="row"><span class="v">WR2</span></th><td><span class="v">II</span></td><td><span class="v">0,4</span></td><td><span class="v">1,2</span></td><td><span class="v">o</span></td><td><span class="v">2Wo</span></td><td></td></tr>
+            <tr data-box="2"><th scope="row"><span class="v">WR3</span></th><td><span class="v">II</span></td><td><span class="v">0,4</span></td><td><span class="v">1,2</span></td><td><span class="v">o</span></td><td><span class="v">2Wo</span></td><td></td></tr>
+            <tr data-box="3"><th scope="row"><span class="v">WR4</span></th><td><span class="v">IV</span></td><td><span class="v">0,4</span></td><td><span class="v">1,2</span></td><td><span class="v">a</span></td><td></td><td><span class="v">FD</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure class="plan plan-lesen" style="--arn: 2">
+          <div class="clip">
+        <img src="img/lesen.webp" srcset="img/lesen-s.webp 1200w, img/lesen.webp 2400w" sizes="(max-width: 760px) 100vw, 58vw" width="2400" height="1200" alt="Ausschnitt aus dem Planblatt mit den Baufeldern WR1 bis WR4 und ihren Nutzungsschablonen" loading="lazy" decoding="async">
+        <svg class="pen" viewBox="300 560 1000 500" preserveAspectRatio="none" aria-hidden="true">
+          <rect class="mark" x="372.2" y="764.6" width="74.2" height="90.2"/>
+          <rect class="mark" x="819" y="670.6" width="74.2" height="90.2"/>
+          <rect class="mark" x="770.8" y="792.1" width="74.1" height="90.2"/>
+          <rect class="mark" x="1150.8" y="868.5" width="70" height="79.2"/>
+        </svg>
+          </div>
+        <figcaption class="credit">Quelle: Universitätsstadt Siegen, Bebauungsplan Nr. 328 „Breslauer Straße“</figcaption>
+        </figure>
+    </div>
+  </section>
+
+  <!-- d) checking: what holds, and the tally of all verified checks -->
+  <section class="sec frame fs-pruefen" id="f4" data-form="pruefungen" aria-labelledby="h-f4">
+    <div class="wrap grid">
+      <div class="pruef-text">
+        <h2 class="h2" id="h-f4">Dann prüft die KI, ob alles zusammenpasst.</h2>
+        <p class="p">Planzeichnung, Planzeichenerklärung, Gestaltungssatzung und Begründung werden gegeneinander geprüft und mit dem rechtlichen Rahmen abgeglichen. Auch stimmige Ergebnisse werden gemeldet, damit sichtbar ist, was geprüft wurde.</p>
+        <ul class="checks">
+          <li><svg class="tick" viewBox="0 0 18 18" aria-hidden="true"><path pathLength="1" d="M3 9.5 L7.2 13.5 L15 4.5"/></svg><div><p class="ck">GRZ 0,4 und GFZ 1,2 entsprechen § 17 BauNVO</p><p class="tag">stimmig · Rechtsrahmen</p></div></li>
+          <li><svg class="tick" viewBox="0 0 18 18" aria-hidden="true"><path pathLength="1" d="M3 9.5 L7.2 13.5 L15 4.5"/></svg><div><p class="ck">Überschreitung 50 % bis GRZ 0,6, unter Kappung 0,8</p><p class="tag">stimmig · Rechtsrahmen</p></div></li>
+          <li><svg class="tick" viewBox="0 0 18 18" aria-hidden="true"><path pathLength="1" d="M3 9.5 L7.2 13.5 L15 4.5"/></svg><div><p class="ck">Flächenbilanz: 11.000 + 1.900 + 2.300 = 15.200 m²</p><p class="tag">stimmig · Rechnung</p></div></li>
+        </ul>
+      </div>
+      <div class="tally">
+        <div class="field field-tally" aria-hidden="true"></div>
+        <p class="tally-n"><span><b>38</b> Prüfungen</span> <span><b>10</b> Rückfragen</span></p>
+        <p class="fine">Jedes Quadrat ist eine Prüfung: 11 stimmig, 17 Hinweise, 10 Rückfragen. Gezählt sind die Prüfungen, die der Nachprüfung standhalten. Von den 41 Prüfungen der KI ist eine falsch, eine überzeichnet und eine nicht nachgeprüft.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- d2) two of the ten questions, with their sources -->
+  <section class="sec frame fs-rueck" id="f5" aria-labelledby="h-f5">
+    <div class="wrap">
+      <h2 class="h2" id="h-f5">Zwei der zehn Rückfragen.</h2>
+      <div class="rq-list">
+        <article class="rq">
+          <figure class="plan plan-st" style="--arn: 1.1034">
+          <div class="clip">
+            <img src="img/stellplaetze.webp" width="1400" height="1269" alt="Planausschnitt am Baufeld WR4 mit zwei Flächen für Stellplätze und Carports außerhalb der blauen Baugrenze" loading="lazy" decoding="async">
+            <svg class="pen" viewBox="1150 780 320 290" preserveAspectRatio="none" aria-hidden="true">
+              <rect class="mark" x="1223.7" y="804" width="51.3" height="29.9"/>
+              <rect class="mark" x="1262.4" y="1011.8" width="50.3" height="28.9"/>
+            </svg>
+          </div>
+        </figure>
+          <div class="rq-text">
+            <p class="kick">Rückfrage · Planblatt, Legende und Zeichnung</p>
+            <h3>St/Ga/Ca-Flächen liegen außerhalb der Baugrenzen</h3>
+            <p>Wörtlich genommen wären Stellplätze dort ausgeschlossen. Klären: Gehen die Umgrenzungsflächen als spezielle Regel vor?</p>
+          </div>
+        </article>
+        <article class="rq">
+          <figure class="plan plan-gs" style="--arn: 3.8462">
+          <div class="clip">
+            <img src="img/satzung.webp" width="1600" height="416" alt="Ausschnitt aus der Präambel der Gestaltungssatzung mit dem Satz: Mit Bekanntmachung vom XY.XY.XYXY erlangte diese Satzung Rechtskraft." loading="lazy" decoding="async">
+            <svg class="pen" viewBox="55 85 500 130" preserveAspectRatio="none" aria-hidden="true">
+              <rect class="mark" x="70.8" y="135.7" width="363.2" height="12"/>
+            </svg>
+          </div>
+        </figure>
+          <div class="rq-text">
+            <p class="kick">Rückfrage · Gestaltungssatzung, Seite 3, Präambel</p>
+            <h3>Satzung: Platzhalter <span class="nobr"><span class="pt" data-pt-em="13">XY.XY.XYXY</span>,</span> kein Datum, keine Unterschrift</h3>
+            <p>Präambel der Satzung: „Mit Bekanntmachung vom XY.XY.XYXY erlangte diese Satzung Rechtskraft“ (Platzhalter). Ob und wann die Satzung in Kraft ist, ist aus den Unterlagen nicht belegbar.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- e) the person checks: the one real error of the run -->
+  <section class="sec frame fs-mensch" id="f6" aria-labelledby="h-f6">
+    <div class="wrap grid">
+      <div class="mensch-text">
+        <h2 class="h2" id="h-f6">Das Urteil bleibt beim Menschen.</h2>
+        <p class="kick">Die KI schreibt</p>
+        <blockquote class="claim"><p>„In der Zeichnung sind 6 grüne Baumsymbole erkennbar, alle mit schwarzem Punkt (Symbol Erhaltung); das Anpflanzsymbol (kleiner Hohlkreis) ist in der vorliegenden Auflösung nicht zu finden.“</p></blockquote>
+        <p class="p">Bei der Prüfung zeigt sich: Das Symbol ist vorhanden, am vierten Baum von Westen an der Schweriner Straße, bei Flurstück 1054.</p>
+        <p class="p">KI nimmt Arbeit ab. Das Urteil und die Verantwortung bleiben bei den Fachleuten im Büro, und zu jedem Ergebnis gehört eine Prüfung.</p>
+      </div>
+      <figure class="plan plan-baum" id="baum" style="--arn: 2">
+          <div class="clip">
+        <div class="zoom">
+          <img src="img/baeume.webp" width="2000" height="1000" alt="Planausschnitt an der Schweriner Straße mit sechs Baumsymbolen" loading="lazy" decoding="async">
+          <img class="detail" src="img/baum-detail.webp" width="1600" height="800" alt="" loading="lazy" decoding="async">
+        </div>
+        <svg class="pen pen-ring" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true">
+          <circle class="mark" cx="100.8" cy="49.75" r="27"/>
+        </svg>
+        <figcaption class="zoom-label" aria-hidden="true">Baum anpflanzen · Flurstück 1054</figcaption>
+          </div>
+        <figcaption class="credit">Quelle: Universitätsstadt Siegen, Bebauungsplan Nr. 328 „Breslauer Straße“</figcaption>
+        </figure>
+    </div>
+  </section>
+
+  <!-- f) the result: derived figures and the volume of the Baufenster -->
+  <section class="sec frame fs-ergebnis" id="f7" aria-labelledby="h-f7">
+    <div class="wrap grid">
+      <div class="erg-text">
+        <h2 class="h2" id="h-f7">Am Ende stehen Zahlen und ein Volumen.</h2>
+        <dl class="kz">
+          <div><dt>Zulässige Grundfläche</dt><dd><span class="kz-n"><span class="pt" data-pt-em="17">4.400</span> m²</span><span class="kz-f">GRZ 0,4 × Wohnbaufläche 11.000 m²</span></dd></div>
+          <div><dt>Zulässige Geschossfläche</dt><dd><span class="kz-n">13.200 m²</span><span class="kz-f">GFZ 1,2 × 11.000 m²</span></dd></div>
+          <div><dt>Höhe über Erdgeschossfußboden</dt><dd><span class="kz-n">8,0 m und 12,0 m</span><span class="kz-f">WR1 bis WR3 und WR4, aus den Höhen in m ü. NHN</span></dd></div>
+        </dl>
+        <p class="fine">Grundfläche und Geschossfläche gelten für alle Baufelder zusammen, die Wohnbaufläche stammt aus der Flächenbilanz der Begründung. Der Körper zeigt die Hülle aus Baufenster und zulässiger Höhe.</p>
+        <a class="dl" href="BP328_Breslauer_Strasse_Auswertung.xlsx" download><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v13M5 11l5 5 5-5"/></svg><span>Auswertung der KI als Excel-Datei <small>xlsx, 29 KB, unverändert, einschließlich der Angabe, die sich bei der Prüfung als falsch erwiesen hat</small></span></a>
+      </div>
+      <figure class="vol" id="vol">
+        <canvas class="vol-c" aria-label="Dreidimensionales Modell der vier Baufenster auf dem Planblatt, WR1 bis WR3 8,0 Meter hoch, WR4 12,0 Meter hoch" role="img"></canvas>
+        <div class="vol-labels" aria-hidden="true"></div>
+        <figcaption class="vol-hint" aria-hidden="true">Zum Drehen ziehen</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- g) the takeaway, in Lukas' words -->
+  <section class="sec frame fs-fazit" id="f8" aria-labelledby="h-f8">
+    <div class="wrap grid">
+      <p class="eyebrow">Fazit</p>
+      <h2 class="h2 fazit-h" id="h-f8">Sie müssen den <span class="pt">Prozess</span> kennen, damit die KI sorgfältig arbeitet und gute Ergebnisse liefern kann.</h2>
+      <div class="fazit-text">
+        <p class="p">In dieser Fallstudie steckt das Wissen über den Prozess in der Aufgabe: was zu erfassen ist, wie jeder Wert belegt wird und wann eine Rückfrage nötig ist. Die Prüfung am Ende verlangt dasselbe Wissen.</p>
+        <p class="p">Ein Bebauungsplan ist ein Beispiel von vielen. Überall, wo Informationen aus Unterlagen zusammengetragen und geprüft werden, kann KI vorarbeiten. In Workshops und Schulungen lernt Ihr Team, solche Aufgaben selbst zu stellen und die Ergebnisse sicher zu prüfen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- h) the conversation -->
+  <section class="sec frame final fs-final" id="kontakt" data-form="schluss" aria-labelledby="h-kontakt">
+    <div class="wrap grid">
+      <div class="col-text">
+        <h2 class="huge kin" id="h-kontakt"><span class="line">Beginnen Sie</span> <span class="line">mit einem</span> <span class="line"><span class="pt">Gespräch</span>.</span></h2>
+        <div class="cta-final">
+          <a class="btn go" href="mailto:lukas.richter@hellomodulr.de?subject=Erstgespr%C3%A4ch%20MODULR&amp;body=Guten%20Tag%20Herr%20Richter%2C%0D%0A%0D%0Aich%20w%C3%BCrde%20gern%20ein%20unverbindliches%20Erstgespr%C3%A4ch%20vereinbaren.%20Kurz%20zu%20meinem%20B%C3%BCro%20und%20dem%2C%20was%20mich%20gerade%20besch%C3%A4ftigt%3A%0D%0A%0D%0A%0D%0AViele%20Gr%C3%BC%C3%9Fe">Erstgespräch vereinbaren <svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"/></svg></a>
+          <a class="btn btn-outline" href="tel:+491737985473">+49&nbsp;173&nbsp;7985473</a>
+        </div>
+        <a class="back back-end" href="../../"><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M17 10H4M9 5l-5 5 5 5"/></svg><span>Zurück zur KI-Beratung</span></a>
+        <p class="gonote">Unverbindlich und kostenlos · <a href="mailto:lukas.richter@hellomodulr.de?subject=Erstgespr%C3%A4ch%20MODULR">lukas.richter@hellomodulr.de</a></p>
+        <p class="source">Quelle: Universitätsstadt Siegen, Bebauungsplan Nr. 328 „Breslauer Straße“. Beispiel, keine Rechtsauskunft. KI-Lauf am 13.10.2026 mit dem Modell claude-opus-5-5, eingefroren und protokolliert. Jede gezeigte Angabe wurde gegen die Quelle nachgeprüft.</p>
+      </div>
+      <div class="field" aria-hidden="true"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 Lukas Richter, MODULR</span>
+  <a href="../../">KI-Beratung</a><a href="../../impressum.html">Impressum</a><a href="../../datenschutz.html">Datenschutz</a><a href="https://www.linkedin.com/in/lukas-richter-6bab701a1/" rel="me noopener" target="_blank">LinkedIn</a>
+</footer>
+
+<div class="curtain-in" aria-hidden="true"></div>
+
+<script src="../../js/menu.js?v=1" defer></script>
+<script src="../../js/punkte.js?v=9" defer></script>
+<script src="../../js/punkttype.js?v=2" defer></script>
+<script src="../../js/fallstudie.js?v=2" defer></script>
+</body>
+</html>
