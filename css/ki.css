@@ -113,7 +113,7 @@ main, .site-footer { position: relative; z-index: 1; }
 /* ---------- today and with KI: a real table with its own title ---------- */
 .tasks { width: 100%; border-collapse: collapse; }
 .tasks-cap { caption-side: top; text-align: left; padding-bottom: clamp(20px, 4svh, 44px); font: 700 calc(var(--fs-h2) * .72)/1.05 var(--sans); letter-spacing: -.035em; color: var(--fg); }
-.tasks thead th { padding: 0 var(--gap) 14px 0; text-align: left; font: 500 var(--fs-label)/1.4 var(--mono); letter-spacing: .02em; color: var(--fg-3); }
+.tasks thead th { padding: 0 var(--gap) 14px 0; text-align: left; font: 600 calc(var(--fs-body) * .92)/1.3 var(--sans); letter-spacing: -.01em; color: var(--fg-2); }
 .tasks tbody th, .tasks td { padding: clamp(18px, 3.4svh, 34px) var(--gap) clamp(18px, 3.4svh, 34px) 0; vertical-align: baseline; border-top: 1px solid var(--hair); text-align: left; }
 .tasks tbody th { width: 22%; font: 650 calc(var(--fs-h3) * 1.08)/1.15 var(--sans); letter-spacing: -.025em; }
 .tasks td { font-size: var(--fs-body); line-height: 1.5; color: var(--fg-2); width: 30%; }
@@ -293,7 +293,7 @@ input[type=range]:focus-visible { outline: 2px solid var(--acc); outline-offset:
   .tasks tbody th, .tasks td { display: block; width: auto; border: 0; padding: 0 0 6px; text-align: left; font-size: 15px; }
   .tasks tbody th { font-size: 21px; padding-bottom: 8px; }
   .tasks td.num { margin-top: 6px; font-size: 25px; }
-  .tasks td.num::before { content: 'Zeitersparnis* '; font: 500 var(--fs-label)/1 var(--mono); color: var(--fg-3); letter-spacing: .02em; }
+  .tasks td.num::before { content: 'Zeitersparnis* '; font: 600 15px/1 var(--sans); color: var(--fg-2); letter-spacing: -.01em; }
   .about-head .h2 { font-size: 40px; }
   .about-photo { aspect-ratio: 4 / 5; max-height: 52svh; width: 100%; margin: 24px 0 0; }
   .roles { margin-top: 12px; font-size: 18px; }

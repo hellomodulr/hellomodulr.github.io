@@ -149,8 +149,9 @@
 .fs-fazit .eyebrow { grid-column: 1 / -1; }
 .fazit-h { grid-column: 1 / span 10; max-width: 24ch; font-size: calc(var(--fs-h2) * 1.08); }
 .fazit-h .pt { font-weight: 700; }
-.fazit-text { grid-column: 6 / span 7; margin-top: clamp(28px, 5.5svh, 64px); }
-.fazit-text .p + .p { margin-top: .9em; }
+.fazit-text { grid-column: 1 / span 10; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: calc(2 * var(--gap)); margin-top: clamp(32px, 6svh, 72px); padding-top: clamp(20px, 3svh, 32px); border-top: 1px solid var(--hair); }
+.fazit-text .p { max-width: 46ch; }
+.fazit-text .p + .p { margin-top: 0; }
 
 /* ---------- h) close ---------- */
 .fazit { font-size: var(--fs-body); line-height: var(--lh-body); color: var(--fg-2); max-width: 50ch; margin-bottom: clamp(24px, 4.4svh, 48px); }
@@ -178,7 +179,7 @@
 @media (max-width: 760px) {
   .fs { --fs-quote: 19px; }
   .fazit-h { font-size: 32px; }
-  .fazit-text { margin-top: 24px; }
+  .fazit-text { grid-column: 1 / -1; grid-template-columns: 1fr; row-gap: .9em; margin-top: 24px; padding-top: 18px; }
   .fazit-text .p { font-size: 15.5px; }
   .fs-hero .col-text { display: block; }
   .fs-hero.hero .wrap.grid > .field { min-height: 18svh; max-height: 26svh; }
@@ -251,7 +252,7 @@
   .vol { grid-column: 7 / span 6; }
   .fs-final .huge { font-size: 30px; }
   .fazit-h { font-size: 26px; grid-column: 1 / span 12; max-width: 40ch; }
-  .fazit-text { grid-column: 1 / span 12; margin-top: 12px; columns: 2; column-gap: calc(2 * var(--gap)); }
+  .fazit-text { grid-column: 1 / span 12; margin-top: 12px; padding-top: 10px; }
   .fazit-text .p { font-size: 13px; line-height: 1.45; }
   .fazit-text .p + .p { margin-top: 0; }
   .fs-final .cta-final { margin-top: 10px; }
