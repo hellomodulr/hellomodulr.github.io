@@ -542,8 +542,25 @@
     // ---------- frame ----------
     let lastDraw = 0, raf = 0, lastNow = 0, lastScroll = 0;
     const NB = 8, NL = 6; // depth buckets and transition buckets
-    const paths = () => Array.from({ length: NB }, () => new Path2D());
     const NQ = 24; // alpha levels of the screen layers and of stars that fade in
+    // A set of squares drawn with one colour and one alpha. WebKit (Safari) rasterizes a path in
+    // time that grows with the square of its subpaths, so one Path2D of a few thousand squares
+    // costs tens of milliseconds per frame there. The squares are therefore kept in one small path
+    // per tile of the canvas (TILE device pixels); every other browser draws them just as fast.
+    // The sets live as long as the field; each frame (`gen`) starts them empty.
+    const TILE = 256;
+    let gen = 0, tCols = 1;
+    function Tiles() { this.p = []; this.g = []; this.used = []; this.ug = -1; }
+    Tiles.prototype.rect = function (x, y, w, h) {
+      if (this.ug !== gen) { this.ug = gen; this.used.length = 0; }
+      const k = (Math.floor(y / TILE) + 1) * tCols + Math.floor(x / TILE) + 1;
+      if (this.g[k] !== gen) { this.g[k] = gen; this.p[k] = new Path2D(); this.used.push(k); }
+      this.p[k].rect(x, y, w, h);
+    };
+    Tiles.prototype.fill = function (c) { if (this.ug !== gen) return; for (const k of this.used) c.fill(this.p[k]); };
+    const set = n => Array.from({ length: n }, () => new Tiles());
+    const starLo = new Tiles(), starHi = new Tiles(), starB = new Tiles(), dimP = new Tiles(), acc = new Tiles();
+    const fig = set(NB), mixP = set(NL), mixA = set(3), mixI = set(3), QI = set(NQ + 1), QA = set(NQ + 1);
     function draw(now) {
       const t = (now - S.t0) / 1000;
       const dt = lastNow ? clamp((now - lastNow) / 1000, 0, .05) : 1 / 60; lastNow = now;
@@ -560,12 +577,10 @@
       const lowT = clamp((S.stars - .6) / .4) * A.low;
       S.lowA = reduced ? lowT : lerp(S.lowA, lowT, 1 - Math.exp(-dt * 2.2));
       const d = S.dpr, snap = d >= 1.5; ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const starLo = new Path2D(), starHi = new Path2D(), starB = new Path2D();
-      const fig = paths(), dimP = new Path2D(), acc = new Path2D();
-      const mixP = Array.from({ length: NL }, () => new Path2D()), mixA = Array.from({ length: 3 }, () => new Path2D()), mixI = Array.from({ length: 3 }, () => new Path2D());
+      gen++; tCols = Math.ceil(canvas.width / TILE) + 3;
       // screen layers and fading stars: one path per alpha level, ink and rust
       let qI = null, qA = null;
-      const qPaths = () => { qI = Array.from({ length: NQ + 1 }, () => new Path2D()); qA = Array.from({ length: NQ + 1 }, () => new Path2D()); };
+      const qPaths = () => { qI = QI; qA = QA; };
       const RR = uni ? evRadius() : small ? 70 : 110, R2 = RR * RR, sz = A.sz, s60 = dt * 60;
       // opt-in measurement for the test scripts: points per frame that move faster than 12 px
       const stats = window.__pfStats ? { t: now, fast: 0, max: 0, dx: B.cx - (window.__pfB || B).cx, dy: B.cy - (window.__pfB || B).cy } : null; if (stats) window.__pfB = { cx: B.cx, cy: B.cy };
@@ -707,19 +722,19 @@
       }
       const f = S.fade * col.a;
       ctx.fillStyle = `rgb(${col.ink})`;
-      ctx.globalAlpha = A.star * S.lowA * f; ctx.fill(starLo);
-      ctx.globalAlpha = A.star * f; ctx.fill(starHi);
-      ctx.globalAlpha = A.starB * f; ctx.fill(starB);
+      ctx.globalAlpha = A.star * S.lowA * f; starLo.fill(ctx);
+      ctx.globalAlpha = A.star * f; starHi.fill(ctx);
+      ctx.globalAlpha = A.starB * f; starB.fill(ctx);
       const mid = lerp(A.far, A.near, .45);
-      for (let k = 0; k < NL; k++) { ctx.globalAlpha = lerp(A.star, mid, (k + .5) / NL) * f; ctx.fill(mixP[k]); }
-      ctx.globalAlpha = A.dim * f; ctx.fill(dimP);
-      for (let k = 0; k < NB; k++) { ctx.globalAlpha = lerp(A.far, A.near, k / (NB - 1)) * f; ctx.fill(fig[k]); }
-      for (let k = 0; k < 3; k++) { ctx.globalAlpha = (1 - (k + .5) / 3) * lerp(A.star, mid, .5) * f; ctx.fill(mixI[k]); }
-      if (qI) for (let k = 1; k <= NQ; k++) { ctx.globalAlpha = k / NQ * f; ctx.fill(qI[k]); }
+      for (let k = 0; k < NL; k++) { ctx.globalAlpha = lerp(A.star, mid, (k + .5) / NL) * f; mixP[k].fill(ctx); }
+      ctx.globalAlpha = A.dim * f; dimP.fill(ctx);
+      for (let k = 0; k < NB; k++) { ctx.globalAlpha = lerp(A.far, A.near, k / (NB - 1)) * f; fig[k].fill(ctx); }
+      for (let k = 0; k < 3; k++) { ctx.globalAlpha = (1 - (k + .5) / 3) * lerp(A.star, mid, .5) * f; mixI[k].fill(ctx); }
+      if (qI) for (let k = 1; k <= NQ; k++) { ctx.globalAlpha = k / NQ * f; qI[k].fill(ctx); }
       ctx.fillStyle = `rgb(${col.acc})`;
-      for (let k = 0; k < 3; k++) { ctx.globalAlpha = (k + .5) / 3 * A.acc * f; ctx.fill(mixA[k]); }
-      ctx.globalAlpha = A.acc * f; ctx.fill(acc);
-      if (qA) for (let k = 1; k <= NQ; k++) { ctx.globalAlpha = k / NQ * f; ctx.fill(qA[k]); }
+      for (let k = 0; k < 3; k++) { ctx.globalAlpha = (k + .5) / 3 * A.acc * f; mixA[k].fill(ctx); }
+      ctx.globalAlpha = A.acc * f; acc.fill(ctx);
+      if (qA) for (let k = 1; k <= NQ; k++) { ctx.globalAlpha = k / NQ * f; qA[k].fill(ctx); }
       ctx.globalAlpha = 1;
       if (stats) { stats.y = Math.round(S.scrollY); window.__pfStats.push(stats); }
     }
