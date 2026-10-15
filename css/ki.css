@@ -128,41 +128,68 @@ main, .site-footer { position: relative; z-index: 1; }
 /* ---------- about: the person (name, roles, photo, prose) ---------- */
 /* name and roles are one identity block; the prose starts after a clear pause; the photo stands
    beside both and takes the height of the frame */
-.wrap.grid.about-person { align-items: start; grid-template-rows: min-content minmax(0, 1fr); }
-.about-photo { grid-column: 1 / span 5; grid-row: 1 / span 2; border-radius: var(--radius); overflow: hidden; background: var(--k-photo); aspect-ratio: 4 / 5; max-height: calc(var(--frame-h) - 2 * var(--frame-pad)); margin-top: .1em; }
+/* photo spans all rows; the two outer 1fr rows share the free space, so text and photo share one vertical centre */
+.wrap.grid.about-person { align-items: start; grid-template-rows: 1fr auto auto 1fr; }
+.about-photo { grid-column: 1 / span 5; grid-row: 1 / -1; border-radius: var(--radius); overflow: hidden; background: var(--k-photo); aspect-ratio: 4 / 5; max-height: calc(var(--frame-h) - 2 * var(--frame-pad)); align-self: center; }
 .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 30%; }
 .about-head, .about-prose { grid-column: 7 / span 6; }
+.about-head { grid-row: 2; }
+.about-prose { grid-row: 3; }
 .about-head .h2 { font-size: calc(var(--fs-h2) * 1.18); }
 .roles { margin: 20px 0 0; padding: 0; list-style: none; font: 500 var(--fs-h3)/1.4 var(--sans); letter-spacing: -.015em; color: var(--fg-2); }
 .about-prose { margin-top: clamp(28px, 5svh, 56px); }
 
 /* ---------- about: the reference, one real project ---------- */
-/* one case told in three steps: which office (150 in point type, the only accent, with its
-   caption and the facts of the office), what was done (three points), and the result as the
-   closing line. The heading spans the frame; below it the two columns share a top line (the top
-   of the 150, the first point) and a base line (the facts, the result). */
-.wrap.grid.case { align-items: stretch; row-gap: clamp(24px, 4svh, 52px); }
-.case-h { grid-column: 1 / -1; font: 700 var(--fs-h2)/var(--lh-h2) var(--sans); letter-spacing: -.04em; }
-.case-lead { grid-column: 1 / span 6; display: flex; flex-direction: column; }
+/* one case, read in order: which office (150 in point type, the only accent, with its caption),
+   what was done in three steps, the result, and below one shared hairline the facts of the office
+   and the way into the case study. The heading spans the frame. The two columns share a top line
+   (the top of the 150 and the first hairline) and a base line (the caption and the result rest on
+   the hairline of the foot). Each step carries a quiet mono label in a hanging column, so the text
+   keeps a calm measure of about 60 characters. */
+.wrap.grid.case { align-items: stretch; --case-gap: clamp(24px, 4.2svh, 48px); --case-pad: clamp(12px, 2.1svh, 22px); row-gap: var(--case-gap); }
+/* a heading inside the person's section: the size of the table title, one step below the h2 */
+.case-h { grid-column: 1 / -1; font: 700 calc(var(--fs-h2) * .72)/1.05 var(--sans); letter-spacing: -.035em; }
+.case-lead { grid-column: 1 / span 5; display: flex; flex-direction: column; padding-bottom: var(--case-pad); container-type: inline-size; }
 .case-fig { flex: 1; display: flex; flex-direction: column; }
-/* a tight line box, so the top of the points is the top of the column */
-.case-n { display: block; width: max-content; font: 700 clamp(120px, min(24vw, 34svh), 310px)/.8 var(--sans); letter-spacing: -.05em; margin-left: -.04em; }
-.case-l { display: block; max-width: 24ch; margin-top: auto; padding-top: clamp(20px, 3.4svh, 40px); font: 600 var(--fs-h3)/1.3 var(--sans); letter-spacing: -.02em; color: var(--fg); }
-.case-meta { margin-top: .5em; font-size: var(--fs-body); line-height: 1.45; color: var(--fg-2); }
-.case-text { grid-column: 7 / span 6; display: flex; flex-direction: column; }
-.case-list { margin: 0; padding: 0; list-style: none; }
-.case-list li { padding: clamp(9px, 1.6svh, 16px) 0; font-size: var(--fs-body); line-height: 1.45; color: var(--fg-2); }
-.case-list li:first-child { padding-top: 0; margin-top: -.2em; }
-.case-list li + li { border-top: 1px solid var(--hair); }
-.case-list b { font-weight: 650; color: var(--fg); }
-.case-result { margin-top: auto; padding-top: clamp(16px, 2.8svh, 32px); max-width: 36ch; font: 600 calc(var(--fs-h3) * .9)/1.3 var(--sans); letter-spacing: -.02em; color: var(--fg); }
-.case-result-h { color: var(--fg-3); }
-.case-result .nobr { white-space: nowrap; }
-/* the way into the case study: one calm line under the result */
-.case-more { margin-top: clamp(10px, 1.8svh, 18px); }
+/* a tight line box, so the top of the points is the top of the column; never wider than the column */
+.case-n { display: block; width: max-content; font: 700 min(clamp(120px, min(24vw, 34svh), 310px), 60cqi)/.8 var(--sans); letter-spacing: -.05em; margin: -.02em 0 0 -.04em; }
+.case-l { display: block; max-width: 22ch; margin-top: auto; padding-top: clamp(20px, 3.4svh, 40px); font: 600 var(--fs-h3)/1.3 var(--sans); letter-spacing: -.02em; color: var(--fg); }
+.case-text { grid-column: 6 / span 7; display: flex; flex-direction: column; --case-lab: calc((100% - 6 * var(--gap)) / 7 + var(--gap)); }
+.case-step { position: relative; margin: 0; padding: var(--case-pad) 0 var(--case-pad) var(--case-lab); border-top: 1px solid var(--hair); font-size: var(--fs-body); line-height: var(--case-lh, 1.5); color: var(--fg-2); }
+/* the text keeps a measure of about 60 characters on wide screens */
+.case-step, .case-step:first-child { padding-right: max(0px, 100% - var(--case-lab) - 29.5 * var(--fs-body)); }
+.case-step:first-child { padding-top: calc(var(--case-pad) * .85); }
+.case-step b { font-weight: 650; color: var(--fg); }
+.case-step .nobr { white-space: nowrap; }
+/* the label hangs in the first column and stands on the first line of its step */
+.case-k { position: absolute; left: 0; top: var(--case-pad); font: 500 var(--fs-label)/1 var(--mono); letter-spacing: .02em; color: var(--fg-3); padding-top: calc(var(--fs-body) * var(--case-lh, 1.5) / 2 - .2em); }
+.case-step:first-child .case-k { top: calc(var(--case-pad) * .85); }
+/* the result closes the steps: ink, a step larger, resting on the base line */
+.case-result { margin-top: auto; font: 600 calc(var(--fs-h3) * .9)/1.3 var(--sans); letter-spacing: -.02em; color: var(--fg); }
+.case-result .case-k { padding-top: calc(var(--fs-h3) * .9 * .72 - .25em); }
+/* the foot: one hairline across the frame, the facts of the office left, the way into the case study under the steps */
+.case-foot { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); align-items: baseline; margin-top: calc(-1 * var(--case-gap)); padding-top: calc(var(--case-pad) * .5); border-top: 1px solid var(--hair); }
+.case-meta { grid-column: 1 / span 5; font-size: var(--fs-small); line-height: 1.4; color: var(--fg-2); }
+.case-more { grid-column: 7 / span 6; }
 .case-more a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font: 600 var(--fs-small)/1.35 var(--sans); color: var(--fg); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); }
 .case-more a:hover { text-decoration-color: currentColor; }
 .case-more a:hover .arr { transform: translateX(3px); }
+
+/* variant B, for comparison only (class case-b on the frame): the heading heads the left column,
+   the labels stand above their steps, one hairline sets the result apart */
+.wrap.grid.case.case-b { grid-template-rows: auto 1fr auto; row-gap: 0; }
+.case-b .case-h { grid-column: 1 / span 5; grid-row: 1; }
+.case-b .case-lead { grid-row: 2; padding: clamp(20px, 3.6svh, 40px) 0 0; }
+.case-b .case-text { grid-column: 7 / span 6; grid-row: 1 / span 2; }
+.case-b .case-step { padding: 0 max(0px, 100% - 29.5 * var(--fs-body)) 0 0; border: 0; }
+.case-b .case-step + .case-step { margin-top: clamp(16px, 2.8svh, 30px); }
+.case-b .case-k, .case-b .case-step:first-child .case-k { position: static; display: block; padding: .5em 0 .7em; }
+.case-b .case-step:first-child .case-k { padding-top: 0; }
+.case-b .case-step.case-result { margin-top: auto; padding-bottom: 0; padding-top: clamp(16px, 2.8svh, 30px); border-top: 1px solid var(--hair); }
+.case-b .case-result .case-k { padding: 0 0 .9em; }
+.case-b .case-foot { display: contents; }
+.case-b .case-meta { grid-row: 3; align-self: last baseline; padding-top: 10px; }
+.case-b .case-more { grid-row: 3; align-self: last baseline; padding-top: 10px; }
 
 /* ---------- calculator: inputs and assumption left, result right ---------- */
 /* the figure stands on the line of the numbers: the rust block (the hours that return) right above
@@ -250,6 +277,7 @@ input[type=range]:focus-visible { outline: 2px solid var(--acc); outline-offset:
 
 /* ---------- laptops: same composition, a little less height everywhere ---------- */
 @media (max-height: 800px) and (min-width: 761px) {
+  .wrap.grid.case { --case-pad: clamp(9px, 1.5svh, 14px); --case-gap: clamp(18px, 3svh, 28px); --case-lh: 1.45; }
   .about-prose { margin-top: 28px; }
   .k1-tag { margin-top: 4px; font-size: 14px; }
   .site-footer { padding-top: 20px; padding-bottom: 24px; }
@@ -267,7 +295,6 @@ input[type=range]:focus-visible { outline: 2px solid var(--acc); outline-offset:
   .tasks tbody tr:last-child > * { border-bottom: 0; }
   .colhead { grid-column: 1 / span 12; margin-bottom: 32px; } .acc { grid-column: 1 / span 12; }
   .tr-ctrls { grid-column: 1 / span 5; } .tr-out { grid-column: 6 / span 7; }
-  .case-lead { grid-column: 1 / span 6; } .case-text { grid-column: 7 / span 6; }
 }
 
 /* ---------- phones: one calm column, the figures sit between heading and text ---------- */
@@ -299,16 +326,25 @@ input[type=range]:focus-visible { outline: 2px solid var(--acc); outline-offset:
   .roles { margin-top: 12px; font-size: 18px; }
   .about-prose { margin-top: 32px; }
   .about-prose .p { font-size: 17.5px; line-height: 1.6; }
+  /* one column in reading order: the office with its facts, then the steps, the result and the way on */
   .wrap.grid.case { row-gap: 0; }
-  .case-h { font-size: 30px; }
+  .case-h { order: 0; font-size: 30px; }
+  .case-lead { order: 1; padding-bottom: 0; }
   .case-fig { display: block; margin-top: 24px; }
   .case-n { font-size: min(34vw, 15svh); }
   .case-l { font-size: 18px; max-width: none; padding-top: 16px; }
-  .case-meta { margin-top: 6px; font-size: 15px; }
-  .case-text { margin-top: 36px; }
-  .case-list li { font-size: 15px; line-height: 1.4; padding: 10px 0; }
-  .case-result { margin-top: 0; padding-top: 22px; max-width: none; font-size: 18px; }
-  .case-more { margin-top: 10px; } .case-more a { display: inline; font-size: 15px; } .case-more .arr { display: inline-block; vertical-align: -3px; margin-left: 6px; }
+  .case-foot { display: contents; }
+  .case-meta { order: 2; margin-top: 6px; font-size: 15px; }
+  .case-text { order: 3; margin-top: 32px; }
+  .case-step, .case-step:first-child { padding: 14px 0; font-size: 15px; line-height: 1.45; }
+  .case-k, .case-step:first-child .case-k, .case-result .case-k { position: static; display: block; padding: 0 0 6px; }
+  .case-result { margin-top: 0; padding-bottom: 0; font-size: 18px; }
+  .case-more { order: 4; margin-top: 10px; } .case-more a { display: inline; font-size: 15px; } .case-more .arr { display: inline-block; vertical-align: -3px; margin-left: 6px; }
+  .case-b .case-step + .case-step { margin-top: 0; }
+  .case-b .case-step { padding: 10px 0; }
+  .case-b .case-result { padding-top: 16px; }
+  .case-b .case-meta, .case-b .case-more { padding-top: 0; }
+  .case-b .case-lead { padding-top: 0; }
   .tool .wrap.grid { display: flex; flex-direction: column; }
   .tr-ctrls { display: contents; }
   .tr-out { order: 1; margin-top: 24px; }
@@ -378,16 +414,21 @@ input[type=range]:focus-visible { outline: 2px solid var(--acc); outline-offset:
   .about-prose { grid-column: 1 / span 12; grid-row: 2; margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; column-gap: calc(2 * var(--gap)); }
   .about-prose .p + .p { margin-top: 0; }
   .roles { font-size: 16px; margin-top: 10px; }
-  .wrap.grid.case { row-gap: 8px; }
-  .case-lead { grid-column: 1 / span 6; }
-  .case-text { grid-column: 7 / span 6; }
-  .case-h { font-size: 26px; }
-  .case-n { font-size: min(20vw, 32svh); }
+  /* the heading heads the left column, so the steps get the full height beside it */
+  .wrap.grid.case { --case-gap: 6px; --case-pad: 4px; --case-lh: 1.3; grid-template-rows: auto 1fr auto; }
+  .case-h { grid-column: 1 / span 5; grid-row: 1; font-size: 24px; }
+  .case-lead { grid-row: 2; }
+  .case-text { grid-row: 1 / span 2; }
+  .case-foot { grid-row: 3; }
+  .case-n { font-size: min(20vw, 32svh, 60cqi); }
   .case-l { padding-top: 10px; font-size: 16px; }
-  .case-meta { margin-top: 2px; font-size: 13.5px; }
-  .case-list li { padding: 4px 0; font-size: 12.5px; line-height: 1.32; }
-  .case-result { padding-top: 8px; font-size: 14px; }
-  .case-more { margin-top: 2px; } .case-more a { min-height: 30px; font-size: 13.5px; }
+  .case-step { font-size: 12.5px; }
+  .case-k { font-size: 10.5px; padding-top: calc(12.5px * .65 - .5em); }
+  .case-result { font-size: 14px; }
+  .case-result .case-k { padding-top: calc(14px * .65 - .4em); }
+  /* 13px keeps the case study link on one line on landscape phones around 850px wide */
+  .case-meta { font-size: 13px; }
+  .case-more a { min-height: 30px; font-size: 13px; }
   .field-tool { height: min(130px, 30svh); }
   .tr-big { font-size: 52px; }
   .tr-row { margin-top: 6px; }

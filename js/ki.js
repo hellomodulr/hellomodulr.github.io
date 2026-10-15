@@ -234,7 +234,7 @@
       $('#tr-pplv').textContent = P; $('#tr-hrsv').textContent = H;
       const wk = Math.round(P * H * 0.5), yr = wk * 45, fte = Math.round(yr / 1700 * 10) / 10;
       $('#tr-week').textContent = wk; $('#tr-year').textContent = yr.toLocaleString('de-DE'); $('#tr-fte').textContent = '≈ ' + fte.toLocaleString('de-DE');
-      $('#tr-res').innerHTML = 'Das sind <b>' + wk + ' Stunden pro Woche</b>, die frei werden und für Aufgaben genutzt werden können, die KI heute noch nicht abnehmen kann. Über das Jahr entspricht das gut <b>' + fte.toLocaleString('de-DE') + ' Vollzeitstellen</b> an wiedergewonnener Kapazität, ohne eine einzige neue Einstellung.';
+      $('#tr-res').innerHTML = 'Das sind <b>' + wk + ' Stunden pro Woche</b> für Aufgaben, die KI heute noch nicht abnehmen kann. Über das Jahr entspricht das rund <b>' + fte.toLocaleString('de-DE') + ' Vollzeitstellen</b> an wiedergewonnener Kapazität, ohne eine einzige neue Einstellung.';
       fill(p); fill(h);
       if (leader && leader.dataset.form === 'stunden') formFor(leader, 0);
     }

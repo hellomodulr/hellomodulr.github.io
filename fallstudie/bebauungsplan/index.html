@@ -23,7 +23,7 @@
 <script>document.documentElement.classList.add('pt-on', 'fs-js')</script>
 <link rel="stylesheet" href="../../css/base.css?v=10">
 <link rel="stylesheet" href="../../css/farbe.css?v=9">
-<link rel="stylesheet" href="../../css/ki.css?v=24">
+<link rel="stylesheet" href="../../css/ki.css?v=29">
 <link rel="stylesheet" href="../../css/fallstudie.css?v=3">
 <noscript><style>.curtain-in{display:none}.huge .li{transform:none!important}</style></noscript>
 <link rel="stylesheet" href="../../css/menu.css?v=2">
@@ -94,8 +94,8 @@
   <section class="sec frame fs-lesen" id="f3" aria-labelledby="h-f3">
     <div class="wrap grid">
       <div class="lesen-text">
-        <h2 class="h2" id="h-f3">Die KI liest jeden Wert mit Fundstelle.</h2>
-        <p class="p">Sie liest die vier Nutzungsschablonen, die Planzeichenerklärung, die Gestaltungssatzung und die Begründung. Jeder Wert wird mit Dokument, Seite und Stelle erfasst, Bild und Textebene werden abgeglichen.</p>
+        <h2 class="h2" id="h-f3">Die KI belegt jeden Wert mit Fundstelle.</h2>
+        <p class="p">Sie liest die vier Nutzungsschablonen, die Planzeichenerklärung, die Gestaltungssatzung und die Begründung. Jeder Wert wird mit Dokument, Seite und Stelle erfasst, Bild- und Textebene werden abgeglichen.</p>
         <table class="vtab" id="vtab">
           <caption class="visually-hidden">Werte der Nutzungsschablonen, gelesen von der KI</caption>
           <thead><tr><th scope="col">Feld</th><th scope="col">Geschosse</th><th scope="col">GRZ</th><th scope="col">GFZ</th><th scope="col">Bauweise</th><th scope="col">Wohnungen</th><th scope="col">Dach</th></tr></thead>
@@ -130,14 +130,14 @@
         <p class="p">Planzeichnung, Planzeichenerklärung, Gestaltungssatzung und Begründung werden gegeneinander geprüft und mit dem rechtlichen Rahmen abgeglichen. Auch stimmige Ergebnisse werden gemeldet, damit sichtbar ist, was geprüft wurde.</p>
         <ul class="checks">
           <li><svg class="tick" viewBox="0 0 18 18" aria-hidden="true"><path pathLength="1" d="M3 9.5 L7.2 13.5 L15 4.5"/></svg><div><p class="ck">GRZ 0,4 und GFZ 1,2 entsprechen § 17 BauNVO</p><p class="tag">stimmig · Rechtsrahmen</p></div></li>
-          <li><svg class="tick" viewBox="0 0 18 18" aria-hidden="true"><path pathLength="1" d="M3 9.5 L7.2 13.5 L15 4.5"/></svg><div><p class="ck">Überschreitung 50 % bis GRZ 0,6, unter Kappung 0,8</p><p class="tag">stimmig · Rechtsrahmen</p></div></li>
+          <li><svg class="tick" viewBox="0 0 18 18" aria-hidden="true"><path pathLength="1" d="M3 9.5 L7.2 13.5 L15 4.5"/></svg><div><p class="ck">Überschreitung um 50 % bis GRZ 0,6, unterhalb der Kappungsgrenze 0,8</p><p class="tag">stimmig · Rechtsrahmen</p></div></li>
           <li><svg class="tick" viewBox="0 0 18 18" aria-hidden="true"><path pathLength="1" d="M3 9.5 L7.2 13.5 L15 4.5"/></svg><div><p class="ck">Flächenbilanz: 11.000 + 1.900 + 2.300 = 15.200 m²</p><p class="tag">stimmig · Rechnung</p></div></li>
         </ul>
       </div>
       <div class="tally">
         <div class="field field-tally" aria-hidden="true"></div>
         <p class="tally-n"><span><b>38</b> Prüfungen</span> <span><b>10</b> Rückfragen</span></p>
-        <p class="fine">Jedes Quadrat ist eine Prüfung: 11 stimmig, 17 Hinweise, 10 Rückfragen. Gezählt sind die Prüfungen, die der Nachprüfung standhalten. Von den 41 Prüfungen der KI ist eine falsch, eine überzeichnet und eine nicht nachgeprüft.</p>
+        <p class="fine">Jedes Quadrat steht für eine Prüfung: 11 stimmig, 17 Hinweise, 10 Rückfragen. Gezählt sind die Prüfungen, die der Kontrolle standhalten. Von den 41 Prüfungen der KI fallen drei heraus, weil eine falsch, eine überzeichnet und eine nicht nachgeprüft ist.</p>
       </div>
     </div>
   </section>
@@ -190,7 +190,7 @@
         <p class="kick">Die KI schreibt</p>
         <blockquote class="claim"><p>„In der Zeichnung sind 6 grüne Baumsymbole erkennbar, alle mit schwarzem Punkt (Symbol Erhaltung); das Anpflanzsymbol (kleiner Hohlkreis) ist in der vorliegenden Auflösung nicht zu finden.“</p></blockquote>
         <p class="p">Bei der Prüfung zeigt sich: Das Symbol ist vorhanden, am vierten Baum von Westen an der Schweriner Straße, bei Flurstück 1054.</p>
-        <p class="p">KI nimmt Arbeit ab. Das Urteil und die Verantwortung bleiben bei den Fachleuten im Büro, und zu jedem Ergebnis gehört eine Prüfung.</p>
+        <p class="p">KI nimmt Arbeit ab. Die Verantwortung bleibt bei den Fachleuten im Büro, und zu jedem Ergebnis gehört eine Prüfung.</p>
       </div>
       <figure class="plan plan-baum" id="baum" style="--arn: 2">
           <div class="clip">
@@ -218,7 +218,7 @@
           <div><dt>Zulässige Geschossfläche</dt><dd><span class="kz-n">13.200 m²</span><span class="kz-f">GFZ 1,2 × 11.000 m²</span></dd></div>
           <div><dt>Höhe über Erdgeschossfußboden</dt><dd><span class="kz-n">8,0 m und 12,0 m</span><span class="kz-f">WR1 bis WR3 und WR4, aus den Höhen in m ü. NHN</span></dd></div>
         </dl>
-        <p class="fine">Grundfläche und Geschossfläche gelten für alle Baufelder zusammen, die Wohnbaufläche stammt aus der Flächenbilanz der Begründung. Der Körper zeigt die Hülle aus Baufenster und zulässiger Höhe.</p>
+        <p class="fine">Grundfläche und Geschossfläche gelten für alle Baufelder zusammen, die Wohnbaufläche stammt aus der Flächenbilanz der Begründung. Das Modell zeigt die Hülle aus Baufenster und zulässiger Höhe.</p>
         <a class="dl" href="BP328_Breslauer_Strasse_Auswertung.xlsx" download><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v13M5 11l5 5 5-5"/></svg><span>Auswertung der KI als Excel-Datei <small>xlsx, 29 KB, unverändert, einschließlich der Angabe, die sich bei der Prüfung als falsch erwiesen hat</small></span></a>
       </div>
       <figure class="vol" id="vol">
