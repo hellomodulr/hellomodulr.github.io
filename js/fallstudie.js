@@ -14,6 +14,12 @@
   // frames: one screen each below the header (css/ki.css)
   const secs = $$('main .frame');
   const scrollPos = () => scrollY;
+  // Phones (upright, and sideways with little height) get a flowing page: no frames, no stops,
+  // no snapping, native momentum scrolling (css/ki.css, "phones: a flowing page"). The reading
+  // units stay, one per frame, only to choose the figure of the point field.
+  const flowMQ = matchMedia('(max-width: 760px), (max-height: 520px) and (orientation: landscape) and (max-width: 1000px)');
+  let flow = flowMQ.matches;
+  root.classList.toggle('snap', !flow);
 
   // ---------- the display sentences rise when they appear ----------
   $$('.kin .line').forEach(l => { const w = document.createElement('span'); w.className = 'li'; while (l.firstChild) w.appendChild(l.firstChild); l.appendChild(w); });
@@ -172,9 +178,16 @@
     // the last frame is shortened by the footer, so both together fill the last screen
     root.style.setProperty('--foot-h', $('.site-footer').offsetHeight + 'px');
     const H = viewH(), barH = bar.offsetHeight, m = Math.round(clamp(H * 0.026, 12, 24));
-    Object.assign(G, { H, bar: barH, m, fit: H - barH - 2 * m });
+    Object.assign(G, { H, bar: barH, m, fit: flow ? Infinity : H - barH - 2 * m });
     const next = groupUnits();
-    measureUnits(next); placeStops(next);
+    measureUnits(next);
+    if (flow) {
+      // no stops: each unit knows the field of its figure, if it holds one (see flowScore)
+      next.forEach(u => { const f = u.host && u.host.dataset && u.host.dataset.form ? visibleField(u.host) : null; u.field = f && u.els.some(el => el === f || el.contains(f)) ? f : null; u.y = u.top - barH; });
+      units = next; placeAnchors(); sig = signature();
+      return units;
+    }
+    placeStops(next);
     let widened = false;
     for (let i = 0; i + 1 < next.length; i++) {
       const a = next[i], b = next[i + 1];
@@ -207,9 +220,10 @@
   body.appendChild(anchors);
   function placeAnchors() {
     const pad = parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
-    while (anchors.children.length > units.length) anchors.lastElementChild.remove();
-    while (anchors.children.length < units.length) anchors.appendChild(document.createElement('i'));
-    units.forEach((u, k) => { anchors.children[k].style.top = (u.y + pad) + 'px'; });
+    const n = flow ? 0 : units.length;
+    while (anchors.children.length > n) anchors.lastElementChild.remove();
+    while (anchors.children.length < n) anchors.appendChild(document.createElement('i'));
+    if (n) units.forEach((u, k) => { anchors.children[k].style.top = (u.y + pad) + 'px'; });
   }
 
   // ---------- the point field ----------
@@ -265,9 +279,9 @@
       });
       return { form: out, cam: { pitch: 0, yaw: 0, float: 0.25 }, waitKey: 38 };
     },
-    // the close: two heads in conversation, as on the KI page
+    // the close: two heads and the common ground between them, as on the KI page
     schluss(w, h) {
-      const f = P.F.gespraech(w, h, { n: pf.small ? 300 : 480, per: pf.small ? 60 : 90 }); return { form: f, dyn: P.gespraechFlow(f), cam: { pitch: 0.12, yaw: 0, float: 0.5 } };
+      const f = P.F.grundlage(w, h, { small: pf.small }); return { form: f, dyn: P.grundlageFlow(f), cam: { pitch: 0.9, yaw: -0.12, float: 0.25 } };
     },
   };
   let lastBox = null, leader = null, here = null;
@@ -327,6 +341,7 @@
   // timing of the marks per figure: the four templates follow the values into the table
   const penLesen = $('.plan-lesen .pen'); if (penLesen) Object.assign(penLesen.dataset, { start: '0.2', gap: '0.8', draw: '0.45' });
   $$('.fs-rueck .pen').forEach((s, i) => Object.assign(s.dataset, { start: String(0.3 + i * 0.9), gap: '0.45', draw: '0.5' }));
+  $$('.plan-lesen-m .pen').forEach((s, i) => Object.assign(s.dataset, { start: String(0.2 + i * 0.8), gap: '0', draw: '0.45' }));
   const penRing = $('.pen-ring'); if (penRing) Object.assign(penRing.dataset, { start: '0', gap: '0', draw: '0.7' });
   pens.forEach(placePen);
 
@@ -334,32 +349,55 @@
   // positions inside a template where each field sits (share of the box), as in the film
   const SLOT = [[.3, .17], [.78, .22], [.27, .45], [.72, .5], [.22, .74], [.62, .86], [.7, .82]];
   const inView = r => r.bottom > bar.offsetHeight && r.top < innerHeight && r.right > 0 && r.left < innerWidth;
-  function fly() {
-    const rows = $$('#vtab tbody tr'), marks = penLesen ? $$('.mark', penLesen) : [];
-    rows.forEach((tr, i) => {
-      const t0 = (reduced ? 0 : 0.2 + i * 0.8 + 0.4) * 1000;
-      setTimeout(() => {
-        const mark = marks[i], mr = mark && mark.getBoundingClientRect();
-        [...tr.cells].forEach((cell, j) => {
-          const v = $('.v', cell); if (!v) return;
-          const tr_ = v.getBoundingClientRect();
-          if (reduced || !mr || !inView(mr) || !inView(tr_)) { setTimeout(() => v.classList.add('in'), reduced ? 0 : j * 60); return; }
-          const sx = mr.left + mr.width * SLOT[j][0], sy = mr.top + mr.height * SLOT[j][1];
-          const tx = tr_.left + tr_.width / 2, ty = tr_.top + tr_.height / 2;
-          const f = document.createElement('span'); f.className = 'fly'; f.textContent = v.textContent; f.setAttribute('aria-hidden', 'true');
-          body.appendChild(f);
-          const at = (x, y, s) => `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${s})`;
-          const mx = (sx + tx) / 2, my = Math.min(sy, ty) - 40;
-          const a = f.animate([
-            { transform: at(sx, sy, .7), opacity: 0 },
-            { transform: at(sx, sy - 10, 1.05), opacity: 1, offset: .18 },
-            { transform: at(mx, my, 1.05), opacity: 1, offset: .58 },
-            { transform: at(tx, ty, 1), opacity: 1 },
-          ], { duration: 900 + j * 50, delay: j * 70, easing: 'cubic-bezier(.65, 0, .35, 1)', fill: 'both' });
-          a.onfinish = () => { v.classList.add('in'); f.remove(); };
-        });
-      }, t0);
+  // one row of the table: its values leave the template and land in their cells
+  function flyRow(tr, mark) {
+    const mr = mark && mark.getBoundingClientRect();
+    // the flowing page may move while a value travels: it then travels in page coordinates
+    const ox = flow ? scrollX : 0, oy = flow ? scrollY : 0;
+    [...tr.cells].forEach((cell, j) => {
+      const v = $('.v', cell); if (!v) return;
+      const tr_ = v.getBoundingClientRect();
+      if (reduced || !mr || !inView(mr) || !inView(tr_)) { setTimeout(() => v.classList.add('in'), reduced ? 0 : j * 60); return; }
+      const sx = mr.left + mr.width * SLOT[j][0], sy = mr.top + mr.height * SLOT[j][1];
+      const tx = tr_.left + tr_.width / 2, ty = tr_.top + tr_.height / 2;
+      const f = document.createElement('span'); f.className = 'fly'; f.textContent = v.textContent; f.setAttribute('aria-hidden', 'true');
+      if (flow) f.style.position = 'absolute';
+      body.appendChild(f);
+      const at = (x, y, s) => `translate(${x + ox}px, ${y + oy}px) translate(-50%, -50%) scale(${s})`;
+      const mx = (sx + tx) / 2, my = Math.min(sy, ty) - 40;
+      const an = f.animate([
+        { transform: at(sx, sy, .7), opacity: 0 },
+        { transform: at(sx, sy - 10, 1.05), opacity: 1, offset: .18 },
+        { transform: at(mx, my, 1.05), opacity: 1, offset: .58 },
+        { transform: at(tx, ty, 1), opacity: 1 },
+      ], { duration: 900 + j * 50, delay: j * 70, easing: 'cubic-bezier(.65, 0, .35, 1)', fill: 'both' });
+      an.onfinish = () => { v.classList.add('in'); f.remove(); };
     });
+  }
+  function fly() {
+    const pen = $$('.fs-lesen svg.pen').filter(s => s.getBoundingClientRect().width > 0);
+    const rows = $$('#vtab tbody tr'), marks = pen.flatMap(s => $$('.mark', s));
+    if (!flow || reduced) {
+      rows.forEach((tr, i) => setTimeout(() => flyRow(tr, marks[i]), (reduced ? 0 : 0.2 + i * 0.8 + 0.4) * 1000));
+      return;
+    }
+    // the flowing page starts early, while the figure is still coming in: each row waits until its
+    // template and its row of the table are both whole on screen, so every flight is seen from its
+    // start to its end (after a few seconds without that, the values simply appear)
+    const whole = r => r.top >= bar.offsetHeight - 1 && r.bottom <= innerHeight + 1;
+    let i = 0, next = performance.now() + 500, since = 0;
+    const tick = now => {
+      if (i >= rows.length) return;
+      if (now >= next) {
+        const mr = marks[i] && marks[i].getBoundingClientRect(), rr = rows[i].getBoundingClientRect();
+        if (!since) since = now;
+        // the reader has moved on past the frame: the remaining values are simply there
+        if (!inView(rr) && !(mr && inView(mr))) { for (; i < rows.length; i++) $$('.v', rows[i]).forEach(v => v.classList.add('in')); return; }
+        if ((mr && whole(mr) && whole(rr)) || now - since > 6000) { flyRow(rows[i], marks[i]); i++; next = now + 800; since = 0; }
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   }
 
   // ---------- e) the zoom onto the tree that was missed ----------
@@ -386,6 +424,13 @@
     done.add(sec);
     sec.classList.add('on');
     if (ACT[sec.id]) ACT[sec.id]();
+  }
+  // the flowing page (phones): the reading frame starts as soon as a quarter of the templates is in
+  // view, while the page still moves, so the values travel while the reader arrives
+  const lesenM = $('.plan-lesen-m .schab');
+  if (lesenM && window.IntersectionObserver) {
+    const early = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && flow) { activate($('#f3')); early.disconnect(); } }), { threshold: .25 });
+    early.observe(lesenM);
   }
   // the page has come to rest when no scroll event arrives for a moment and no snap is under way
   function queueActivate() {
@@ -533,8 +578,24 @@
   // one transition at the end instead of one per unit passed. A snap leads its target at once.
   const BAND = 0.06, SETTLE = 120;
   let pending = null, pendingAt = 0, settleTimer = 0, target = null;
+  // In the flowing page a figure leads while at least half of its field is on screen (the one
+  // closest to the middle, if two are); otherwise the unit under the middle of the screen leads.
+  function flowScore(u) {
+    const y = scrollPos(), top = y + G.bar, bot = y + G.H, mid = (top + bot) / 2;
+    if (u.field) {
+      const r = u.field.getBoundingClientRect(), a = r.top + y, b = r.bottom + y;
+      if (Math.min(b, bot) - Math.max(a, top) >= Math.min(b - a, bot - top) * .5) return -G.H + Math.abs((a + b) / 2 - mid) / 4;
+    }
+    return mid < u.top ? u.top - mid : mid > u.bottom ? mid - u.bottom : 0;
+  }
+  function flowCandidate() {
+    let best = null, bs = Infinity;
+    for (const u of units) { const s = flowScore(u); if (s < bs) { bs = s; best = u; } }
+    return here && here !== best && units.indexOf(here) >= 0 && flowScore(here) < bs + G.H * BAND ? here : best;
+  }
   function candidate() {
     if (!units.length) return null;
+    if (flow) return flowCandidate();
     const y = scrollPos(), u = units[nearest(y)];
     if (!here || u === here || units.indexOf(here) < 0) return u;
     return Math.abs(u.y - y) + G.H * BAND < Math.abs(here.y - y) ? u : here;
@@ -600,7 +661,7 @@
   if (snapOn) {
     let lastT = 0, armed = true, sum = 0, firedAt = 0;
     addEventListener('wheel', e => {
-      if (e.ctrlKey || e.defaultPrevented) return; // pinch zoom and anything that handles its own wheel
+      if (flow || e.ctrlKey || e.defaultPrevented) return; // flowing page, pinch zoom, anything that handles its own wheel
       const d = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? innerHeight : 1);
       if (Math.abs(e.deltaX) > Math.abs(d)) return;
       e.preventDefault();
@@ -616,6 +677,8 @@
   // anchors and the skip link land on the stop of their section
   function goToEl(el) {
     if (!el) return;
+    // the flowing page scrolls natively; scroll-margin-top (css/ki.css) sets the heading below the header
+    if (flow) { pending = null; el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); return; }
     const i = units.findIndex(u => u.sec === el || el.contains(u.els[0]) || u.els.some(a => el.contains(a)));
     if (i >= 0) return go(i);
     el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
@@ -642,7 +705,7 @@
         const changed = !lastBox || !el || el !== lastBox.el || Math.abs(r.width - lastBox.w) > 2 || Math.abs(r.height - lastBox.h) > 2;
         if (changed) formFor(leader, 0);
       }
-      if (keep && innerWidth !== lastW) {
+      if (keep && innerWidth !== lastW && !flow) {
         const i = units.findIndex(u => u.sec === keep.sec && u.host === keep.host);
         if (i >= 0) scrollTo({ top: units[i].y, behavior: 'instant' });
       }
@@ -651,6 +714,9 @@
     }, 150);
   });
   layoutUnits(); pick();
+  // turning a phone can cross between the flowing page and the frames
+  const onFlow = () => { flow = flowMQ.matches; root.classList.toggle('snap', !flow); layoutUnits(); here = null; pick(); };
+  if (flowMQ.addEventListener) flowMQ.addEventListener('change', onFlow); else if (flowMQ.addListener) flowMQ.addListener(onFlow);
   // web fonts change line breaks: measure again once they are in
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { layoutUnits(); pick(); });
   addEventListener('load', () => { layoutUnits(); pick(); });

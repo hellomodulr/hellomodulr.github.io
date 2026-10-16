@@ -18,3 +18,11 @@
 .legal .foot { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--k-line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font: 500 var(--fs-label)/1.4 var(--mono); color: var(--ink-3); }
 .legal .foot a { color: var(--ink-2); text-decoration: none; }
 .legal .foot a:hover { color: var(--ink); text-decoration: underline; }
+
+/* phones: the long title breaks by syllable instead of widening the page, the links of the foot
+   get a full tap height */
+@media (max-width: 760px) {
+  .legal h1 { font-size: clamp(26px, 8.6vw, 34px); -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+  .legal .foot a { display: inline-flex; align-items: center; min-height: 44px; }
+  .legal .foot { gap: 0 20px; align-items: center; }
+}

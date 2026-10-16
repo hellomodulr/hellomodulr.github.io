@@ -14,6 +14,12 @@
 
   // No smooth scroll library on this page: the browser scrolls and snaps natively (see "snapping").
   const scrollPos = () => scrollY;
+  // Phones (upright, and sideways with little height) get a flowing page: no frames, no stops,
+  // no snapping, native momentum scrolling (css/ki.css, "phones: a flowing page"). The reading
+  // units stay, one per frame, only to choose the figure of the point field.
+  const flowMQ = matchMedia('(max-width: 760px), (max-height: 520px) and (orientation: landscape) and (max-width: 1000px)');
+  let flow = flowMQ.matches;
+  root.classList.toggle('snap', !flow);
 
   // ---------- the two display sentences rise when they appear ----------
   // the nodes move into the wrapper (never re-parsed), so point type inside keeps its canvas
@@ -174,9 +180,16 @@
     // the last frame is shortened by the footer, so both together fill the last screen
     root.style.setProperty('--foot-h', $('.site-footer').offsetHeight + 'px');
     const H = viewH(), barH = bar.offsetHeight, m = Math.round(clamp(H * 0.026, 12, 24));
-    Object.assign(G, { H, bar: barH, m, fit: H - barH - 2 * m });
+    Object.assign(G, { H, bar: barH, m, fit: flow ? Infinity : H - barH - 2 * m });
     const next = groupUnits();
-    measureUnits(next); placeStops(next);
+    measureUnits(next);
+    if (flow) {
+      // no stops: each unit knows the field of its figure, if it holds one (see flowScore)
+      next.forEach(u => { const f = u.host && u.host.dataset && u.host.dataset.form ? visibleField(u.host) : null; u.field = f && u.els.some(el => el === f || el.contains(f)) ? f : null; u.y = u.top - barH; });
+      units = next; placeAnchors(); sig = signature();
+      return units;
+    }
+    placeStops(next);
     let widened = false;
     for (let i = 0; i + 1 < next.length; i++) {
       const a = next[i], b = next[i + 1];
@@ -209,9 +222,10 @@
   body.appendChild(anchors);
   function placeAnchors() {
     const pad = parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
-    while (anchors.children.length > units.length) anchors.lastElementChild.remove();
-    while (anchors.children.length < units.length) anchors.appendChild(document.createElement('i'));
-    units.forEach((u, k) => { anchors.children[k].style.top = (u.y + pad) + 'px'; });
+    const n = flow ? 0 : units.length;
+    while (anchors.children.length > n) anchors.lastElementChild.remove();
+    while (anchors.children.length < n) anchors.appendChild(document.createElement('i'));
+    if (n) units.forEach((u, k) => { anchors.children[k].style.top = (u.y + pad) + 'px'; });
   }
 
   // ---------- accordion ----------
@@ -268,13 +282,17 @@
       // strip sits above each step, in the space the step keeps free at its top
       const gap = parseFloat(getComputedStyle(root).getPropertyValue('--gap')) || 24;
       const one = getComputedStyle(fieldWeg).position === 'absolute';
-      let step = one ? 4.5 : 7.5, f, rows = null;
+      let step = one ? 4.5 : 7.5, f, rows = null, bands = null;
       if (one) {
-        const fr = fieldWeg.getBoundingClientRect();
-        rows = $$('#wegpath .pnode').map(li => { const r = li.getBoundingClientRect(), pad = parseFloat(getComputedStyle(li).paddingTop) || 34; return r.top - fr.top + pad - 26 - h / 2; });
+        // each step keeps its bar height free above its title (--bar, css/ki.css); the bar stands
+        // on a base line 16 px above the title, so the four bars grow like stairs
+        const fr = fieldWeg.getBoundingClientRect(), lis = $$('#wegpath .pnode');
+        bands = lis.map(li => parseFloat(getComputedStyle(li).getPropertyValue('--bar')) || 0);
+        if (!bands.every(b => b > 0)) bands = null;
+        rows = lis.map(li => { const r = li.getBoundingClientRect(), pad = parseFloat(getComputedStyle(li).paddingTop) || 34; return r.top - fr.top + pad - (bands ? 16 : 26) - h / 2; });
       }
       // never ask for more points than the field has, or the last block stays unfinished
-      do { f = P.F.treppe(w, h, one ? { rows, band: 10, depth: 14, step } : { gap, step }); step *= 1.1; } while (f.length > pf.P.length * 0.9);
+      do { f = P.F.treppe(w, h, one ? { rows, bands, band: 10, depth: 14, step } : { gap, step }); step *= 1.1; } while (f.length > pf.P.length * 0.9);
       return { form: f, cam: { pitch: 0, yaw: 0, float: one ? 0.15 : 0.35 } };
     },
     stunden(w, h) {
@@ -282,9 +300,9 @@
       do { f = P.F.stunden(w, h, { people: calc.P, hours: calc.H, step }); step *= 1.1; } while (f.length > pf.P.length * 0.9);
       return { form: f, cam: { pitch: 0, yaw: 0, float: 0.2 } };
     },
-    // the close: two heads in conversation
+    // the close: two heads and the common ground between them
     schluss(w, h) {
-      const f = P.F.gespraech(w, h, { n: pf.small ? 300 : 480, per: pf.small ? 60 : 90 }); return { form: f, dyn: P.gespraechFlow(f), cam: { pitch: 0.12, yaw: 0, float: 0.5 } };
+      const f = P.F.grundlage(w, h, { small: pf.small }); return { form: f, dyn: P.grundlageFlow(f), cam: { pitch: 0.9, yaw: -0.12, float: 0.25 } };
     },
   };
   let lastBox = null;
@@ -316,8 +334,24 @@
   // one transition at the end instead of one per unit passed. A snap leads its target at once.
   const BAND = 0.06, SETTLE = 120;
   let pending = null, pendingAt = 0, settleTimer = 0, target = null;
+  // In the flowing page a figure leads while at least half of its field is on screen (the one
+  // closest to the middle, if two are); otherwise the unit under the middle of the screen leads.
+  function flowScore(u) {
+    const y = scrollPos(), top = y + G.bar, bot = y + G.H, mid = (top + bot) / 2;
+    if (u.field) {
+      const r = u.field.getBoundingClientRect(), a = r.top + y, b = r.bottom + y;
+      if (Math.min(b, bot) - Math.max(a, top) >= Math.min(b - a, bot - top) * .5) return -G.H + Math.abs((a + b) / 2 - mid) / 4;
+    }
+    return mid < u.top ? u.top - mid : mid > u.bottom ? mid - u.bottom : 0;
+  }
+  function flowCandidate() {
+    let best = null, bs = Infinity;
+    for (const u of units) { const s = flowScore(u); if (s < bs) { bs = s; best = u; } }
+    return here && here !== best && units.indexOf(here) >= 0 && flowScore(here) < bs + G.H * BAND ? here : best;
+  }
   function candidate() {
     if (!units.length) return null;
+    if (flow) return flowCandidate();
     const y = scrollPos(), u = units[nearest(y)];
     if (!here || u === here || units.indexOf(here) < 0) return u;
     return Math.abs(u.y - y) + G.H * BAND < Math.abs(here.y - y) ? u : here;
@@ -382,7 +416,7 @@
   if (snapOn) {
     let lastT = 0, armed = true, sum = 0, firedAt = 0;
     addEventListener('wheel', e => {
-      if (e.ctrlKey || e.defaultPrevented) return; // pinch zoom and anything that handles its own wheel
+      if (flow || e.ctrlKey || e.defaultPrevented) return; // flowing page, pinch zoom, anything that handles its own wheel
       const d = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? innerHeight : 1);
       if (Math.abs(e.deltaX) > Math.abs(d)) return;
       e.preventDefault();
@@ -398,6 +432,8 @@
   // anchors and the skip link land on the stop of their section
   function goToEl(el) {
     if (!el) return;
+    // the flowing page scrolls natively; scroll-margin-top (css/ki.css) sets the heading below the header
+    if (flow) { pending = null; el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); return; }
     const i = units.findIndex(u => u.sec === el || el.contains(u.els[0]) || u.els.some(a => el.contains(a)));
     if (i >= 0) return go(i);
     el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
@@ -425,7 +461,7 @@
         if (changed) formFor(leader, 0);
       }
       if (roller) roller.refresh();
-      if (keep && innerWidth !== lastW) {
+      if (keep && innerWidth !== lastW && !flow) {
         const i = units.findIndex(u => u.sec === keep.sec && u.host === keep.host);
         if (i >= 0) scrollTo({ top: units[i].y, behavior: 'instant' });
       }
@@ -512,6 +548,9 @@
     layoutUnits();
   });
   setupOffer(); layoutUnits(); pick();
+  // turning a phone can cross between the flowing page and the frames
+  const onFlow = () => { flow = flowMQ.matches; root.classList.toggle('snap', !flow); layoutUnits(); here = null; pick(); };
+  if (flowMQ.addEventListener) flowMQ.addEventListener('change', onFlow); else if (flowMQ.addListener) flowMQ.addListener(onFlow);
   if (compactMQ.addEventListener) compactMQ.addEventListener('change', () => { setupOffer(); layoutUnits(); });
 
   // ---------- tracking events (fire once Plausible is active, otherwise no-op) ----------

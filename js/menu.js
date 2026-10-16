@@ -18,6 +18,8 @@
     if (on === open) return;
     open = on;
     if (on) keepY = scrollY;
+    if (on) addEventListener('touchmove', holdTouch, { capture: true, passive: false });
+    else removeEventListener('touchmove', holdTouch, { capture: true });
     root.classList.toggle('menu-open', on);
     btn.setAttribute('aria-expanded', String(on));
     btn.setAttribute('aria-label', on ? 'Menü schließen' : 'Menü öffnen');
@@ -58,11 +60,13 @@
     if (!scrollable || !menu.contains(e.target)) e.preventDefault();
   };
   addEventListener('wheel', holdWheel, { capture: true, passive: false });
-  addEventListener('touchmove', e => {
+  // the touch listener can cancel scrolling, so it is only attached while the menu is open: a page
+  // with a blocking touch listener would make the browser wait for script on every swipe
+  const holdTouch = e => {
     if (!open) return;
     const scrollable = menu.scrollHeight > menu.clientHeight + 1;
     if (!scrollable || !menu.contains(e.target)) e.preventDefault();
-  }, { capture: true, passive: false });
+  };
   // a page scroll that slips through anyway is put back
   addEventListener('scroll', () => { if (open && Math.abs(scrollY - keepY) > 1) scrollTo({ top: keepY, behavior: 'instant' }); }, { passive: true });
   // test scripts

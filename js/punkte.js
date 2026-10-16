@@ -105,10 +105,12 @@
   F.treppe = (w, h, o = {}) => {
     const n = o.n || 4, step = o.step || 7.5, out = [];
     if (o.rows) {
-      const bh = o.band || 12, dp = o.depth || 14;
+      const dp = o.depth || 14;
+      // `bands`: a height of its own per step, and `rows` is then the base line each bar stands on
       o.rows.forEach((y, i) => {
+        const bh = o.bands ? o.bands[i] : o.band || 12, top = o.bands ? y - bh : y;
         const bw = Math.max(step * 3, (w - dp * .5 - 2) * (i + 1) / n);
-        F.box(-w / 2 + 1, y, bw, bh, dp, step, { acc: i === n - 1 ? 1 : 0, g: i }).forEach(p => out.push(p));
+        F.box(-w / 2 + 1, top, bw, bh, dp, step, { acc: i === n - 1 ? 1 : 0, g: i }).forEach(p => out.push(p));
       });
       return out;
     }
@@ -139,34 +141,6 @@
     return out;
   };
 
-  // ---------- the close ----------
-  // Gespräch: two heads face each other (the few heads of the beginning, now two), and between them
-  // the exchange runs as a loop: over the top from one head to the other, below it back again
-  F.gespraech = (w, h, o = {}) => {
-    const R = rng(o.seed || 61), out = [], r = Math.min(w * .17, h * .24);
-    const C = [[-w * .31, 0, 0], [w * .31, 0, 0]];
-    C.forEach(([cx, cy, cz]) => {
-      for (let k = 0; k < (o.n || 480); k++) {
-        const u = R() * 2 - 1, th = R() * TAU, rr = r * Math.cbrt(R()), q = Math.sqrt(1 - u * u);
-        out.push({ x: cx + Math.cos(th) * q * rr, y: cy + u * rr, z: cz + Math.sin(th) * q * rr });
-      }
-    });
-    const per = o.per || 90;
-    for (let row = 0; row < 2; row++) for (let k = 0; k < per; k++) out.push({ x: 0, y: 0, z: 0, talk: row, u: k / per, ph: R() });
-    out.meta = { xa: C[0][0] + r * .55, xb: C[1][0] - r * .55, amp: Math.min(h * .16, r * .9) };
-    return out;
-  };
-  function gespraechFlow(form) {
-    const m = form.meta, span = m.xb - m.xa;
-    return t => {
-      for (const q of form) {
-        if (q.talk == null) continue;
-        const u = ((q.u + t * .045) % 1 + 1) % 1, s = q.talk ? 1 - u : u;
-        q.x = m.xa + s * span + (q.ph - .5) * 3; q.y = (q.talk ? 1 : -1) * Math.sin(Math.PI * s) * m.amp + (q.ph - .5) * 3; q.z = 0;
-        q.vis = Math.min(1, u / .1, (1 - u) / .1);
-      }
-    };
-  }
   // ---------- the streams: one person steers, many tasks run in order ----------
   // Ströme: loose single tasks drift in from the left, line up into three ordered streams, and
   // one rust point above the point where order begins holds the reins of all three.
@@ -796,5 +770,46 @@
     };
   }
 
-  window.Punkte = { create, F, evade, evRadius, EV, PTR, rasterSettle, koepfeFlow, stroemeFlow, gespraechFlow, rng };
+
+  // ---------- the close: common ground ----------
+  // Two heads beside a sheet on the table; from both sides their points settle into one shared
+  // grid, each side fills its half and the halves meet in the middle. Ink only: the rust of the
+  // close is the word "Gespräch" in point type. Everything stays well inside the box of w by h,
+  // also while the camera floats (the heads keep a margin of their own radius to the edges).
+  const smooth = k => k * k * (3 - 2 * k);
+  const cloudPt = (R, cx, cy, cz, r) => { const u = R() * 2 - 1, th = R() * TAU, rr = r * Math.cbrt(R()), q = Math.sqrt(1 - u * u); return [cx + Math.cos(th) * q * rr, cy + u * rr, cz + Math.sin(th) * q * rr]; };
+  F.grundlage = (w, h, o = {}) => {
+    const R = rng(71), out = [], small = !!o.small;
+    const r = Math.min(w * .085, h * .17), hx = w * .5 - r * 1.8;
+    // the sheet lies between the heads; a tall box gets no taller sheet than a landscape one
+    const sw = Math.max(w * .3, (hx - r * 1.3) * 2), sd = Math.min(h * .82, sw * 1.3);
+    const step = Math.max(small ? 8 : 7, Math.sqrt(sw * sd / (small ? 520 : 760)));
+    const C = [[-hx, 0, r * 1.1], [hx, 0, r * 1.1]];
+    C.forEach(([cx, cy, cz]) => { for (let k = 0; k < (small ? 220 : 340); k++) { const [x, y, z] = cloudPt(R, cx, cy, cz, r); out.push({ x, y, z }); } });
+    // the outline of the sheet stays, faint
+    const x0 = -sw / 2, y0 = -sd / 2;
+    [[[x0, y0], [x0 + sw, y0]], [[x0 + sw, y0], [x0 + sw, y0 + sd]], [[x0 + sw, y0 + sd], [x0, y0 + sd]], [[x0, y0 + sd], [x0, y0]]].forEach(([a, b]) => F.line([a[0], a[1], 0], [b[0], b[1], 0], step * .7).forEach(p => out.push({ ...p, dim: 1 })));
+    for (let x = x0 + step; x < x0 + sw - step * .5; x += step) for (let y = y0 + step; y < y0 + sd - step * .5; y += step) {
+      const side = x < 0 ? 0 : 1, [sx, sy, sz] = cloudPt(R, C[side][0], C[side][1], C[side][2], r);
+      // the nearer to the middle, the later a point arrives: the halves grow towards each other
+      out.push({ x, y, z: 0, gx: x, gy: y, sx, sy, sz, ph: (1 - Math.abs(x) / (sw / 2)) * .55 + R() * .12 });
+    }
+    out.meta = { lift: h * .16 };
+    return out;
+  };
+  function grundlageFlow(form) {
+    const lift = form.meta.lift;
+    return t => {
+      for (const q of form) {
+        if (q.gx == null) continue;
+        const u = ((t * .035 - q.ph) % 1 + 1) % 1;
+        // travel (0 .. .3), rest on the sheet (.3 .. .86), dissolve back into the head (.86 .. 1)
+        const k = smooth(clamp(u / .3));
+        q.x = lerp(q.sx, q.gx, k); q.y = lerp(q.sy, q.gy, k); q.z = lerp(q.sz, 0, k) + Math.sin(Math.PI * k) * lift;
+        q.vis = Math.min(1, u / .05, (1 - u) / .14);
+      }
+    };
+  }
+
+  window.Punkte = { create, F, evade, evRadius, EV, PTR, rasterSettle, koepfeFlow, stroemeFlow, grundlageFlow, rng };
 })();

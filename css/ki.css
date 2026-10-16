@@ -298,83 +298,111 @@ input[type=range]:focus-visible { outline: 2px solid var(--acc); outline-offset:
 }
 
 /* ---------- phones: one calm column, the figures sit between heading and text ---------- */
+/* The page flows here (see "phones: a flowing page" below): heading, figure and text of a section
+   stay together, the sections follow one rhythm, and the body text keeps a reading size. */
 @media (max-width: 760px) {
-  .ki { --fs-h2: 34px; --fs-h3: 21px; --fs-body: 16px; --fs-small: 15px; }
+  .ki { --fs-h2: 34px; --fs-h3: 21px; --fs-body: 17px; --fs-small: 16px; }
   .sec { padding-left: var(--gutter); padding-right: var(--gutter); }
   .wrap.grid { display: block; }
   .field-d { display: none; }
-  .field-m { display: block; height: min(64vw, 25svh); margin: 20px calc(-1 * var(--gutter) / 2) 4px; }
+  /* the figures: compact bands of points between heading and text */
+  .field-m { display: block; height: clamp(170px, 50vw, 230px); margin: 24px calc(-1 * var(--gutter) / 2) 8px; }
   .h2 + .field-m + .p { margin-top: 16px; }
-  .sec.hero { justify-content: flex-start; padding-top: calc(var(--bar-h) + 28px); padding-bottom: 24px; }
-  .sec.hero > .wrap, .sec.final > .wrap { display: flex; flex-direction: column; flex: 1; }
-  .wrap.grid.frame { display: flex; flex-direction: column; justify-content: center; }
-  .hero .wrap.grid > .field, .final .wrap.grid > .field { display: block; flex: 1; min-height: 30svh; max-height: 44svh; margin: 8px calc(-1 * var(--gutter) / 2) 0; }
+  .sec.hero > .wrap, .sec.final > .wrap { display: flex; flex-direction: column; }
+  .wrap.grid.frame { display: flex; flex-direction: column; }
+  .hero .wrap.grid > .field, .final .wrap.grid > .field { display: block; flex: none; height: clamp(180px, 52vw, 250px); min-height: 0; max-height: none; margin: 28px calc(-1 * var(--gutter) / 2) 0; }
   .promise { margin-top: 24px; }
+  .sub { margin-top: 14px; }
   .cta-row, .cta-final { margin-top: 24px; }
-  .qhint { margin-top: 20px; }
-  .tasks-cap { padding-bottom: 20px; font-size: 26px; }
+  .note { font-size: 15px; }
+  .gonote { margin-top: 20px; }
+  .gonote a { display: inline-block; padding: 14px 0; margin: -14px 0; }
+  .qhint { margin-top: 12px; font-size: 16px; }
+  /* today and with KI: one block per task, each value with its own label */
+  .tasks-cap { padding-bottom: 8px; font-size: 27px; }
   .tasks thead { display: none; }
-  .tasks tr { display: block; padding: 18px 0; border-top: 1px solid var(--hair); }
+  .tasks tr { display: block; padding: 22px 0 24px; border-top: 1px solid var(--hair); }
   .tasks tbody tr:last-child { border-bottom: 1px solid var(--hair); }
   .tasks tbody tr:last-child > * { border-bottom: 0; }
-  .tasks tbody th, .tasks td { display: block; width: auto; border: 0; padding: 0 0 6px; text-align: left; font-size: 15px; }
-  .tasks tbody th { font-size: 21px; padding-bottom: 8px; }
-  .tasks td.num { margin-top: 6px; font-size: 25px; }
-  .tasks td.num::before { content: 'Zeitersparnis* '; font: 600 15px/1 var(--sans); color: var(--fg-2); letter-spacing: -.01em; }
+  .tasks tbody th, .tasks td { display: block; width: auto; border: 0; padding: 0; text-align: left; font-size: 17px; line-height: 1.55; }
+  .tasks tbody th { font-size: 22px; padding-bottom: 12px; }
+  .tasks td + td { margin-top: 14px; }
+  .tasks td::before { display: block; margin-bottom: 4px; font: 500 12px/1.4 var(--mono); letter-spacing: .02em; color: var(--fg-3); }
+  .tasks td:not(.then):not(.num)::before { content: 'Heute'; }
+  .tasks td.then::before { content: 'Mit KI'; }
+  .tasks td.num { margin-top: 16px; font-size: 30px; }
+  .tasks td.num::before { content: 'Zeitersparnis*'; margin-bottom: 8px; }
+  .fine { font-size: 14px; }
+  /* the person */
   .about-head .h2 { font-size: 40px; }
-  .about-photo { aspect-ratio: 4 / 5; max-height: 52svh; width: 100%; margin: 24px 0 0; }
-  .roles { margin-top: 12px; font-size: 18px; }
+  .about-photo { aspect-ratio: 4 / 5; max-height: 440px; width: 100%; margin: 28px 0 0; }
+  .roles { margin-top: 12px; font-size: 19px; }
   .about-prose { margin-top: 32px; }
-  .about-prose .p { font-size: 17.5px; line-height: 1.6; }
+  .about-prose .p { font-size: 17px; line-height: 1.6; }
   /* one column in reading order: the office with its facts, then the steps, the result and the way on */
   .wrap.grid.case { row-gap: 0; }
   .case-h { order: 0; font-size: 30px; }
   .case-lead { order: 1; padding-bottom: 0; }
   .case-fig { display: block; margin-top: 24px; }
-  .case-n { font-size: min(34vw, 15svh); }
-  .case-l { font-size: 18px; max-width: none; padding-top: 16px; }
+  .case-n { font-size: clamp(100px, 34vw, 150px); }
+  .case-l { font-size: 19px; max-width: none; padding-top: 18px; }
   .case-foot { display: contents; }
-  .case-meta { order: 2; margin-top: 6px; font-size: 15px; }
+  .case-meta { order: 2; margin-top: 8px; font-size: 16px; }
   .case-text { order: 3; margin-top: 32px; }
-  .case-step, .case-step:first-child { padding: 14px 0; font-size: 15px; line-height: 1.45; }
-  .case-k, .case-step:first-child .case-k, .case-result .case-k { position: static; display: block; padding: 0 0 6px; }
-  .case-result { margin-top: 0; padding-bottom: 0; font-size: 18px; }
-  .case-more { order: 4; margin-top: 10px; } .case-more a { display: inline; font-size: 15px; } .case-more .arr { display: inline-block; vertical-align: -3px; margin-left: 6px; }
+  .case-step, .case-step:first-child { padding: 18px 0; font-size: 17px; line-height: 1.55; }
+  .case-k, .case-step:first-child .case-k, .case-result .case-k { position: static; display: block; padding: 0 0 8px; font-size: 12px; line-height: 1.4; }
+  .case-result { margin-top: 0; padding-bottom: 0; font-size: 19px; line-height: 1.4; }
+  .case-more { order: 4; margin-top: 20px; } .case-more a { display: inline; font-size: 16px; line-height: 1.6; } .case-more .arr { display: inline-block; vertical-align: -3px; margin-left: 6px; }
   .case-b .case-step + .case-step { margin-top: 0; }
   .case-b .case-step { padding: 10px 0; }
   .case-b .case-result { padding-top: 16px; }
   .case-b .case-meta, .case-b .case-more { padding-top: 0; }
   .case-b .case-lead { padding-top: 0; }
+  /* the calculator: heading, the two inputs, the figure with its numbers, result, way on, sources */
   .tool .wrap.grid { display: flex; flex-direction: column; }
   .tr-ctrls { display: contents; }
-  .tr-out { order: 1; margin-top: 24px; }
-  .tr-ctrls .rsources { order: 2; margin-top: 28px; padding-top: 0; }
+  .tr-out { order: 1; margin-top: 28px; }
+  .tr-ctrls .rsources { order: 2; margin-top: 32px; padding-top: 0; }
   .tctrl { margin-top: 24px; } .tctrl:first-of-type { margin-top: 28px; }
+  .tlab { font-size: 16px; }
   .tr-big { font-size: 72px; }
-  .tr-row { margin-top: 10px; gap: 8px 24px; }
-  .field-tool { height: clamp(130px, 20svh, 190px); }
-  .tr-res { font-size: 16px; }
+  .tr-row { margin-top: 10px; gap: 12px 24px; }
+  .tr-sub { font-size: 12px; }
+  .field-tool { height: clamp(150px, 44vw, 200px); }
+  .tr-res { font-size: 17px; }
+  .tool-cta { margin-top: 24px; }
   .weg-head { display: block; }
   .weg-head .lead-p { margin-top: 24px; }
   /* one column: a flat strip of points above each step, figure and text in one place */
-  .weg-body { position: relative; }
+  .weg-body { position: relative; margin-top: 12px; }
   .field-weg { position: absolute; inset: 0; height: auto; margin: 0; }
-  .path { grid-template-columns: 1fr; row-gap: 22px; margin-top: 0; }
-  .pnode { padding-top: 34px; }
-  .pnode p { margin-top: 6px; font-size: 15px; }
-  .k1-list { margin-top: 24px; }
+  .path { grid-template-columns: 1fr; row-gap: 32px; margin-top: 0; }
+  /* each step carries its own bar of points above its title, one size taller per step */
+  .pnode { --bar: 22px; padding-top: calc(var(--bar) + 30px); }
+  .pnode:nth-child(2) { --bar: 34px; } .pnode:nth-child(3) { --bar: 46px; } .pnode:nth-child(4) { --bar: 58px; }
+  .pnode p { margin-top: 8px; font-size: 16px; }
+  .k1-list { margin-top: 28px; }
   .k1-row { display: block; padding: 0; }
-  .k1-n { padding: 12px 0; }
+  .k1-n { padding: 14px 0; }
   .k1-n h3 { font-size: 21px; }
-  .k1-tag { margin-top: 2px; font-size: 14px; }
-  .k1-c { margin: 0; padding: 0 0 16px; font-size: 15px; }
+  .k1-tag { margin-top: 2px; font-size: 15px; }
+  .k1-c { margin: 0; padding: 0 0 20px; font-size: 17px; }
   .k1-compact .k1-row:not(.open) .k1-c { display: none; }
-  .stair-foot { font-size: 15px; }
-  .colhead { margin-bottom: 20px; }
-  .acc-head { font-size: 18px; padding: 14px 0; }
-  .acc-body p { font-size: 16px; }
+  .stair-foot { padding-top: 20px; font-size: 17px; }
+  .colhead { margin-bottom: 24px; }
+  .acc-head { min-height: 56px; font-size: 18px; padding: 12px 0; }
+  .acc-body p { font-size: 17px; }
   .site-footer { padding: 24px var(--gutter) calc(28px + env(safe-area-inset-bottom)); }
   .site-footer { gap: 0 24px; } .site-footer a { padding: 13px 0; }
+}
+
+/* short phones (small models, or a browser with its bars shown): the title stays one screen */
+@media (max-width: 760px) and (max-height: 620px) {
+  .ki { --fs-display: 40px; }
+  .sec.hero { padding-top: calc(var(--bar-h) + 20px); }
+  .promise { margin-top: 18px; font-size: 21px; }
+  .sub { margin-top: 10px; font-size: 16px; line-height: 1.5; }
+  .cta-row { margin-top: 18px; }
 }
 
 /* ---------- phones held sideways: little height, so a compact scale and a slimmer header ---------- */
@@ -462,6 +490,62 @@ input[type=range]:focus-visible { outline: 2px solid var(--acc); outline-offset:
   .acc-head { padding: 8px 0; font-size: 15px; }
   .acc-body p { font-size: 14px; padding-bottom: 12px; }
   .site-footer { padding: 14px var(--content-r) 16px var(--gutter); }
+}
+
+/* ---------- phones held sideways, now that the page flows: back to a readable size ---------- */
+@media (max-height: 520px) and (orientation: landscape) and (max-width: 1000px) {
+  .ki { --fs-h2: 30px; --fs-h3: 19px; --fs-body: 16px; --fs-small: 16px; }
+  .sec.hero { min-height: 0; }
+  .sub { margin-top: 12px; }
+  .note { font-size: 14px; }
+  .h2 + .p { margin-top: 18px; }
+  .tasks thead th { font-size: 14px; }
+  .tasks td { font-size: 16px; line-height: 1.5; }
+  .tasks tbody th, .tasks td { padding: 12px var(--gap) 12px 0; line-height: 1.45; }
+  .tasks tbody th { font-size: 18px; }
+  .fine { margin-top: 10px; font-size: 14px; }
+  .roles { font-size: 17px; }
+  .about-prose .p { font-size: 16px; }
+  .wrap.grid.case { --case-gap: 16px; --case-pad: 10px; --case-lh: 1.5; }
+  .case-step { font-size: 16px; }
+  .case-k { font-size: 12px; padding-top: calc(16px * .75 - .5em); }
+  .case-result { font-size: 17px; }
+  .case-result .case-k { padding-top: calc(17px * .7 - .4em); }
+  .case-meta { font-size: 15px; }
+  .case-more a { display: inline-flex; min-height: 44px; font-size: 15px; }
+  .tlab { font-size: 15px; }
+  .tr-ctrls .rsources { font-size: 14px; }
+  .tr-res { font-size: 16px; }
+  .weg-head .lead-p { font-size: 16px; }
+  .pnode h3 { font-size: 18px; }
+  .pnode p { font-size: 15px; line-height: 1.5; }
+  .k1-n h3 { font-size: 18px; }
+  .k1-tag { font-size: 14px; }
+  .k1-head { min-height: 44px; }
+  .k1-compact .k1-c { font-size: 16px; }
+  .stair-foot { font-size: 15px; }
+  .acc-head { min-height: 48px; font-size: 16px; }
+  .acc-body p { font-size: 16px; }
+  .site-footer { padding-top: 20px; padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
+}
+
+/* ---------- phones: a flowing page ---------- */
+/* On phones, upright or sideways, a frame cannot hold a section whole. So the page drops the
+   frames and the snapping and flows like a document: native momentum scrolling, no heights taken
+   from the toolbar of the browser, one rhythm of space between the sections. js/ki.js and
+   js/fallstudie.js read the same condition and skip the stops and the wheel helper. */
+@media (max-width: 760px), (max-height: 520px) and (orientation: landscape) and (max-width: 1000px) {
+  .ki { --flow-gap: clamp(72px, 22vw, 96px); }
+  html.snap { scroll-snap-type: none; }
+  .frame, .frame.faq { min-height: 0; padding-top: 0; padding-bottom: 0; }
+  .sec, .sec.frame { padding-top: var(--flow-gap); padding-bottom: 0; }
+  .sec.hero { min-height: 0; padding-top: calc(var(--bar-h) + 28px); }
+  /* two frames of one section (the thesis and its table, the person and the case) */
+  .sec > .frame + .frame { margin-top: calc(var(--flow-gap) * .75); }
+  main > .sec:last-child { padding-bottom: var(--flow-gap); }
+  /* an anchor brings the heading of its section just below the header */
+  .sec[id] { scroll-margin-top: calc(24px - var(--flow-gap)); }
+  .sec.hero[id] { scroll-margin-top: 0; }
 }
 
 /* ---------- snapping ---------- */

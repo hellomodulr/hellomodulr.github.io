@@ -71,6 +71,8 @@
 /* a value on its way from the plan into the table */
 .fly { position: fixed; left: 0; top: 0; z-index: 30; pointer-events: none; font: 600 calc(var(--fs-small) * 1.02)/1.2 var(--mono); color: var(--fg); background: var(--ground); padding: 1px 3px; border-radius: 1px; white-space: nowrap; will-change: transform; }
 
+.plan-lesen-m { display: none; }
+
 /* ---------- d) checking ---------- */
 .fs-pruefen .wrap.grid { align-items: center; }
 .pruef-text { grid-column: 1 / span 6; }
@@ -175,50 +177,79 @@
   .vtab thead th { font-size: 10px; }
 }
 
-/* ---------- phones: one column; tall frames split into reading units (js/fallstudie.js) ---------- */
+/* ---------- phones: one flowing column (no frames, no snapping, css/ki.css) ---------- */
+/* Every section keeps heading, material and text together; the plan excerpts take the full
+   width and are cut close enough that their values can be read. */
 @media (max-width: 760px) {
-  .fs { --fs-quote: 19px; }
-  .fazit-h { font-size: 32px; }
-  .fazit-text { grid-column: 1 / -1; grid-template-columns: 1fr; row-gap: .9em; margin-top: 24px; padding-top: 18px; }
-  .fazit-text .p { font-size: 15.5px; }
-  .fs-hero .col-text { display: block; }
-  .fs-hero.hero .wrap.grid > .field { min-height: 18svh; max-height: 26svh; }
+  .fs { --fs-quote: 20px; }
   .eyebrow { margin-bottom: 12px; }
-  .rq .plan { margin: 0; justify-self: start; }
-  .steck { margin-top: 24px; }
-  .steck > div { grid-template-columns: 6.6em minmax(0, 1fr); column-gap: 12px; padding: 7px 0; }
-  .steck dt { font-size: 11px; line-height: 1.9; }
-  .steck dd { font-size: 14.5px; }
-  .frage { margin-top: 20px; }
-  .lesen-text .p, .pruef-text .p { font-size: 15.5px; }
-  .plan-lesen { margin-top: 20px; }
-  .vtab { margin-top: 18px; }
-  .vtab thead th { font-size: 9.5px; padding-right: 4px; letter-spacing: 0; }
-  .vtab tbody th, .vtab td { font-size: 14px; padding: 7px 4px 7px 0; }
-  .checks { margin-top: 18px; }
-  .ck { font-size: 17px; }
-  .tally { margin-top: 28px; }
-  .field-tally { height: min(52vw, 22svh); }
-  .tally-n { font-size: 18px; }
-  .tally-n b { font-size: 36px; }
-  .rq { display: block; padding: 18px 0; }
-  .rq .plan { --h: 30svh; }
-  .rq-text { margin-top: 12px; }
-  .rq h3 { font-size: 19px; }
-  .rq-text > p:last-child { font-size: 15px; }
-  .mensch-text .kick { margin-top: 18px; }
-  .claim p, .mensch-text .p { font-size: 15px; }
-  .plan-baum { margin-top: 20px; }
-  .vol { margin: 20px calc(-1 * var(--gutter)) 0; height: min(92vw, 44svh); }
-  .vol-hint { right: var(--gutter); }
-  .kz-n { font-size: 26px; }
-  .kz-f { font-size: 13px; }
-  .fazit { font-size: 16px; margin-bottom: 20px; }
-  .source { font-size: 12px; }
-}
-
-@media (max-width: 760px) and (max-height: 720px) {
-  .fs-hero.hero .wrap.grid > .field { display: none; }
+  .credit { margin-top: 10px; font-size: 12px; }
+  .fs .fine { font-size: 14px; }
+  /* a) entry */
+  .fs-hero .col-text { display: block; }
+  .fs-hero.hero .wrap.grid > .field { height: clamp(170px, 48vw, 220px); }
+  .steck { margin-top: 28px; }
+  .steck > div { grid-template-columns: 6.8em minmax(0, 1fr); column-gap: 12px; padding: 11px 0; }
+  .steck dt { font-size: 12px; line-height: 2.1; }
+  .steck dd { font-size: 16px; line-height: 1.5; }
+  /* b) the task */
+  .frage { margin-top: 28px; }
+  .frage blockquote p { line-height: 1.45; }
+  .frage .fine { margin-top: 20px; }
+  /* c) reading: the four templates close up, two by two */
+  .lesen-text .p, .pruef-text .p { font-size: 17px; }
+  .plan-lesen { display: none; }
+  .plan-lesen-m { display: block; margin-top: 24px; }
+  .schab { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .vtab { margin-top: 24px; }
+  /* on the narrowest phones the long column names break by syllable instead of leaving the screen */
+  .vtab thead th { font-size: 12px; padding: 0 4px 10px 0; letter-spacing: 0; white-space: normal; -webkit-hyphens: auto; hyphens: auto; vertical-align: bottom; }
+  .vtab tbody th, .vtab td { font-size: 16px; padding: 8px 4px 8px 0; }
+  .vtab tbody th { padding-right: 8px; }
+  /* d) checking */
+  .checks { margin-top: 28px; }
+  .checks li { grid-template-columns: 26px minmax(0, 1fr); column-gap: 12px; padding: 14px 0; }
+  .ck { font-size: 18px; }
+  .tag { font-size: 12px; }
+  .tally { margin-top: 40px; }
+  .field-tally { height: clamp(150px, 44vw, 200px); }
+  .tally-n { font-size: 19px; }
+  .tally-n b { font-size: 38px; }
+  /* d2) two questions: each excerpt in full width above its question */
+  .rq-list { margin-top: 28px; }
+  .rq { display: block; padding: 28px 0; }
+  .rq .plan { margin: 0; width: 100%; justify-self: start; }
+  .rq-text { margin-top: 16px; }
+  .kick { font-size: 12px; }
+  .rq h3 { font-size: 21px; }
+  .rq-text > p:last-child { font-size: 17px; }
+  /* the excerpt of the Satzung is cut to the four lines around the marked sentence; image and pen
+     move together, so the mark stays on its words */
+  .plan-gs .clip { aspect-ratio: 5.5; }
+  .plan-gs .clip > img, .plan-gs .pen { right: auto; bottom: auto; left: -1.2987%; top: -10%; width: 129.87%; height: 185.71%; }
+  /* e) the person checks */
+  .mensch-text .kick { margin-top: 24px; }
+  .claim p, .mensch-text .p { font-size: 17px; line-height: 1.55; }
+  .plan-baum { margin-top: 32px; }
+  .zoom-label { font-size: 12px; }
+  /* f) the result: the figures, then the volume across the full width */
+  .kz { margin-top: 28px; }
+  .kz > div { padding: 14px 0; }
+  .kz dt { font-size: 12px; }
+  .kz-n { font-size: 28px; }
+  .kz-f { font-size: 15px; color: var(--fg-2); }
+  .dl { font-size: 16px; }
+  .dl small { font-size: 14px; }
+  .vol { margin: 32px calc(-1 * var(--gutter)) 0; height: clamp(300px, 96vw, 420px); }
+  .vol-hint { right: var(--gutter); font-size: 12px; }
+  .vol-lab, .vol-lab small { font-size: 12px; }
+  /* g) the takeaway */
+  .fazit-h { font-size: 32px; }
+  .fazit-text { grid-column: 1 / -1; grid-template-columns: 1fr; row-gap: .9em; margin-top: 28px; padding-top: 22px; }
+  .fazit-text .p { font-size: 17px; }
+  /* h) close */
+  .fazit { font-size: 17px; margin-bottom: 24px; }
+  .source { font-size: 13px; }
 }
 
 /* ---------- phones held sideways ---------- */
@@ -285,6 +316,48 @@
   .source { margin-top: 6px; font-size: 10.5px; line-height: 1.4; }
   .fs .gonote { margin-top: 6px; }
   .fs-ergebnis .fine { font-size: 11px; line-height: 1.4; }
+}
+
+/* ---------- phones held sideways: the page flows (css/ki.css), so the type stays readable ---------- */
+@media (max-height: 520px) and (orientation: landscape) and (max-width: 1000px) {
+  .fs { --fs-quote: 18px; }
+  .credit, .vol-hint, .vol-lab, .vol-lab small, .zoom-label { font-size: 12px; }
+  .fs .fine { font-size: 14px; margin-top: 10px; }
+  .fs-hero .back, .back-end { min-height: 44px; font-size: 15px; }
+  .steck > div { padding: 7px 0; }
+  .steck dt { font-size: 12px; }
+  .steck dd { font-size: 16px; line-height: 1.45; }
+  .lesen-text { grid-column: 1 / -1; }
+  .lesen-text .p, .pruef-text .p { font-size: 16px; line-height: 1.55; }
+  .h2 + .p { margin-top: 16px; }
+  .plan-lesen { display: none; }
+  .plan-lesen-m { display: block; grid-column: 1 / -1; margin-top: 28px; }
+  .schab { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .vtab { margin-top: 20px; }
+  .vtab thead th { font-size: 12px; }
+  .vtab tbody th, .vtab td { font-size: 16px; padding: 8px 6px 8px 0; }
+  .checks li { padding: 10px 0; grid-template-columns: 26px minmax(0, 1fr); column-gap: 12px; }
+  .tick { width: 22px; height: 22px; }
+  .ck { font-size: 17px; }
+  .tag { display: block; font-size: 12px; margin-top: 2px; }
+  .tally-n { font-size: 17px; }
+  .tally-n b { font-size: 32px; }
+  .rq { padding: 20px 0; }
+  .rq h3 { font-size: 19px; }
+  .rq-text > p:last-child { font-size: 16px; margin-top: 8px; }
+  .kick { font-size: 12px; }
+  .claim p, .mensch-text .p { font-size: 16px; line-height: 1.5; }
+  .mensch-text .claim + .p { margin-top: 14px; }
+  .vol { height: min(380px, 100svh - var(--bar-h) - 24px); }
+  .kz > div { padding: 8px 0; }
+  .kz-n { font-size: 22px; }
+  .kz-f { font-size: 14px; }
+  .dl { min-height: 44px; font-size: 15px; }
+  .dl small { display: block; font-size: 13px; }
+  .fazit-text .p { font-size: 16px; line-height: 1.55; }
+  .fazit { font-size: 16px; line-height: 1.55; margin-bottom: 16px; }
+  .source { margin-top: 16px; font-size: 13px; }
+  .fs-ergebnis .fine { font-size: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
